@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Create a Vendor -->
+    <record id="vendor_demo_partner" model="res.partner">
+        <field name="name">Demo Vendor</field>
+        <field name="user_type">vendor</field>
+        <field name="partner_type">customer</field>
+<!--        <field name="street">123 Market Road</field>-->
+<!--        <field name="city">Chennai</field>-->
+<!--        <field name="zip">600001</field>-->
+    </record>
+
+    <!-- Create a Purchase Indent -->
+    <record id="purchase_indent_demo" model="purchase.indent">
+        <field name="name">Indent001</field>
+        <field name="vendor_id" ref="vendor_demo_partner"/>
+        <field name="fm_date">2025-07-01</field>
+        <field name="to_date">2025-07-31</field>
+        <field name="state">draft</field>
+         <field name="req_customer_id" ref="base.user_admin"/>
+    </record>
+
+    <!-- Create a Product -->
+    <record id="demo_product" model="product.product">
+        <field name="name">Test Product</field>
+        <field name="list_price">150</field>
+        <field name="standard_price">100</field>
+    </record>
+
+    <!-- Create a UOM -->
+<!--    <record id="demo_uom_unit" model="uom.uom">-->
+<!--        <field name="name">Unit(s)</field>-->
+<!--        <field name="category_id" ref="uom.product_uom_categ_unit"/>-->
+<!--        <field name="uom_type">reference</field>-->
+<!--        <field name="factor_inv">1</field>-->
+<!--    </record>-->
+
+
+    <!-- Create Indent Line -->
+    <record id="purchase_indent_line_demo" model="purchase.indent.line">
+        <field name="indent_id" ref="purchase_indent_demo"/>
+        <field name="product_id" ref="demo_product"/>
+        <field name="product_qty">5</field>
+        <field name="price">100</field>
+<!--        <field name="uom" ref="demo_uom_unit"/>-->
+    </record>
+
+</odoo>

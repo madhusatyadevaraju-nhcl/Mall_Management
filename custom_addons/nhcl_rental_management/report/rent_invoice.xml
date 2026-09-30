@@ -1,0 +1,1006 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="exap_cash_lists">
+        <t t-if="not o" t-set="o" t-value="doc"/>
+        <t t-if="not company">
+            <t t-if="company_id">
+                <t t-set="company" t-value="company_id"/>
+            </t>
+            <t t-elif="o and 'company_id' in o and o.company_id.sudo()">
+                <t t-set="company" t-value="o.company_id.sudo()"/>
+            </t>
+        </t>
+        <div class="header" style="text-align: center;">
+<!--            <div class="row" style="height: 60px; align-items: center;margin-top:10px;">-->
+<!--            <div class="row" style="border-bottom: 1.5px solid #555; padding-bottom: 0px; align-items: center;margin-top:10px;">-->
+<!--                <table style="width:100%; border-collapse:collapse;margin-top:10px;">-->
+<!--                    <tr style="border:1px solid white;">-->
+<!--                        &lt;!&ndash; LEFT : LOGO &ndash;&gt;-->
+<!--                        <td style="width:33%; vertical-align:middle; text-align:left;border:1px solid white;">-->
+<!--                            <t t-if="company.logo">-->
+<!--                                <img t-att-src="image_data_uri(company.logo)"-->
+<!--                                     style="width:220px; max-height:110px;"/>-->
+<!--                            </t>-->
+<!--                        </td>-->
+
+<!--                        &lt;!&ndash; CENTER : COMPANY NAME &ndash;&gt;-->
+<!--                        <td style="width:34%; vertical-align:middle; text-align:center; font-weight:bold;border:1px solid white;">-->
+<!--                            <div style="font-size:22px; text-decoration:underline;">-->
+<!--                                CHANDANA BROTHERS-->
+<!--                            </div>-->
+<!--                            <div style="font-size:16px;">-->
+<!--                                MULTI COMPLEX PRIVATE LIMITED-->
+<!--                            </div>-->
+<!--                        </td>-->
+
+<!--                        &lt;!&ndash; RIGHT : COMPANY DETAILS &ndash;&gt;-->
+<!--                        <td style="width:33%; vertical-align:middle; text-align:right;-->
+<!--                   font-size:10px; font-weight:bold;border:1px solid white;-->
+<!--                   font-family:Arial, Verdana, sans-serif;">-->
+<!--                            D.NO:-->
+<!--                            <span t-field="company.street"/>-->
+<!--                            <br/>-->
+<!--                            <span t-field="company.street2"/>-->
+<!--                            <br/>-->
+<!--                            <span t-field="company.city"/>,-->
+<!--                            <span t-field="company.state_id"/>-->
+<!--                            - -->
+<!--                            <span t-field="company.zip"/>-->
+<!--                            <br/>-->
+<!--                            Ph:7670901547-->
+<!--                            &lt;!&ndash;                            <span t-field="company.phone"/>&ndash;&gt;-->
+<!--                            <t t-if="company.nhcl_com_cin_no">-->
+<!--                                <br/>-->
+<!--                                <b>CIN NO:</b>-->
+<!--                                <span t-field="company.nhcl_com_cin_no"/>-->
+<!--                            </t>-->
+<!--                            <t t-if="company.vat">-->
+<!--                                <br/>-->
+<!--                                <b>GSTIN:</b>-->
+<!--                                <span t-field="company.vat"/>-->
+<!--                            </t>-->
+<!--                            <t t-if="company.email">-->
+<!--                                <br/>-->
+<!--                                <b>Email:</b>-->
+<!--                                <span t-field="company.email"/>-->
+<!--                            </t>-->
+<!--                        </td>-->
+<!--                    </tr>-->
+<!--                </table>-->
+                <img src="/nhcl_rental_management/static/src/img/company_header.png"
+             style="width:100%; height:auto; display:block;"/>
+            <div style="border-bottom: 2px solid #555;"></div>
+
+<!--            </div>-->
+        </div>
+
+        <div class="article" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id"
+             t-att-data-oe-lang="o and o.env.context.get('lang')">
+            <t t-out="0"/>
+        </div>
+    </template>
+    <template id="final_invoice_report_account">
+        <t t-if="not o" t-set="o" t-value="doc"/>
+        <t t-if="not company">
+            <t t-if="company_id">
+                <t t-set="company" t-value="company_id"/>
+            </t>
+            <t t-elif="o and 'company_id' in o and o.company_id.sudo()">
+                <t t-set="company" t-value="o.company_id.sudo()"/>
+            </t>
+            <t t-else="else">
+                <t t-set="company" t-value="res_company"/>
+            </t>
+        </t>
+        <t t-foreach="docs" t-as="doc">
+            <t t-call="nhcl_rental_management.exap_cash_lists">
+                <p style="font-size:10px; margin-left:520px; margin-top: 0px; font-family:Verdana, Calibri,sans-serif;font-weight:bold;">
+                    <b>CIN NO:</b>
+                    <span t-field="company.nhcl_com_cin_no"/>
+                    <br/>
+                    <b>DIRECTOR:</b>
+                    <span t-field="company.nhcl_com__director_name"/>
+                    ,
+                    <!--                    <br/>-->
+                    <b>DIN NO:</b>
+                    <span t-field="company.nhcl_com_din_no"/>
+                    <br/>
+                    <t t-if="company.msme">
+                        <b>MSME:</b>
+                        <span t-field="company.msme"/>
+                    </t>
+                </p>
+                <main>
+                    <div class="page" style="margin: 20px;">
+                        <!-- Header Section -->
+                        <h4 style="text-align: center; margin: 0; font-weight: bold; font-family:Calibri, Verdana,sans-serif;font-size:10px;">
+                            <t t-if="doc.nhcl_invoice_type in ['rent','rs']">TAX INVOICE</t>
+                            <t t-elif="doc.nhcl_invoice_type == 'cam'">CAM INVOICE</t>
+                            <t t-elif="doc.nhcl_invoice_type == 'gas'">GAS INVOICE</t>
+                            <t t-else="">
+                                <span t-field="doc.nhcl_invoice_type_label"/>
+                                Tax Invoice
+                            </t>
+                        </h4>
+
+                        <!-- Invoice Details Table -->
+                        <table class="table table-bordered"
+                               style="width:100%; margin:0; padding:0;
+              font-size:10px;
+              border:1px solid black;
+              font-family:Calibri, Verdana, sans-serif;">
+
+                            <!-- 1 -->
+                            <tr>
+                                <td style ="border:1px solid black; padding: 3px;">
+                                    <strong>Tenant</strong>
+                                </td>
+                                <td style ="border:1px solid black; padding: 3px;">
+                                    <span t-field="doc.partner_id.name"/>
+                                </td>
+
+                                <td style="border:1px solid black; padding: 3px;">
+                                    <strong>Brand Name</strong>
+                                </td>
+                                <td style="border:1px solid black; padding: 3px;">
+                                    <span t-field="doc.tenancy_id.brand_name"/>
+                                </td>
+                            </tr>
+
+                            <!-- 2 -->
+                            <tr>
+                                <td style="border:1px solid black; padding: 3px;">
+                                    <strong>Address</strong>
+                                </td>
+                                <!--                                <td>-->
+                                <!--                                    <span t-field="doc.partner_id.street"/>-->
+                                <!--                                    <br/>,-->
+                                <!--                                    <span t-field="doc.partner_id.street2"/>-->
+                                <!--                                    <br/>,-->
+                                <!--                                    <span t-field="doc.partner_id.city"/>,-->
+                                <!--                                    <span t-field="doc.partner_id.state_id"/>- -->
+                                <!--                                    (<span t-field="doc.partner_id.zip"/>)-->
+                                <!--                                </td>-->
+                                <td style="border:1px solid black; padding: 3px;
+                                        word-wrap: break-word;
+                                        overflow-wrap: break-word;
+                                        white-space: normal;
+                                        max-width: 200px;">
+
+                                    <span t-field="doc.partner_id.street"/>
+                                    <br/>
+                                    <t t-if="doc.partner_id.street2">
+                                        <span t-field="doc.partner_id.street2"/>
+                                        <br/>
+                                    </t>
+                                    <span t-field="doc.partner_id.city"/>,
+                                    <span t-field="doc.partner_id.state_id"/>
+                                    -
+                                    <span t-field="doc.partner_id.zip"/>
+
+                                </td>
+
+
+                                <td style="border:1px solid black; padding: 3px;padding-top:10px;">
+                                    <strong>Billing Period</strong>
+                                </td>
+                                <td style="border:1px solid black; padding: 3px;padding-top:10px;">
+                                    <t t-if="doc.nhcl_invoice_type == 'rs'">
+                                                                                 <span t-esc="doc.invoice_month_range and doc.invoice_month_range.replace('/', '-') or ''"/>
+
+<!--                                        <span t-esc="doc.comparision_yr_mnth.name and doc.comparision_yr_mnth.name.replace('/', '-') or ''"/>-->
+                                    </t>
+                                    <t t-else="">
+                                        <span t-esc="doc.invoice_month_range and doc.invoice_month_range.replace('/', '-') or ''"/>
+                                    </t>
+                                </td>
+
+                            </tr>
+
+                            <!-- 3 -->
+                            <tr>
+                                <td style="border:1px solid black; padding: 3px;">
+                                    <strong>Tenant PAN No</strong>
+                                </td>
+                                <td style="border:1px solid black; padding: 3px;">
+                                    <t t-esc="doc.partner_id.l10n_in_pan"/>
+                                </td>
+
+                                <td style="border:1px solid black; padding: 3px;">
+                                    <strong>Invoice Number</strong>
+                                </td>
+                                <td style="border:1px solid black; padding: 3px;">
+                                    <span t-field="doc.name"/>
+                                </td>
+                            </tr>
+
+                            <!-- 4 -->
+                            <tr>
+                                <td style="border:1px solid black; padding: 3px;">
+                                    <strong>Tenant GSTIN</strong>
+
+                                </td>
+                                <td style="border:1px solid black; padding: 3px;">
+                                    <span t-field="doc.partner_id.vat"/>
+
+                                </td>
+
+                                <td style="border:1px solid black; padding: 3px;">
+                                    <strong>Invoice Date</strong>
+                                </td>
+                                <td style="border:1px solid black; padding: 3px;">
+                                    <span t-esc="doc.invoice_date.strftime('%d/%b/%Y')"/>
+                                </td>
+                            </tr>
+
+                            <!-- 5 -->
+                            <tr>
+                                <td style="border:1px solid black; padding: 3px;">
+                                    <strong>State Name</strong>
+
+                                </td>
+                                <td style="border:1px solid black; padding: 3px;">
+                                    <span t-field="doc.partner_id.state_id"/>
+
+                                </td>
+
+                                <td style="border:1px solid black; padding: 3px;">
+                                    <strong>Due Date</strong>
+                                </td>
+                                <td style="border:1px solid black; padding: 3px;">
+                                    <span t-esc="doc.invoice_date_due.strftime('%d/%b/%Y')"/>
+                                </td>
+                            </tr>
+
+                            <!-- 6 -->
+                            <tr>
+                                <td style="border:1px solid black; padding: 3px;">
+                                    <strong>State Code</strong>
+                                </td>
+                                <td style="border:1px solid black; padding: 3px;">
+                                    <t t-esc="doc.partner_id.state_id.l10n_in_tin"/>
+                                </td>
+
+                                <td style="border:1px solid black; padding: 3px;">
+                                    <strong>PAN Number</strong>
+                                </td>
+                                <td style="border:1px solid black; padding: 3px;">
+                                    <t t-esc="company.l10n_in_pan"/>
+                                </td>
+                            </tr>
+
+                            <!-- 7 -->
+                            <tr>
+                                <td style="border:1px solid black; padding: 3px;">
+                                    <strong>Unit No</strong>
+                                </td>
+                                <td style="border:1px solid black; padding: 3px;">
+                                    <span t-field="doc.tenancy_id.unit_no"/>
+                                </td>
+
+                                <td style="border:1px solid black; padding: 3px;">
+                                    <strong>GST IN</strong>
+                                </td>
+                                <td style="border:1px solid black; padding: 3px;">
+                                    <span t-field="company.vat"/>
+                                </td>
+                            </tr>
+
+                            <!-- 8 -->
+                            <tr>
+                                <td style="border:1px solid black; padding: 3px;">
+                                    <strong>Unit Chargeable Area</strong>
+                                </td>
+                                <td style="border:1px solid black; padding: 3px;">
+                                    <t t-if="doc.nhcl_invoice_type == 'rent'">
+                                        <span t-field="doc.tenancy_id.chargeable_area"/>
+                                        (Sq.Ft)
+                                    </t>
+                                     <t t-if="doc.nhcl_invoice_type == 'cam'">
+                                        <t t-if="doc.tenancy_id.cam_type == 'cam_lumsum'">
+                                             <span t-field="doc.tenancy_id.cam_carpet_area"/>
+                                        (Sq.Ft)
+                                        </t>
+                                        <t t-else="">
+                                             <span t-field="doc.tenancy_id.cam_chargeable_area"/>
+                                        (Sq.Ft)
+                                        </t>
+
+                                    </t>
+                                     <t t-if="doc.nhcl_invoice_type == 'gas'">
+                                        <span t-field="doc.tenancy_id.chargeable_area"/>
+                                        (Sq.Ft)
+                                    </t>
+                                </td>
+
+                                <td style="border:1px solid black; padding: 3px;">
+                                    <strong>State Name</strong>
+                                </td>
+                                <td style="border:1px solid black; padding: 3px;">
+                                    <span t-field="company.state_id"/>
+                                </td>
+                            </tr>
+
+                            <!-- 9 -->
+                            <tr>
+                                <td style="border:1px solid black; padding: 3px;">
+                                    <strong>Unit Carpet Area</strong>
+                                </td>
+                                <td style="border:1px solid black; padding: 3px;">
+                                    <t t-if="doc.nhcl_invoice_type == 'rent'">
+                                        <span t-field="doc.tenancy_id.carpet_area"/>
+                                        (Sq.Ft)
+                                    </t>
+                                    <t t-if="doc.nhcl_invoice_type == 'cam'">
+                                        <span t-field="doc.tenancy_id.cam_carpet_area"/>
+                                        (Sq.Ft)
+                                    </t>
+                                     <t t-if="doc.nhcl_invoice_type == 'gas'">
+                                        <span t-field="doc.tenancy_id.carpet_area"/>
+                                        (Sq.Ft)
+                                    </t>
+                                </td>
+
+                                <td style="border:1px solid black; padding: 3px;">
+                                    <strong>State Code</strong>
+                                </td>
+                                <td style="border:1px solid black; padding: 3px;">
+                                    <t t-esc="company.state_id.l10n_in_tin"/>
+
+                                </td>
+                            </tr>
+
+                            <!-- 10 -->
+                            <tr>
+                                <td style="border-bottom: 1px solid white; padding: 3px;">
+                                    <strong>Place of Supply</strong>
+                                </td>
+                                <td style="border-bottom: 1px solid white; padding: 3px;">
+                                    <span t-field="company.state_id"/>
+<!--                                    <span t-field="doc.l10n_in_state_id.name"/>-->
+                                </td>
+
+                                <td style="border-bottom: 1px solid white; padding: 3px;">
+                                    <strong>SAC Code</strong>
+                                </td>
+                                <td style="border-bottom: 1px solid white; padding: 3px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
+                                    <t t-esc="doc.invoice_line_ids[0].l10n_in_hsn_code"/>
+
+                                    <t t-if="doc.nhcl_invoice_type in ['rent','rs']">
+<!--                                        <br/>-->
+                                        <span style="font-size:9px;">-
+                                            Rent services involving own or non-residential property
+                                        </span>
+                                    </t>
+
+                                    <t t-if="doc.nhcl_invoice_type == 'cam'">
+<!--                                        <br/>-->
+                                        <span style="font-size:9px;">-
+                                            Maintenance services or remodelling
+                                        </span>
+                                    </t>
+                                    <t t-if="doc.nhcl_invoice_type == 'gas'">
+<!--                                        <br/>-->
+                                        <span style="font-size:9px;">-
+                                            Support Services to Gas Distribution
+                                        </span>
+                                    </t>
+                                </td>
+
+                            </tr>
+
+                        </table>
+
+                        <table class="table table-sm table-bordered"
+                               style="width: 100%; margin: 0; padding:0; font-size: 10px; border: 1px solid black; font-family: Calibri, Verdana, sans-serif; text-align: center;">
+                            <thead>
+                                <tr>
+                                    <th rowspan="2" style="text-align: center; border:1px solid black; padding: 3px;">
+                                        <strong>Description Of Goods and/or Services</strong>
+                                    </th>
+                                    <t t-if="doc.nhcl_invoice_type in ('electric')">
+
+                                        <td rowspan="2" style="text-align: center; border:1px solid black; padding: 3px;">
+                                            <strong>Opening Reading</strong>
+                                        </td>
+                                        <td rowspan="2" style="text-align: center; border:1px solid black; padding: 3px;">
+                                            <strong>Closing Reading</strong>
+                                        </td>
+                                        <td rowspan="2" style="text-align: center; border:1px solid black; padding: 3px;">
+                                            <strong>Consumption</strong>
+                                        </td>
+                                        <td rowspan="2" style="text-align: center; border:1px solid black; padding: 3px;">
+                                            <strong>Consumed Units</strong>
+                                        </td>
+                                    </t>
+                                    <t t-if="doc.nhcl_invoice_type == 'rs'">
+                                        <th rowspan="2" style="text-align: center; border:1px solid black; padding: 3px;">
+                                            <strong>Net sales</strong>
+                                        </th>
+                                        <th rowspan="2" style="text-align: center; border:1px solid black; padding: 3px;">
+                                            <strong>Percentage</strong>
+                                        </th>
+                                        <!--                                            <th rowspan="2" style="text-align: center;">-->
+                                        <!--                                                <strong>Rate</strong>-->
+                                        <!--                                            </th>-->
+
+                                    </t>
+                                    <t t-if="doc.nhcl_invoice_type in ('rent','cam','gas','signage')">
+                                        <th rowspan="2" style="text-align: center; border:1px solid black; padding: 3px;">
+                                            <strong>Area / Units</strong>
+                                        </th>
+                                    </t>
+                                    <t t-if="doc.nhcl_invoice_type in ('slb')">
+                                        <th rowspan="2" colspan="2" style="text-align: center; border:1px solid black; padding: 3px;">
+                                            <strong>Rate</strong>
+                                        </th>
+                                    </t>
+                                    <t t-else="">
+                                        <th rowspan="2" style="text-align: center; border:1px solid black; padding: 3px;">
+                                            <strong>Rate</strong>
+                                        </th>
+                                    </t>
+
+
+                                    <th rowspan="2" style="text-align: center; border:1px solid black; padding: 3px;">
+                                        <strong>Total Value</strong>
+                                    </th>
+                                    <th rowspan="2" style="text-align: center; border:1px solid black; padding: 3px;">
+                                        <strong>Taxable Value</strong>
+                                    </th>
+<!--                                    <th rowspan="2" style="text-align: center; border:1px solid black; padding: 3px;">-->
+<!--                                        <strong>Discount</strong>-->
+<!--                                    </th>-->
+                                    <th colspan="2" style="text-align: center; border:1px solid black; padding: 3px;">
+                                        <strong>CGST</strong>
+                                    </th>
+                                    <th colspan="2" style="text-align: center; border:1px solid black; padding: 3px;">
+                                        <strong>SGST</strong>
+                                    </th>
+                                </tr>
+                                <t t-if="doc.nhcl_invoice_type in ('electric')">
+
+                                    <tr>
+                                        <!--                                    <th colspan="9"></th>-->
+                                        <th style="font-weigh:bold; border:1px solid black; padding: 3px;">
+                                            <strong>Rate</strong>
+                                        </th>
+                                        <th style="font-weigh:bold; border:1px solid black; padding: 3px;">
+                                            <strong>Amount</strong>
+                                        </th>
+                                        <th style="font-weigh:bold; border:1px solid black; padding: 3px;">
+                                            <strong>Rate</strong>
+                                        </th>
+                                        <th style="font-weigh:bold; border:1px solid black; padding: 3px;">
+                                            <strong>Amount</strong>
+                                        </th>
+                                    </tr>
+                                </t>
+                                <t t-else="">
+                                    <tr>
+                                        <!--                                    <th colspan="5"></th>-->
+                                        <th style="font-weigh:bold; border:1px solid black; padding: 3px;">
+                                            <strong>Rate</strong>
+                                        </th>
+                                        <th style="font-weigh:bold; border:1px solid black; padding: 3px;">
+                                            <strong>Amount</strong>
+                                        </th>
+                                        <th style="font-weigh:bold; border:1px solid black; padding: 3px;">
+                                            <strong>Rate</strong>
+                                        </th>
+                                        <th style="font-weigh:bold; border:1px solid black; padding: 3px;">
+                                            <strong>Amount</strong>
+                                        </th>
+                                    </tr>
+                                </t>
+                            </thead>
+                            <tbody>
+                                <!-- Line Items -->
+                                <t t-foreach="doc.invoice_line_ids" t-as="line">
+                                    <tr>
+<!--                                        <td style="text-align: left; border:1px solid black; padding: 3px;">-->
+                                        <td style="text-align: left; border:1px solid black; padding: 1px; font-size:10px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
+                                            <t t-if="doc.nhcl_invoice_type in ['rent','cam']">
+                                                <span t-field="line.description2"/>
+                                            </t>
+                                            <t t-else="">
+                                                <span t-field="line.product_id.name"/>(<span t-field="line.description2"/>)
+                                            </t>
+                                            <!--                                                <span t-field="line.product_id.name"/>(<span t-field="line.name"/>)-->
+                                        </td>
+
+
+                                        <!-- Show fields only if the invoice type is 'cam' -->
+                                        <t t-if="doc.nhcl_invoice_type in ('electric')">
+
+                                            <td style="border:1px solid black; padding: 3px;">
+                                                <span t-field="line.opening_reading"/>
+                                            </td>
+                                            <td style="border:1px solid black; padding: 3px;">
+                                                <span t-field="line.closing_reading"/>
+                                            </td>
+                                            <td style="border:1px solid black; padding: 3px;">
+                                                <span t-field="line.consumption"/>
+                                            </td>
+                                            <td style="border:1px solid black; padding: 3px;">
+                                                <span t-field="line.consumed_units"/>
+                                            </td>
+                                        </t>
+                                        <t t-if="doc.nhcl_invoice_type == 'rs'">
+                                            <td style="border:1px solid black; padding: 3px;">
+                                                <span t-field="line.net_rent"/>
+                                            </td>
+                                            <td style="border:1px solid black; padding: 3px;">
+                                                <span t-field="line.percentage"/>
+                                            </td>
+                                            <!--                                                <td>-->
+                                            <!--                                                    <span t-field="line.price_unit"/>-->
+                                            <!--                                                </td>-->
+
+                                        </t>
+                                        <t t-if="doc.nhcl_invoice_type in ('rent','cam','gas','signage')">
+
+<!--                                            <t t-if="doc.nhcl_invoice_type == 'rent'">-->
+<!--                                                <t t-if="doc.tenancy_id.sft_fixed == 'Fixed'">-->
+<!--                                                - -->
+<!--                                            </t>-->
+<!--                                                <t t-if="doc.tenancy_id.sft_fixed == 'sft'">-->
+<!--                                                - -->
+<!--                                            </t>-->
+
+<!--                                                <span t-field="doc.tenancy_id.chargeable_area"/>-->
+<!--                                                (Sq.Ft)-->
+<!--                                            </t>-->
+<!--                                            <t t-if="doc.nhcl_invoice_type == 'cam'">-->
+<!--                                                <t t-if="doc.tenancy_id.cam_type == 'cam_lumsum'">-->
+<!--                                                    <span t-field="doc.tenancy_id.cam_carpet_area"/>-->
+<!--                                                    (Sq.Ft)-->
+<!--                                                </t>-->
+<!--                                                <t t-else="">-->
+<!--                                                    <span t-field="doc.tenancy_id.cam_chargeable_area"/>-->
+<!--                                                    (Sq.Ft)-->
+<!--                                                </t>-->
+
+<!--                                            </t>-->
+                                            <td style="border:1px solid black; padding: 3px;">
+                                                <span t-esc="line.nhcl_area_units == '0' and '-' or line.nhcl_area_units"/>
+
+
+                                            </td>
+                                        </t>
+                                        <t t-if="doc.nhcl_invoice_type in ('slb')">
+                                            <td colspan="2" style="text-align: center; border:1px solid black; padding: 3px;">
+                                                <span t-esc="'{:,.0f}'.format(line.price_unit)"/>
+                                            </td>
+                                        </t>
+                                        <t t-else="">
+                                            <td style="text-align: center; border:1px solid black; padding: 3px;">
+                                                <t t-if="doc.nhcl_invoice_type in ('rent','cam') and doc.tenancy_id.sft_fixed == 'Fixed'">
+                                                    <span>-</span>
+                                                </t>
+                                                <t t-elif="doc.nhcl_invoice_type == 'rs'">
+                                                    <span>-</span>
+                                                </t>
+                                                <t t-else="">
+                                                    <span t-esc="'{:,.0f}'.format(line.price_unit)"/>
+                                                </t>
+                                            </td>
+
+                                        </t>
+
+
+                                        <!--                                        <td>-->
+                                        <!--                                            <span t-esc="'{:,.0f}'.format(line.price_unit)"/>-->
+                                        <!--                                        </td>-->
+
+
+                                        <td style="font-weigh:bold; border:1px solid black; padding: 3px;">
+                                            <span t-esc="'{:,.0f}'.format(doc.total_amount_show)"/>
+                                        </td>
+                                        <td style="font-weigh:bold; border:1px solid black; padding: 3px;">
+                                            <span t-esc="'{:,.0f}'.format(doc.total_amount_show)"/>
+                                            <!--                                            <t t-esc="'{:,.0f}'.format(sum(line.mapped('price_total')) - sum(line.mapped('price_subtotal')))"/>-->
+                                        </td>
+<!--                                        <td style="border:1px solid black; padding: 3px;">-->
+<!--                                            <span t-esc="line.discount"/>-->
+<!--                                        </td>-->
+
+                                        <td style="border:1px solid black; padding: 3px;">
+<!--                                            <t t-foreach="line.tax_ids.filtered(lambda tax: 'gst' in tax.name.lower())"-->
+<!--                                               t-as="gst_tax">-->
+
+<!--                                                <t t-esc="int(gst_tax.amount / 2)"/> %-->
+<!--                                            </t>-->
+                                           <t t-foreach="line.tax_ids.mapped('children_tax_ids').filtered(lambda tax: 'sgst' in tax.name.lower())"
+                                               t-as="gst_tax">
+                                                <t t-esc="int(gst_tax.amount)"/> %
+                                            </t>
+
+
+                                        </td>
+                                        <td style="border:1px solid black; padding: 3px;">
+                                            <!--                                            <t t-foreach="line.tax_ids.filtered(lambda tax: 'gst' in tax.name.lower())"-->
+                                            <!--                                               t-as="gst_tax">-->
+
+                                            <!--                                                <t t-esc="int(round((line.price_total - line.price_subtotal) / 2, 0)) if gst_tax else 0"/>-->
+                                            <!--                                            </t>-->
+                                            <t t-esc="'{:,.0f}'.format(line.tax_cal)"/>
+
+                                        </td>
+                                        <td style="border:1px solid black; padding: 3px;">
+<!--                                            <t t-foreach="line.tax_ids.filtered(lambda tax: 'gst' in tax.name.lower())"-->
+<!--                                               t-as="gst_tax">-->
+
+<!--                                                <t t-esc="int(gst_tax.amount / 2)"/> %-->
+<!--                                            </t>-->
+                                              <t t-foreach="line.tax_ids.mapped('children_tax_ids').filtered(lambda tax: 'sgst' in tax.name.lower())"
+                                               t-as="gst_tax">
+                                                <t t-esc="int(gst_tax.amount)"/> %
+                                            </t>
+                                        </td>
+                                        <td style="border:1px solid black; padding: 3px;">
+                                            <!--                                            <t t-foreach="line.tax_ids.filtered(lambda tax: 'gst' in tax.name.lower())"-->
+                                            <!--                                               t-as="gst_tax">-->
+
+                                            <!--                                                <t t-esc="int(round((line.price_total - line.price_subtotal) / 2, 0)) if gst_tax else 0"/>-->
+                                            <!--                                            </t>-->
+                                            <t t-esc="'{:,.0f}'.format(line.tax_cal)"/>
+
+                                        </td>
+                                    </tr>
+                                </t>
+                                <!-- Total Row -->
+                                <tr>
+                                    <td style="border:1px solid black; padding: 3px;">
+                                        <strong>Total</strong>
+                                    </td>
+                                    <t t-if="doc.nhcl_invoice_type in ('electric')">
+
+                                        <td colspan="5"></td>
+                                    </t>
+                                    <t t-elif="doc.nhcl_invoice_type in ('rent','cam','gas','signage')">
+                                        <td colspan="2"></td>
+                                    </t>
+                                    <t t-elif="doc.nhcl_invoice_type == 'rs'">
+                                        <td colspan="3"></td>
+                                    </t>
+                                    <t t-else="">
+                                        <td colspan="2"></td>
+                                    </t>
+                                    <t t-set="cgst" t-value="0"/>
+                                    <t t-set="sgst" t-value="0"/>
+
+                                    <t t-foreach="doc.line_ids.filtered(lambda l: l.tax_line_id)" t-as="tax_line">
+
+
+                                        <t t-if="'CGST' in tax_line.tax_line_id.name.upper()">
+                                            <t t-set="cgst"
+                                               t-value="cgst + abs(tax_line.balance)"/>
+                                        </t>
+
+                                        <t t-if="'SGST' in tax_line.tax_line_id.name.upper()">
+                                            <t t-set="sgst"
+                                               t-value="sgst + abs(tax_line.balance)"/>
+                                        </t>
+
+                                    </t>
+
+                                    <!-- Apply your .51 rounding rule -->
+                                    <t t-set="cgst_int"
+                                       t-value="int(cgst)"/>
+
+                                    <t t-set="sgst_int"
+                                       t-value="int(sgst)"/>
+
+                                    <t t-set="total_tax_int" t-value="cgst_int + sgst_int"/>
+                                    <td style="border:1px solid black; padding: 3px;">
+
+                                        <t t-esc="'{:,.0f}'.format(doc.total_amount_show)"/>
+
+                                    </td>
+                                    <td style="border:1px solid black; padding: 3px;">
+
+                                        <t t-esc="'{:,.0f}'.format(doc.total_amount_show)"/>
+
+
+                                        <!--                                        <t t-esc="'{:,.0f}'.format(sum(doc.invoice_line_ids.mapped('price_total')) - sum(doc.invoice_line_ids.mapped('price_subtotal')))"/>-->
+                                    </td>
+                                    <td colspan="1"/>
+                                    <td style="border:1px solid black; padding: 3px;">
+                                         <span t-esc="sgst_int"/>
+<!--                                        <t t-esc="'{:,.0f}'.format(doc.tax_totals['subtotals'][0]['tax_groups'][0]['tax_amount'])"/>-->
+
+                                        <!--                                        <t t-esc="'{:,.0f}'.format((sum(doc.invoice_line_ids.mapped('price_total')) - sum(doc.invoice_line_ids.mapped('price_subtotal')))/2)"/>-->
+                                    </td>
+
+                                    <td></td>
+                                    <td style="border:1px solid black; padding: 3px;">
+                                        <span t-esc="cgst_int"/>
+<!--                                        <t t-esc="'{:,.0f}'.format(doc.tax_totals['subtotals'][0]['tax_groups'][0]['tax_amount'])"/>-->
+                                        <!--                                        <t t-esc="'{:,.0f}'.format((sum(doc.invoice_line_ids.mapped('price_total')) - sum(doc.invoice_line_ids.mapped('price_subtotal')))/2)"/>-->
+                                    </td>
+                                </tr>
+                                <!-- Invoice Total in Figure -->
+                                <t t-if="doc.nhcl_invoice_type in ('electric')">
+
+                                    <tr>
+                                        <td style="border:1px solid black; padding: 3px;">
+                                            <strong>Total Invoice Value (In Figures)</strong>
+                                        </td>
+                                        <td colspan="12" style="text-align: left;font-weight:bold; border:1px solid black; padding: 3px;">
+                                            <!--                                            <span t-esc="'{:,.0f}'.format(doc.total_amount_show)"/>-->
+                                            <!--                                            <t t-esc="doc.amount_total"/>-->
+                                            <!--                                            <t t-esc="doc.amount_words_base"/>-->
+                                           <span t-esc="'{:,.0f}'.format(abs(doc.amount_total_signed))"/>
+
+                                        </td>
+                                    </tr>
+                                    <!-- Invoice Total in Words -->
+                                    <tr>
+                                        <td style="border:1px solid black; padding: 3px;">
+                                            <strong>Total Invoice Value (In Words)</strong>
+                                        </td>
+                                        <td colspan="12" style="text-align: left;font-weight:bold; border:1px solid black; padding: 3px;">
+                                            <strong>
+                                                <span t-esc="doc.amount_in_words"/>&amp;nbsp;only
+                                            </strong>
+                                        </td>
+                                    </tr>
+                                </t>
+                                <t t-else="">
+                                    <tr>
+                                        <td style="border:1px solid black; padding: 3px;">
+                                            <strong>Total Invoice Value (In Figures)</strong>
+                                        </td>
+                                        <td colspan="9" style="text-align: left;font-weight:bold; border:1px solid black; padding: 3px;">
+                                            <!--                                            <span t-esc="'{:,.0f}'.format(abs(doc.amount_total_signed))"/>-->
+                                            <!--                                              <t t-set="amount"-->
+                                            <!--                                               t-value="round(sum(doc.invoice_line_ids.mapped('price_total'))-->
+                                            <!--            - sum(doc.invoice_line_ids.mapped('price_subtotal'))) / 2"/>-->
+
+                                            <!--                                            <t t-set="amount2" t-value="round(amount)"/>-->
+                                            <t t-set="amount1" t-value="int(doc.amount_tax/2)"/>
+                                            <t t-set="amount12" t-value="int(doc.amount_tax/2)"/>
+                                            <!--                                            <t t-esc="amount1"/>kkk-->
+                                            <t t-set="demo" t-value="amount1+amount12+(doc.total_amount_show)"/>
+
+                                            <!--                                            <t t-set="amount3"-->
+                                            <!--                                               t-value="amount + amount2"/>-->
+                                            <!--                                            <t t-esc="amount"/>*****<t t-esc="amount2"/>*****<t t-esc="amount3"/>?????<t t-esc="demo"/>-->
+                                            <!--                                            <t t-set="amount4" t-value="int((amount3)+(doc.total_amount_show))"/>-->
+                                            <!--                                            yyyyyyy<t t-esc="int(doc.amount_tax)"/>zzzzzz<t t-esc="doc.total_amount_show"/>-->
+                                            <!--                                            <br/>-->
+                                            <!--                                           <t t-esc="int(demo)"/>-->
+<!--                                            <t t-esc="doc.nhcl_total_amount"/>-->
+                                             <span t-esc="'{:,.0f}'.format(abs(doc.nhcl_total_amount))"/>
+
+
+                                        </td>
+                                    </tr>
+                                    <!-- Invoice Total in Words -->
+                                    <tr>
+                                        <td style="border:1px solid black; padding: 3px;">
+                                            <strong>Total Invoice Value (In Words)</strong>
+                                        </td>
+                                        <td colspan="12" style="text-align: left;font-weight:bold; border:1px solid black; padding: 3px;">
+                                            <span t-esc="doc.amount_in_words"/>&amp;nbsp;only.
+
+
+                                        </td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </div>
+                </main>
+                <b>Note:</b>
+                <br/>
+                <span style="font-family:Verdana, Calibri, sans-serif; font-size: 10px; margin: 0; padding: 0;">
+                    <t t-if="doc.nhcl_invoice_type == 'cam'">
+                        <p style="font-family:Verdana, Calibri, sans-serif; font-size: 10px;">
+                            1. Please Make Payment Through RTGS as per details below.
+                            <br/>
+
+                            "<span t-field="company.name"/>-10846381193-SBIN0000952-SBI-Rednam Gardens."
+                            <br/>
+
+                            2. Cheque/D.D in favour of Chandana Brothers Multi Complex Private Limited - 10846381193 -
+                            SBI-Rednam Gardens.
+                            <br/>
+
+                            3. Amount billed to be settled before due date. Delay in payment will Attract Interest as
+                            per
+                            the Lease Agreement and other penal provisions or as per management policy.
+                            <br/>
+                            4. Any clarifications regarding bill should be notified to the mall office within 2 days,
+                            else
+                            its considered your acceptance.
+                            <br/>
+
+                        </p>
+
+                    </t>
+                    <t t-elif="doc.nhcl_invoice_type == 'rent'">
+                        <p>1.Please Make Payment Through RTGS as per details below.
+                            <br/>
+                            "<span t-field="company.name"/>-10846381193-SBIN0000952-SBI-Rednam
+                            Gardens."
+                            <br/>
+                            2. Cheque/D.D in favour of Chandana Brothers Multi Complex Private Limited - 10846381193 -
+                            SBI-Rednam Gardens.
+                            <br/>
+                            3.Amount billed to be settled before due date. Delay in payment will Attract Interest as per
+                            the Lease Agreement and other penal provisions or as per management policy.
+                            <br/>
+                            4.Any clarifications regarding bill should be notified to the mall office within 2 days
+                            ,else its considered your acceptance.
+
+                        </p>
+                    </t>
+
+                    <t t-elif="doc.nhcl_invoice_type == 'electric'" style="font-size: 10px;">
+                        <p>
+                            1.Please Make Payment Through RTGS as per details below.
+                            <br/>
+                            "<span t-field="company.name"/>-10846381193-SBIN0000952-SBI-Rednam Gardens."
+                            <br/>
+                            2.Amount billed to be settled before due date . Delay in payment will Attract Interest as
+                            per
+                            the Lease Agreement and other penal provisions or as per management policy.
+                            <br/>
+                            3. Any clarifications regarding bill should be notified to the mall office within 2 days
+                            ,else
+                            its considered your acceptance.
+                            <br/>
+                            4. Non settlement of the utility charges by the due date will lead to surcharge and
+                            disconnection.
+                            * As the Energy Meter is Automatically resettled to 0 , two meter reading are mentioned
+                            above.
+                            ** As per APEPDCL Regulatory Commission Act, there is hike in unit rate ( Fuel Surcharges
+                            Levied
+                            )
+                        </p>
+                    </t>
+                    <t t-elif="doc.nhcl_invoice_type == 'gas'" style="font-size: 10px;">
+                        <p>
+                            1.Please Make Payment Through RTGS as per details below.
+                            <br/>
+                            "<span t-field="company.name"/>-10846381193-SBIN0000952-SBI-Rednam
+                            Gardens."
+                            <br/>
+                            2. Cheque/D.D in favour of Chandana Brothers Multi Complex Private Limited - 10846381193 -
+                            SBI-Rednam Gardens.
+                            <br/>
+                            3.Amount billed to be settled by due date . Delay in payment will Attract Interest as per
+                            the
+                            Lease Agreement and other penal provisions.
+                            <br/>
+                            4.Any clarifications regarding bill should be notified to the mall office with in 1 day
+                            ,else
+                            its considered your acceptance.
+                            <br/>
+                            5.Non settlement of the Gas charges by the due day will lead to surcharge and disconnection.
+                            <br/>
+                            6.Kindly don't deduct TDS on utility bills.
+                        </p>
+                    </t>
+                    <t t-elif="doc.nhcl_invoice_type == 'signage'" style="font-size: 10px;">
+                        <p>
+                            1.Please Make Payment Through RTGS as per details below.
+                            <br/>
+                            "<span t-field="company.name"/>-<span t-field="company.vat"/>-SBIN0000952-SBI-Rednam
+                            Gardens."
+                            <br/>
+                            2. Cheque/D.D in favour of Chandana Brothers Multi Complex Private Limited - 10846381193 -
+                            SBI-Rednam Gardens.
+                            <br/>
+                            3.Amount billed to be settled before due date. Delay in payment will Attract Interest as per
+                            the Lease Agreement and other penal provisions or as per management policy.
+                            <br/>
+                            4.Any clarifications regarding bill should be notified to the mall office within 2 days
+                            ,else its considered your acceptance.
+                        </p>
+                    </t>
+                    <t t-else="">
+                        <p style="font-family:Verdana, Calibri, sans-serif; font-size: 10px;">
+                            1. Please Make Payment Through RTGS as per details below.
+                            <br/>
+                            "<span t-field="company.name"/>-10846381193-S81N0000952-5Bl-Rednam
+                            Gardens."
+                            <br/>
+                            2. Cheque/D.D in favour of Chandana Brothers Multi Complex Private Limlted - 10845381193 -
+                            SBI-Rednam Gardens.
+                            <br/>
+                            3.Amount billed to be settled before due date. Delay in payment will Attract interest as per
+                            the
+                            Lease Agreement and other penal provisions
+                            or as per management policy.
+                            <br/>
+                            4.Any clarifications regarding bill should be notified to the mall office within 2 days,else
+                            its
+                            considered your acceptance.
+                        </p>
+                    </t>
+                    <p style="font-family:Verdana, Calibri, sans-serif; font-size:10px;">
+                        <b style="font-family:Verdana, Calibri, sans-serif; font-size:10px;">
+                            In case you have any clarifications, please get in touch with the undersigned by email ID as
+                            below:
+                            <br/>
+                            admin@cmrcentral.in /
+                            accounts@cmrcentral.in
+                            <t t-if="doc.nhcl_invoice_type  in ('rent','cam')">
+                                / technical@cmrcentral.in
+                            </t>
+                        </b>
+                    </p>
+
+                </span>
+                <div class="col">
+                    <p style="margin-left:500px; font-size: 10px; font-family: Calibri, sans-serif;text-align:center;">
+                        <b>For Chandana Brothers Multi Complex Private Limited,</b>
+                    </p>
+<!--                    <br/>-->
+                    <p style="margin-left:680px; font-size: 12px; font-family: Calibri, sans-serif; text-align:center;">
+                        <img src="/nhcl_rental_management/static/description/signature.png"
+                             style="height:50px; width:auto; display:block; margin-bottom:3px;"/>
+                        <strong>Authorised Signatory</strong>
+                    </p>
+                </div>
+            </t>
+
+            <div class="footer">
+                <div style="
+        width:100%;
+        text-align:center;
+        font-size:10px;
+        padding:4px 0px;
+        line-height:1.2;
+        color:#000;
+        border-top:2px solid #1f4e79;
+    ">
+                    <div style="font-weight:bold; font-size:12px;">
+                        CHANDANA BROTHERS MULTI COMPLEX PRIVATE LIMITED
+                    </div>
+
+                    <div>
+                        Corporate Office : D.No. 52-1-35, 36, 36/1, New Resapuvanipalem,
+                    </div>
+
+                    <div>
+                        Maddilapalem, Visakhapatnam - 530 013. Ph : 9848549389
+                    </div>
+
+                    <div style="font-size:10px;">
+                        CIN No. :  <t t-esc="company.nhcl_com_cin_no"/>,
+                        GST IN :  <t t-esc="company.vat"/>,
+                        Email ID :  <t t-esc="company.email"/>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+    <record id="paperformat_invoice_custom" model="report.paperformat">
+        <field name="name">Custom Invoice Format</field>
+        <field name="default" eval="False"/>
+        <field name="format">A4</field>
+        <field name="page_height">0</field> <!-- 0 for automatic -->
+        <field name="page_width">0</field> <!-- 0 for automatic -->
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">40</field>
+        <field name="margin_bottom">15</field>
+        <field name="margin_left">6</field>
+        <field name="margin_right">6</field>
+        <field name="header_line" eval="False"/>
+        <field name="dpi">90</field>
+    </record>
+    <record id="tenancy_account_invoice_customise" model="ir.actions.report">
+        <field name="name">Tax Invoice</field>
+        <field name="model">account.move</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">nhcl_rental_management.final_invoice_report_account</field>
+        <field name="report_file">nhcl_rental_management.final_invoice_report_account</field>
+                <field name="binding_model_id" ref="account.model_account_move"/>
+        <field name="binding_type">report</field>
+        <field name="paperformat_id" ref="nhcl_rental_management.paperformat_invoice_custom"/>
+    </record>
+</odoo>

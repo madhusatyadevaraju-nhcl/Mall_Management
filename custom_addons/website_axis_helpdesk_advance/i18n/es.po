@@ -1,0 +1,3845 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* website_axis_helpdesk_advance
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-10-26 06:35+0000\n"
+"PO-Revision-Date: 2024-10-26 06:35+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: website_axis_helpdesk_advance
+#: model:mail.template,body_html:website_axis_helpdesk_advance.ticket_template
+msgid ""
+"\n"
+"                   \n"
+"              % if object.partner_name :\n"
+"                    <p>Dear ${object.partner_name},</p>\n"
+"                % endif\n"
+"             <p>Thank you for submitting a support ticket to us, we will get back to your shortly</p>\n"
+"           \n"
+"            <p>Kindly Regards,</p>\n"
+"                    \n"
+"          "
+msgstr "
+\n \n
+              % if object.partner_name :\n
+                    <p>Estimado ${object.partner_name},</p>\n
+                % endif \n
+             <p>Gracias por enviarnos un ticket de soporte, nos comunicaremos con usted en breve</p>\n
+           \n
+            <p>Saludos cordiales,</p> \n \n 
+"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.actions.act_window,name:website_axis_helpdesk_advance.axis_helpdesk_closed_ticket
+msgid " Closed Tickets"
+msgstr "Entradas Cerradas"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_team__rating_count
+msgid "# Ratings"
+msgstr "# Calificaciones"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.index
+msgid "% Customer Satisfaction"
+msgstr "% Satisfacción del cliente"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.helpdesk_create_ticket_from_front_end
+msgid "1 star"
+msgstr "1 estrella"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.helpdesk_create_ticket_from_front_end
+msgid "2 stars"
+msgstr "2 estrellas"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.helpdesk_create_ticket_from_front_end
+msgid "3 stars"
+msgstr "3 estrellas"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_ticket_portal_view
+msgid "<b>Customer Rating</b>"
+msgstr "<b>Calificación del cliente</b>"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.report_ticket
+msgid ""
+"<br/>\n"
+"                                        Priority:"
+msgstr "<br/>\n Prioridad:"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.report_ticket
+msgid ""
+"<br/>\n"
+"                                        Project :"
+msgstr "<br/>\n Proyecto:"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.report_ticket
+msgid ""
+"<br/>\n"
+"                                        Tags :"
+msgstr "<br/>\n Etiquetas:"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.report_ticket
+msgid ""
+"<br/>\n"
+"                                        Ticket Type:"
+msgstr "<br/>\n Tipo de billete:"
+
+#. module: website_axis_helpdesk_advance
+#: model:mail.template,body_html:website_axis_helpdesk_advance.assigned_request_email_template
+msgid ""
+"<div>\n"
+"                 Dear <t t-out=\"object.sudo().res_user_id.name or 'Madam/Sir'\"></t>,<br><br>\n"
+"                New Ticket is assign to you.\n"
+"                <a t-att-href=\"(object.get_portal_url() )\"><t t-out=\"object.name or ''\"></t></a>\n"
+"                has been received and Please check from your side and  <t t-out=\"object.helpdesk_team_id.name or ''\"></t> team.\n"
+"                The reference of your ticket is <t t-out=\"object.number or ''\"></t>.<br><br>\n"
+"\n"
+"                <div style=\"text-align: center; margin: 16px 0px 16px 0px;\">\n"
+"                    <a style=\"background-color: #875A7B; padding: 8px 16px 8px 16px; text-decoration: none; color: #fff; border-radius: 5px; font-size:13px;\" t-att-href=\"(object.get_portal_url() )\">View the tickets</a><br>\n"
+"                </div>\n"
+"\n"
+"                To add additional comments, reply to this email.<br><br>\n"
+"\n"
+"                Thank you,<br><br>\n"
+"            </div>\n"
+"                    "
+msgstr "
+<div>\n Estimado <t t-out=\"object.sudo().res_user_id.name or 'señora/señor'\"></t>,<br><br>\n
+                Se le asigna un nuevo boleto.\n
+                <a t-att-href=\"(object.get_portal_url() )\"><t t-out=\"object.name or ''\"></t></a>\n
+                ha sido recibido y por favor verifique desde su lado y <t t-out=\"object.helpdesk_team_id.name or ''\"></t> team.\n
+                La referencia de su billete es <t t-out=\"object.number or ''\"></t>.<br><br>\n \n
+                <div style=\"text-align: center; margin: 16px 0px 16px 0px;\">\n
+                    <a style=\"background-color: #875A7B; padding: 8px 16px 8px 16px; text-decoration: none; color: #fff; border-radius: 5px; font-size:13px;\" t-att-href=\"(object.get_portal_url() )\">ver las entradas</a><br>\n </div>\n \n
+                Para agregar comentarios adicionales, responda a este correo electrónico.<br><br>\n \n
+                Gracias,<br><br>\n </div>\n 
+
+"
+
+#. module: website_axis_helpdesk_advance
+#: model:mail.template,body_html:website_axis_helpdesk_advance.axis_helpdesk_ticket_new_create
+msgid ""
+"<div>\n"
+"     Dear <t t-out=\"object.sudo().partner_id.name or 'Madam/Sir'\">Azure Interior</t>,<br><br>\n"
+"    Your request\n"
+"    <a t-att-href=\"(object.get_portal_url() )\"><t t-out=\"object.name or ''\"></t></a>\n"
+"    has been received and is being reviewed by our <t t-out=\"object.helpdesk_team_id.name or ''\"></t> team.\n"
+"    The reference of your ticket is <t t-out=\"object.id or ''\"></t>.<br><br>\n"
+"\n"
+"    <div style=\"text-align: center; margin: 16px 0px 16px 0px;\">\n"
+"        <a style=\"background-color: #875A7B; padding: 8px 16px 8px 16px; text-decoration: none; color: #fff; border-radius: 5px; font-size:13px;\" t-att-href=\"(object.get_portal_url() )\">View the tickets</a><br>\n"
+"    </div>\n"
+"\n"
+"    To add additional comments, reply to this email.<br><br>\n"
+"\n"
+"    Thank you,<br><br>\n"
+"    <t t-out=\"object.helpdesk_team_id.name or 'Helpdesk' \"> Helpdesk</t> Team.\n"
+"</div>\n"
+"        "
+msgstr "
+	<div>\n
+	     Estimado <t t-out=\"object.sudo().partner_id.name or 'señora/señor'\"></t>,<br><br>\n
+	    Tu petición\n
+	    <a t-att-href=\"(object.get_portal_url() )\"><t t-out=\"object.name or ''\"></t></a>\n
+	    ha sido recibido y está siendo revisado por nuestro <t t-out=\"object.helpdesk_team_id.name or ''\"></t> team.\n
+	    La referencia de su billete es <t t-out=\"object.id or ''\"></t>.<br><br>\n \n
+	    <div style=\"text-align: center; margin: 16px 0px 16px 0px;\">\n
+	        <a style=\"background-color: #875A7B; padding: 8px 16px 8px 16px; text-decoration: none; color: #fff; border-radius: 5px; font-size:13px;\" t-att-href=\"(object.get_portal_url() )\">ver las entradas</a><br>\n
+	    </div>\n \n
+	    Para agregar comentarios adicionales, responda a este correo electrónico.<br><br>\n \n
+	    Gracias,<br><br>\n
+	    <t t-out=\"object.helpdesk_team_id.name or 'Helpdesk' \"> Servicio de asistencia</t> Equipo.\n
+	</div>\n
+"
+
+#. module: website_axis_helpdesk_advance
+#: model:mail.template,body_html:website_axis_helpdesk_advance.rating_ticket_request_email_template
+msgid ""
+"<div>\n"
+"    <t t-set=\"access_token\" t-value=\"object.rating_get_access_token()\"></t>\n"
+"    <t t-set=\"partner\" t-value=\"object.rating_get_partner_id()\"></t>\n"
+"    <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"width:100%; margin:0;\">\n"
+"    <tbody>\n"
+"        <tr><td valign=\"top\" style=\"font-size: 14px;\">\n"
+"<!--            % if partner_id:-->\n"
+"            Hello <t t-out=\"partner_id or ''\"></t>,<br>\n"
+"<!--            % else:-->\n"
+"<!--                Hello,<br/>-->\n"
+"<!--            % endif-->\n"
+"            Please take a moment to rate our services related to the ticket \"<strong><t t-out=\"object.name or ''\"></t></strong>\"\n"
+"<!--            % if object.rating_get_rated_partner_id().name:-->\n"
+"                assigned to <strong><t t-out=\"object.rating_get_rated_partner_id().name or ''\"></t></strong>.<br>\n"
+"<!--            % else:-->\n"
+"                .<br>\n"
+"<!--            % endif-->\n"
+"        </td></tr>\n"
+"        <tr><td style=\"text-align: center;\">\n"
+"            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" summary=\"o_mail_notification\" style=\"width:100%; margin: 32px 0px 32px 0px;\">\n"
+"                <tr><td style=\"font-size: 14px;\">\n"
+"                    <strong>Tell us how you feel about our service</strong><br>\n"
+"                    <span style=\"text-color: #888888\">(click on one of these smileys)</span>\n"
+"                </td></tr>\n"
+"                <tr><td style=\"font-size: 14px;\">\n"
+"                    <table style=\"width:100%;text-align:center;\">\n"
+"                                            <tr>\n"
+"                                                <td>\n"
+"                                                    <a t-attf-href=\"/rate/#{access_token}/5\">\n"
+"                                                        <img alt=\"Satisfied\" src=\"/rating/static/src/img/rating_5.png\" title=\"Satisfied\">\n"
+"                                                    </a>\n"
+"                                                </td>\n"
+"                                                <td>\n"
+"                                                    <a t-attf-href=\"/rate/#{access_token}/3\">\n"
+"                                                        <img alt=\"Okay\" src=\"/rating/static/src/img/rating_3.png\" title=\"Okay\">\n"
+"                                                    </a>\n"
+"                                                </td>\n"
+"                                                <td>\n"
+"                                                    <a t-attf-href=\"/rate/#{access_token}/1\">\n"
+"                                                        <img alt=\"Dissatisfied\" src=\"/rating/static/src/img/rating_1.png\" title=\"Dissatisfied\">\n"
+"                                                    </a>\n"
+"                                                </td>\n"
+"                                            </tr>\n"
+"                                        </table>\n"
+"                </td></tr>\n"
+"            </table>\n"
+"        </td></tr>\n"
+"        <tr><td valign=\"top\" style=\"font-size: 14px;\">\n"
+"            We appreciate your feedback. It helps us to improve continuously.\n"
+"            <br><span style=\"margin: 0px 0px 0px 0px; font-size: 12px; opacity: 0.5; color: #454748;\">This customer survey has been sent because your ticket has been moved to the stage <b>${object.stage_id.name}</b></span>\n"
+"        </td></tr>\n"
+"    </tbody>\n"
+"    </table>\n"
+"</div>\n"
+"        "
+msgstr "
+	<div>\n
+	    <t t-set=\"access_token\" t-value=\"object.rating_get_access_token()\"></t>\n
+	    <t t-set=\"partner\" t-value=\"object.rating_get_partner_id()\"></t>\n
+	    <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"width:100%; margin:0;\">\n
+	    <tbody>\n
+	        <tr><td valign=\"top\" style=\"font-size: 14px;\">\n
+	<!--            % if partner_id:-->\n
+	            Hello <t t-out=\"partner_id or ''\"></t>,<br>\n
+	<!--            % else:-->\n
+	<!--                Hello,<br/>-->\n
+	<!--            % endif-->\n
+	            Tómese un momento para calificar nuestros servicios relacionados con el boleto. \<strong><t t-out=\"object.name or ''\"></t></strong>\\n
+	<!--            % if object.rating_get_rated_partner_id().name:-->\n
+	                assigned to <strong><t t-out=\"object.rating_get_rated_partner_id().name or ''\"></t></strong>.<br>\n
+	<!--            % else:-->\n
+	                .<br>\n
+	<!--            % endif-->\n
+	        </td></tr>\n
+	        <tr><td style=\"text-align: center;\">\n
+	            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" summary=\"o_mail_notification\" style=\"width:100%; margin: 32px 0px 32px 0px;\">\n
+	                <tr><td style=\"font-size: 14px;\">\n"
+	                    <strong>Cuéntanos cómo te sientes acerca de nuestro servicio.</strong><br>\n
+	                    <span style=\"text-color: #888888\">(click on one of these smileys)</span>\n
+	                </td></tr>\n
+	                <tr><td style=\"font-size: 14px;\">\n
+	                    <table style=\"width:100%;text-align:center;\">\n
+                                <tr>\n
+                                    <td>\n
+                                        <a t-attf-href=\"/rate/#{access_token}/5\">\n
+                                            <img alt=\"Satisfied\" src=\"/rating/static/src/img/rating_5.png\" title=\"Satisfecho\">\n
+                                        </a>\n
+                                    </td>\n
+                                    <td>\n
+                                        <a t-attf-href=\"/rate/#{access_token}/3\">\n
+                                            <img alt=\"Okay\" src=\"/rating/static/src/img/rating_3.png\" title=\"Bueno\">\n
+                                        </a>\n
+                                    </td>\n
+                                    <td>\n
+                                        <a t-attf-href=\"/rate/#{access_token}/1\">\n
+                                            <img alt=\"Dissatisfied\" src=\"/rating/static/src/img/rating_1.png\" title=\"Insatisfecho\">\n
+                                        </a>\n
+                                    </td>\n
+                                </tr>\n
+                           </table>\n
+	                </td></tr>\n
+	            </table>\n
+	        </td></tr>\n
+	        <tr><td valign=\"top\" style=\"font-size: 14px;\">\n
+	            Apreciamos sus comentarios. Nos ayuda a mejorar continuamente.\n
+	            <br><span style=\"margin: 0px 0px 0px 0px; font-size: 12px; opacity: 0.5; color: #454748;\">Esta encuesta para clientes se ha enviado porque su entrada se ha trasladado al escenario <b>${object.stage_id.name}</b></span>\n
+	        </td></tr>\n
+	    </tbody>\n
+	    </table>\n
+	</div>\n
+	
+"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_ticket_portal_view
+msgid ""
+"<em class=\"text-muted\">\n"
+"                                    <small>No description</small>\n"
+"                                </em>"
+msgstr "<em class=\"text-muted\">\n <small>Sin descripción</small>\n </em>"
+
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.index
+msgid ""
+"<i class=\"fa fa-arrow-circle-right \"/>\n"
+"                                                        See the feedbacks"
+msgstr "<i class=\"fa fa-arrow-circle-right \"/>\n Ver los comentarios"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.view_helpdesk_ticket_sla_policy_success
+msgid ""
+"<i class=\"fa fa-check-circle fa-2x text-success\" role=\"img\" aria-"
+"label=\"Success\" title=\"Success\"/>"
+msgstr "<i class=\"fa fa-check-circle fa-2x text-success\" role=\"img\" aria-label=\"Éxito\" title=\"Success\"/>"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.index
+msgid ""
+"<i class=\"fa fa-envelope\"/>\n"
+"                                                    Email :"
+msgstr "<i class=\"fa fa-envelope\"/>\n Correo electrónico :"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.tickets_followup
+msgid "<small class=\"text-end\">Stage:</small>"
+msgstr "<small class=\"text-end\">Escenario:</small>"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.tickets_followup
+msgid "<small class=\"text-muted\">Assigned to</small>"
+msgstr "<small class=\"text-muted\">Asignado a</small>"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.tickets_followup
+msgid "<small class=\"text-muted\">Customer</small>"
+msgstr "<small class=\"text-muted\">Cliente</small>"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_ticket_portal_view
+msgid "<small class=\"text-right\">Status:</small>"
+msgstr "<small class=\"text-right\">Estado:</small>"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_ticket_portal_view
+msgid ""
+"<small>\n"
+"            <b>Close this ticket</b>\n"
+"        </small>"
+msgstr "<small>\n <b>Cerrar este ticket</b>\n  </small>"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_ticket_portal_view
+msgid ""
+"<small>\n"
+"            If the issue has been solved, you can close the request.\n"
+"        </small>"
+msgstr "<small>\n Si el problema se ha resuelto, puede cerrar la solicitud.\n </small>"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.view_helpdesk_ticket_portal
+msgid "<small>#</small>"
+msgstr "<small>#</small>"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.helpdesk_ticket_view_kanban
+msgid ""
+"<span class=\"fa fa-clock-o\" title=\"Deadline\" role=\"img\" aria-"
+"label=\"Deadline\"/>"
+msgstr "<span class=\"fa fa-clock-o\" title=\"Deadline\" role=\"img\" aria-label=\"Fecha límite\"/>"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.view_res_config_form_inherit_helpdesk_attachment
+msgid ""
+"<span class=\"o_form_label\">\n"
+"                                             Tickets Attachment\n"
+"                                        </span>"
+msgstr "<span class=\"o_form_label\">\n Adjunto de entradas\n </span>"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.view_helpdesk_ticket_portal
+msgid "<span class=\"small me-1 navbar-text\">Filter By:</span>"
+msgstr "<span class=\"small me-1 navbar-text\">Filtrar por:</span>"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.view_helpdesk_ticket_portal
+msgid "<span class=\"small me-1 navbar-text\">Group By:</span>"
+msgstr "<span class=\"small me-1 navbar-text\">Agrupar por:</span>"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.view_helpdesk_ticket_portal
+msgid "<span class=\"small me-1 navbar-text\">Sort By:</span>"
+msgstr "<span class=\"small me-1 navbar-text\">Ordenar por:</span>"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.tickets_followup
+msgid ""
+"<span>Your ticket has successfully been closed. Thank you for your "
+"collaboration.</span>"
+msgstr "<span>Su ticket se ha cerrado exitosamente. Gracias por tu colaboración.</span>"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_ticket_portal_view
+msgid "<strong class=\"col-lg-2\">Assigned to</strong>"
+msgstr "<strong class=\"col-lg-2\">Asignado a</strong>"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_ticket_portal_view
+msgid "<strong class=\"col-lg-2\">Attachments</strong>"
+msgstr "<strong class=\"col-lg-2\">Adjuntos</strong>"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_ticket_portal_view
+msgid "<strong class=\"col-lg-2\">Description</strong>"
+msgstr "<strong class=\"col-lg-2\">Descripción</strong>"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_ticket_portal_view
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.tickets_followup
+msgid "<strong class=\"col-lg-2\">Managed by</strong>"
+msgstr "<strong class=\"col-lg-2\">Administrado por</strong>"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_ticket_portal_view
+msgid "<strong class=\"col-lg-2\">Reported by</strong>"
+msgstr "<strong class=\"col-lg-2\">Reportado por</strong>"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_ticket_portal_view
+msgid "<strong class=\"col-lg-2\">Reported on</strong>"
+msgstr "<strong class=\"col-lg-2\">Reportado el</strong>"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_ticket_portal_view
+msgid "<strong class=\"col-lg-2\">Ticket Number</strong>"
+msgstr "<strong class=\"col-lg-2\">Número de billete</strong>"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.tickets_followup
+msgid "<strong class=\"col-lg-3\">Reported on</strong>"
+msgstr "<strong class=\"col-lg-3\">Reportado el</strong>"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.view_res_config_form_inherit_helpdesk
+msgid "<strong>Dashboard Filter</strong>"
+msgstr "<strong>Filtro del panel</strong>"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,help:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_team__alias_defaults
+msgid ""
+"A Python dictionary that will be evaluated to provide default values when "
+"creating new records for this alias."
+msgstr "Un diccionario de Python que se evaluará para proporcionar valores predeterminados cuando creando nuevos registros para este alias."
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_ticket_team_form
+msgid "Accept Emails From"
+msgstr "Aceptar correos electrónicos de"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__access_warning
+msgid "Access warning"
+msgstr "Advertencia de acceso"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__account_detail
+msgid "Account"
+msgstr "Cuenta"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__account_invoice_id
+msgid "Account Invoice"
+msgstr "Factura de cuenta"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_account_analytic_line__invoice_timesheet_count
+msgid "Account Move Count"
+msgstr "Conteo de movimientos de cuenta"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__message_needaction
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_team__message_needaction
+msgid "Action Needed"
+msgstr "Acción necesaria"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_channel__active
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_stage__active
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__active
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_category__active
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_tag__active
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_team__active
+msgid "Active"
+msgstr "Activo"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__activity_ids
+msgid "Activities"
+msgstr "Actividades"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr "Decoración de excepción de actividad"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__activity_state
+msgid "Activity State"
+msgstr "Estado de actividad"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__activity_type_icon
+msgid "Activity Type Icon"
+msgstr "Icono de tipo de actividad"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_team__alias_id
+msgid "Alias"
+msgstr "Alias"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_team__alias_contact
+msgid "Alias Contact Security"
+msgstr "Seguridad de contacto de alias"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_team__alias_domain_id
+msgid "Alias Domain"
+msgstr "Dominio de alias"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_team__alias_domain
+msgid "Alias Domain Name"
+msgstr "Nombre de dominio alias"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_team__alias_full_name
+msgid "Alias Email"
+msgstr "Alias de correo electrónico"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_team__alias_name
+msgid "Alias Name"
+msgstr "Nombre de alias"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_team__alias_status
+msgid "Alias Status"
+msgstr "Estado de alias"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,help:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_team__alias_status
+msgid "Alias status assessed on the last message received."
+msgstr "Estado del alias evaluado en el último mensaje recibido."
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_team__alias_model_id
+msgid "Aliased Model"
+msgstr "Modelo con alias"
+
+#. module: website_axis_helpdesk_advance
+#. odoo-python
+#: code:addons/website_axis_helpdesk_advance/controller/portal_ticket.py:0
+#: code:addons/website_axis_helpdesk_advance/controller/portal_ticket.py:0
+#: model:ir.model.fields.selection,name:website_axis_helpdesk_advance.selection__axis_helpdesk_ticket__priority_new__0
+#: model:ir.model.fields.selection,name:website_axis_helpdesk_advance.selection__axis_helpdesk_ticket_sla_policy__priority__0
+#: model:ir.model.fields.selection,name:website_axis_helpdesk_advance.selection__res_company__manage_product_selection__all
+#: model:ir.model.fields.selection,name:website_axis_helpdesk_advance.selection__res_config_settings__manage_product_selection__all
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.view_helpdesk_ticket_portal
+#, python-format
+msgid "All"
+msgstr "Todo"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.actions.act_window,name:website_axis_helpdesk_advance.helpdesk_ticket_action_main
+#: model:ir.ui.menu,name:website_axis_helpdesk_advance.helpdesk_ticket_menu_all
+msgid "All Tickets"
+msgstr "Todas las entradas"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_res_config_settings__is_attachment
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.view_res_config_form_inherit_helpdesk_attachment
+msgid "Allow Attachment"
+msgstr "Permitir archivos adjuntos"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_team__allow_timesheet
+msgid "Allow Timesheet"
+msgstr "Permitir parte de horas"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,help:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_team__allow_portal_ticket_closing
+msgid "Allow customers to close their tickets"
+msgstr "Permitir a los clientes cerrar sus tickets"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model,name:website_axis_helpdesk_advance.model_account_analytic_line
+msgid "Analytic Line"
+msgstr "Línea analítica"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.view_helpdesk_ticket_portal
+msgid "Apply"
+msgstr "Aplicar"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_ticket_sla_policy_form
+msgid "Apply on"
+msgstr "Aplicar en"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_ticket_form
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.helpdesk_ticket_view_kanban
+msgid "Archive"
+msgstr "Archivo"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk__stage_form
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_channel_form
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_channel_search
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_stage_search
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_ticket_category_form
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_ticket_category_search
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_ticket_form
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_ticket_tag_form
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_ticket_tag_search
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_ticket_team_search
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.helpdesk_tickets_view_search
+msgid "Archived"
+msgstr "Archivado"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_wizard_helpdesk_ticket_merge__sure_bool
+msgid "Are you Sure ?"
+msgstr "Estas seguro"
+
+#. module: website_axis_helpdesk_advance
+#. odoo-python
+#: code:addons/website_axis_helpdesk_advance/wizard/helpdesk_merge_wizard.py:0
+#, python-format
+msgid "Are you Sure You Want To Create Merge Ticket?"
+msgstr "¿Estás seguro de que quieres crear un boleto de fusión?"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_ticket_portal_view
+msgid "Are you sure you wish to proceed?"
+msgstr "¿Estás seguro de que deseas continuar?"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_ticket_team_form
+msgid "Assign To Users"
+msgstr "Asignar a los usuarios"
+
+#. module: website_axis_helpdesk_advance
+#. odoo-javascript
+#: code:addons/website_axis_helpdesk_advance/static/src/xml/helpdesk_ticket_filter_stage.xml:0
+#: code:addons/website_axis_helpdesk_advance/static/src/xml/helpdesk_ticket_filter_stage.xml:0
+#, python-format
+msgid "Assign User"
+msgstr "Asignar usuario"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_ticket_form
+msgid "Assign to me"
+msgstr "Asigname"
+
+#. module: website_axis_helpdesk_advance
+#. odoo-python
+#: code:addons/website_axis_helpdesk_advance/controller/portal_ticket.py:0
+#: code:addons/website_axis_helpdesk_advance/controller/portal_ticket.py:0
+#, python-format
+msgid "Assigned"
+msgstr "Asignado"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__assigned_date
+msgid "Assigned Date"
+msgstr "Fecha asignada"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_wizard_helpdesk_ticket_mass_close__user_id
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_wizard_helpdesk_ticket_merge__user_id
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.helpdesk_tickets_view_search
+msgid "Assigned to"
+msgstr "Asignado a"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__res_user_id
+msgid "Assigned user"
+msgstr "Usuario asignado"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields.selection,name:website_axis_helpdesk_advance.selection__axis_helpdesk_ticket_sla_policy__target_type__assigning
+msgid "Assigning Ticket"
+msgstr "Asignación de ticket"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__attachment_ids
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.helpdesk_create_ticket_from_front_end
+msgid "Attachment"
+msgstr "Adjunto"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__message_attachment_count
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_team__message_attachment_count
+msgid "Attachment Count"
+msgstr "Recuento de archivos adjuntos"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_ticket_team_form
+msgid "Avatar"
+msgstr "Avatar"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_ticket_portal_view
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.team_rating_progress_data
+msgid "Average"
+msgstr "Promedio"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__rating_avg
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_team__rating_avg
+msgid "Average Rating"
+msgstr "Calificación promedio"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_team__rating_avg_percentage
+msgid "Average Rating (%)"
+msgstr "Calificación promedio (%)"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.team_rating_progress_data
+msgid "Bad"
+msgstr "Malo"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.actions.act_window,name:website_axis_helpdesk_advance.axis_helpdesk_ticket_bar_chart
+msgid "Bar Chart"
+msgstr "Gráfico de barras"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.view_res_config_form_inherit_helpdesk
+msgid "Based On Product"
+msgstr "Basado en el producto"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__based_on_ticket_type
+msgid "Based on Ticket Type"
+msgstr "Basado en el tipo de boleto"
+
+#. module: website_axis_helpdesk_advance
+#. odoo-python
+#: code:addons/website_axis_helpdesk_advance/models/axis_helpdesk_ticket.py:0
+#: model:axis.helpdesk.ticket,helpdesk_ticket_blocked:website_axis_helpdesk_advance.helpdesk_ticket_1
+#: model:axis.helpdesk.ticket,helpdesk_ticket_blocked:website_axis_helpdesk_advance.helpdesk_ticket_2
+#: model:axis.helpdesk.ticket,helpdesk_ticket_blocked:website_axis_helpdesk_advance.helpdesk_ticket_3
+#: model:axis.helpdesk.ticket,helpdesk_ticket_blocked:website_axis_helpdesk_advance.helpdesk_ticket_4
+#: model:axis.helpdesk.ticket,helpdesk_ticket_blocked:website_axis_helpdesk_advance.helpdesk_ticket_5
+#: model:axis.helpdesk.ticket,helpdesk_ticket_blocked:website_axis_helpdesk_advance.helpdesk_ticket_6
+#: model:axis.helpdesk.ticket,helpdesk_ticket_blocked:website_axis_helpdesk_advance.helpdesk_ticket_7
+#: model:axis.helpdesk.ticket,helpdesk_ticket_blocked:website_axis_helpdesk_advance.helpdesk_ticket_8
+#: model:axis.helpdesk.ticket,helpdesk_ticket_blocked:website_axis_helpdesk_advance.helpdesk_ticket_9
+#, python-format
+msgid "Blocked"
+msgstr "Obstruido"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__crm_count
+msgid "CRM Count"
+msgstr "Recuento de CRM"
+
+#. module: website_axis_helpdesk_advance
+#: model:res.groups,name:website_axis_helpdesk_advance.group_crm_helpdesk_ticket
+msgid "CRM Helpdesk Ticket."
+msgstr "Ticket de soporte técnico de CRM."
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_ticket_form
+msgid "CRM Lead"
+msgstr "Líder de CRM"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__crm_lead_ids
+msgid "CRM Lead associated to this Ticket"
+msgstr "Cliente potencial de CRM asociado a este ticket"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__campaign_id
+msgid "Campaign"
+msgstr "Campaña"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.timesheet_invoice_confirm_form
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.view_wizard_helpdesk_ticket_mass_close
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.view_wizard_helpdesk_ticket_merge
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.whatsapp_send_msg_wizard
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: website_axis_helpdesk_advance
+#. odoo-javascript
+#: code:addons/website_axis_helpdesk_advance/static/src/xml/helpdesk_ticket_filter_stage.xml:0
+#, python-format
+msgid "Cancelled"
+msgstr "Cancelado"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.ui.menu,name:website_axis_helpdesk_advance.helpdesk_ticket_category_menu
+msgid "Categories"
+msgstr "Categorías"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_team__helpdesk_category_ids
+msgid "Category"
+msgstr "Categoría"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__ticket_channel_helpdesk_id
+msgid "Channel"
+msgstr "Canal"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.actions.act_window,name:website_axis_helpdesk_advance.axis_helpdesk_channel_action
+#: model:ir.ui.menu,name:website_axis_helpdesk_advance.helpdesk_ticket_channel_menu
+msgid "Channels"
+msgstr "Canales"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.helpdesk_ticket_search
+msgid ""
+"Check status of previously opened tickets. We provide archives and history "
+"of all support your requests compare with responses."
+msgstr "Consultar el estado de los tickets abiertos anteriormente. Proporcionamos archivos e historia 
+De todo apoyo, compare sus solicitudes con las respuestas."
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_ticket_portal_view
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.tickets_followup
+msgid "Close"
+msgstr "Cerca"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__close_ticket_date
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.tickets_followup
+msgid "Close Ticket"
+msgstr "Cerrar ticket"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields.selection,name:website_axis_helpdesk_advance.selection__wizard_helpdesk_ticket_mass_close__update_for__close_tickets
+msgid "Close Tickets"
+msgstr "Cerrar Entradas"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_ticket_portal_view
+msgid "Close the ticket"
+msgstr "cerrar el billete"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_ticket_portal_view
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.tickets_followup
+msgid "Close ticket"
+msgstr "Cerrar ticket"
+
+#. module: website_axis_helpdesk_advance
+#. odoo-python
+#: code:addons/website_axis_helpdesk_advance/controller/portal_ticket.py:0
+#: code:addons/website_axis_helpdesk_advance/controller/portal_ticket.py:0
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_stage__closed
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__closed
+#, python-format
+msgid "Closed"
+msgstr "Cerrado"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__closed_date
+msgid "Closed Date"
+msgstr "Fecha cerrada"
+
+#. module: website_axis_helpdesk_advance
+#. odoo-javascript
+#: code:addons/website_axis_helpdesk_advance/static/src/xml/helpdesk_ticket_dashboard.xml:0
+#: model:ir.ui.menu,name:website_axis_helpdesk_advance.helpdesk_ticket_menu_close
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.helpdesk_tickets_view_search
+#, python-format
+msgid "Closed Tickets"
+msgstr "Entradas cerradas"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__closed_by_partner
+msgid "Closed by Partner"
+msgstr "Cerrado por socio"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_stage__is_close
+msgid "Closing Stage"
+msgstr "Etapa de cierre"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__color
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_tag__color
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_team__color
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_helpdesk_sla_status__color
+msgid "Color Index"
+msgstr "Índice de color"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__helpdesk_ticket_state_label
+msgid "Column Status"
+msgstr "Estado de la columna"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__comment
+msgid "Comment"
+msgstr "Comentario"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.tickets_followup
+msgid "Communication history"
+msgstr "Historial de comunicación"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model,name:website_axis_helpdesk_advance.model_res_company
+msgid "Companies"
+msgstr "Compañías"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_channel__company_id
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_stage__company_id
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__company_id
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_category__company_id
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_tag__company_id
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_team__company_id
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_res_config_settings__company_id
+msgid "Company"
+msgstr "Compañía"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.report_ticket
+msgid "Company:"
+msgstr "Compañía:"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model,name:website_axis_helpdesk_advance.model_res_config_settings
+msgid "Config Settings"
+msgstr "Ajustes de configuración"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.ui.menu,name:website_axis_helpdesk_advance.helpdesk_ticket_configuration
+msgid "Configuration"
+msgstr "Configuración"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_ticket_team_form
+msgid "Configure domain name"
+msgstr "Configurar nombre de dominio"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__partner_id
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_team__partner_id
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_ticket_portal_view
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.tickets_followup
+msgid "Contact"
+msgstr "Contacto"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.timesheet_invoice_confirm_form
+msgid "Create"
+msgstr "Crear"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_ticket_form
+msgid "Create Crm Lead"
+msgstr "Crear cliente potencial de CRM"
+
+#. module: website_axis_helpdesk_advance
+#. odoo-javascript
+#: code:addons/website_axis_helpdesk_advance/static/src/xml/helpdesk_ticket_filter_stage.xml:0
+#, python-format
+msgid "Create Date"
+msgstr "Crear fecha"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.report_ticket
+msgid "Create Date:"
+msgstr "Fecha de creación:"
+
+#. module: website_axis_helpdesk_advance
+#. odoo-python
+#: code:addons/website_axis_helpdesk_advance/models/axis_helpdesk_ticket.py:0
+#: model:ir.actions.act_window,name:website_axis_helpdesk_advance.timesheet_invoice_confirm_action
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_ticket_form
+#, python-format
+msgid "Create Invoice"
+msgstr "Crear factura"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__create_new_bool
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_wizard_helpdesk_ticket_merge__create_new_bool
+msgid "Create New Ticket ?"
+msgstr "¿Crear nuevo boleto?"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_ticket_form
+msgid "Create Purchase Order"
+msgstr "Crear orden de compra"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_ticket_form
+msgid "Create Sale Order"
+msgstr "Crear orden de venta"
+
+#. module: website_axis_helpdesk_advance
+#. odoo-python
+#: code:addons/website_axis_helpdesk_advance/models/axis_helpdesk_ticket.py:0
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_ticket_form
+#, python-format
+msgid "Create Task"
+msgstr "Crear tarea"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.helpdesk_create_ticket_from_front_end
+msgid "Create Ticket"
+msgstr "Crear billete"
+
+#. module: website_axis_helpdesk_advance
+#: model:website.menu,name:website_axis_helpdesk_advance.menu_partner_form
+msgid "Create Tickets"
+msgstr "Crear entradas"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.actions.act_window,help:website_axis_helpdesk_advance.helpdesk_ticket_action_main
+msgid "Create your first ticket."
+msgstr "Crea tu primer billete."
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_channel__create_uid
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_stage__create_uid
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__create_uid
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_category__create_uid
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_sla_policy__create_uid
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_tag__create_uid
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_team__create_uid
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_type__create_uid
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_helpdesk_invoice_confirm__create_uid
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_helpdesk_sla_status__create_uid
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_helpdesk_ticket_invoice__create_uid
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_helpdesk_ticket_merge__create_uid
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_message_wizard__create_uid
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_timesheet_invoice_confirm__create_uid
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_whatsapp_message_wizard__create_uid
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_wizard_helpdesk_ticket_mass_close__create_uid
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_wizard_helpdesk_ticket_merge__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_channel__create_date
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_stage__create_date
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__create_date
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__date
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_category__create_date
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_sla_policy__create_date
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_tag__create_date
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_team__create_date
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_type__create_date
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_helpdesk_invoice_confirm__create_date
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_helpdesk_sla_status__create_date
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_helpdesk_ticket_invoice__create_date
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_helpdesk_ticket_merge__create_date
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_message_wizard__create_date
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_timesheet_invoice_confirm__create_date
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_whatsapp_message_wizard__create_date
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_wizard_helpdesk_ticket_mass_close__create_date
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_wizard_helpdesk_ticket_merge__create_date
+msgid "Created on"
+msgstr "Creado el"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.helpdesk_tickets_view_search
+msgid "Creation Date"
+msgstr "Fecha de creación"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__crm_lead_id
+msgid "Crm Lead"
+msgstr "Líder de CRM"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__crm_ticket_id
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_crm_lead__crm_ticket_id
+msgid "Crm Ticket"
+msgstr "Boleto CRM"
+
+#. module: website_axis_helpdesk_advance
+#. odoo-javascript
+#: code:addons/website_axis_helpdesk_advance/static/src/xml/helpdesk_ticket_filter_stage.xml:0
+#, python-format
+msgid "Current Month"
+msgstr "Mes actual"
+
+#. module: website_axis_helpdesk_advance
+#. odoo-javascript
+#: code:addons/website_axis_helpdesk_advance/static/src/xml/helpdesk_ticket_filter_stage.xml:0
+#, python-format
+msgid "Current Week"
+msgstr "Semana actual"
+
+#. module: website_axis_helpdesk_advance
+#. odoo-javascript
+#: code:addons/website_axis_helpdesk_advance/static/src/xml/helpdesk_ticket_filter_stage.xml:0
+#, python-format
+msgid "Current Year"
+msgstr "Current Year"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.tickets_followup
+msgid "Current stage of this ticket"
+msgstr "Etapa actual de este billete"
+
+#. module: website_axis_helpdesk_advance
+#. odoo-javascript
+#: code:addons/website_axis_helpdesk_advance/static/src/xml/helpdesk_ticket_filter_stage.xml:0
+#, python-format
+msgid "Custom"
+msgstr "Costumbre"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_team__alias_bounced_content
+msgid "Custom Bounced Message"
+msgstr "Mensaje devuelto personalizado"
+
+#. module: website_axis_helpdesk_advance
+#. odoo-javascript
+#: code:addons/website_axis_helpdesk_advance/static/src/xml/helpdesk_ticket_filter_stage.xml:0
+#, python-format
+msgid "Custom Date"
+msgstr "Fecha personalizada"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_wizard_helpdesk_ticket_merge__customer_id
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.helpdesk_create_ticket_from_front_end
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.view_helpdesk_ticket_portal
+msgid "Customer"
+msgstr "Cliente"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_wizard_helpdesk_ticket_merge__partner_email
+msgid "Customer Email"
+msgstr "Correo electrónico del cliente"
+
+#. module: website_axis_helpdesk_advance
+#. odoo-javascript
+#: code:addons/website_axis_helpdesk_advance/static/src/xml/helpdesk_ticket_filter_stage.xml:0
+#, python-format
+msgid "Customer Name"
+msgstr "Nombre del cliente"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,help:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__access_url
+msgid "Customer Portal URL"
+msgstr "URL del portal del cliente"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__priority_new
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_ticket_form
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_ticket_portal_view
+msgid "Customer Rating"
+msgstr "Calificación del cliente"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.helpdesk_tickets_view_search
+msgid "Customer Replied"
+msgstr "El cliente respondió"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.team_rating_data
+msgid "Customer Satisfaction"
+msgstr "Satisfacción del cliente"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.report_ticket
+msgid "Customer:"
+msgstr "Cliente:"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.ui.menu,name:website_axis_helpdesk_advance.helpdesk_ticket_dashboard_menu
+msgid "Dashboard"
+msgstr "Panel"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.view_helpdesk_ticket_portal
+msgid "Date"
+msgstr "Fecha"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.report_ticket
+msgid "Date:"
+msgstr "Fecha:"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_sla_policy__days
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_helpdesk_sla_status__time_days
+msgid "Days"
+msgstr "Días"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_helpdesk_sla_status__deadline
+msgid "Deadline"
+msgstr "Fecha límite"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_team__project_id
+msgid "Default Project"
+msgstr "Proyecto predeterminado"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_team__alias_defaults
+msgid "Default Values"
+msgstr "Valores predeterminados"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.helpdesk_ticket_view_kanban
+msgid "Delete"
+msgstr "Borrar"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_stage__description
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__description
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_wizard_helpdesk_ticket_merge__description
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_ticket_form
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.report_ticket
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.view_wizard_helpdesk_ticket_merge
+msgid "Description"
+msgstr "Descripción"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_ticket_sla_policy_form
+msgid "Description of the policy..."
+msgstr "Descripción de la póliza..."
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_ticket_portal_view
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.tickets_followup
+msgid "Discard"
+msgstr "Desechar"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_channel__display_name
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_stage__display_name
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__display_name
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_category__display_name
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_sla_policy__display_name
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_tag__display_name
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_team__display_name
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_type__display_name
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_helpdesk_invoice_confirm__display_name
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_helpdesk_sla_status__display_name
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_helpdesk_ticket_invoice__display_name
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_helpdesk_ticket_merge__display_name
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_message_wizard__display_name
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_timesheet_invoice_confirm__display_name
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_whatsapp_message_wizard__display_name
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_wizard_helpdesk_ticket_mass_close__display_name
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_wizard_helpdesk_ticket_merge__display_name
+msgid "Display Name"
+msgstr "Nombre para mostrar"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_team__portal_show_rating
+msgid "Display Rating on Customer Portal"
+msgstr "Mostrar calificación en el portal del cliente"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_ticket_form
+msgid "Documents"
+msgstr "Documentos"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__domain_user_ids
+msgid "Domain User"
+msgstr "Usuario de dominio"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.helpdesk_ticket_view_kanban
+msgid "Dropdown menu"
+msgstr "Menú desplegable"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.report_ticket
+msgid "Duration"
+msgstr "Duración"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.helpdesk_error_message
+msgid "ERROR !!"
+msgstr "ERROR !!"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.helpdesk_ticket_view_kanban
+msgid "Edit"
+msgstr "Editar"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__partner_email
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_team__partner_email
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.helpdesk_create_ticket_from_front_end
+msgid "Email"
+msgstr "Correo electrónico"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_team__alias_email
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_team__email_alias_id
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_ticket_team_form
+msgid "Email Alias"
+msgstr "Alias de correo electrónico"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_stage__mail_template_id
+msgid "Email Template"
+msgstr "Plantilla de correo electrónico"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_team__use_alias
+msgid "Email alias"
+msgstr "Alias de correo electrónico"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__email_cc
+msgid "Email cc"
+msgstr "CC de correo electrónico"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.report_ticket
+msgid "Email:"
+msgstr "Correo electrónico:"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.report_ticket
+msgid "Employee:"
+msgstr "Empleado:"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.view_helpdesk_ticket_portal
+msgid "End Date:"
+msgstr "Fecha de finalización:"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields.selection,name:website_axis_helpdesk_advance.selection__axis_helpdesk_ticket_team__assigning_method__balanced
+msgid "Equally"
+msgstr "Igualmente"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_helpdesk_sla_status__exceeded_days
+msgid "Excedeed Working Days"
+msgstr "Días laborables excedidos"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_ticket_portal_view
+msgid "Excellent"
+msgstr "Excelente"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_sla_policy__exclude_stage_ids
+msgid "Exclude Stages"
+msgstr "Excluir etapas"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields.selection,name:website_axis_helpdesk_advance.selection__helpdesk_sla_status__status__failed
+msgid "Failed"
+msgstr "Fallido"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__ticket_sla_policy_fail
+msgid "Failed SLA Policy"
+msgstr "Política de SLA fallida"
+
+#. module: website_axis_helpdesk_advance
+#. odoo-javascript
+#: code:addons/website_axis_helpdesk_advance/static/src/xml/helpdesk_ticket_filter_stage.xml:0
+#, python-format
+msgid "Filter Option :"
+msgstr "Opción de filtro:"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.actions.act_window,name:website_axis_helpdesk_advance.helpdesk_ticket_filter_stage_dashboard
+#: model:ir.actions.client,name:website_axis_helpdesk_advance.dashboard_helpdesk_ticket_filter_stage_action
+#: model:ir.ui.menu,name:website_axis_helpdesk_advance.helpdesk_filter_dashboard_menu
+msgid "Filter Tickets"
+msgstr "Filtrar entradas"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_helpdesk_ticket_invoice__ticket_id
+msgid "First"
+msgstr "Primero"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__assign_date
+msgid "First assignation date"
+msgstr "Primera fecha de asignación"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_stage__folded_kanban
+msgid "Folded in Kanban"
+msgstr "Doblado en Kanban"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_ticket_team_form
+msgid ""
+"Follow this salesteam to automatically track the events associated to users "
+"of this team."
+msgstr "Siga a este equipo de ventas para rastrear automáticamente los eventos asociados a los usuarios de este equipo."
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__message_follower_ids
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_team__message_follower_ids
+msgid "Followers"
+msgstr "Seguidores"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__message_partner_ids
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_team__message_partner_ids
+msgid "Followers (Partners)"
+msgstr "Seguidores (Socios)"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,help:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr "Icono de fuente impresionante, p. tareas fa"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.helpdesk_tickets_view_search
+msgid "Future Activities"
+msgstr "Actividades futuras"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_ticket_portal_view
+msgid "Good"
+msgstr "Bueno"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields.selection,name:website_axis_helpdesk_advance.selection__axis_helpdesk_ticket__helpdesk_ticket_state__done
+msgid "Green"
+msgstr "Verde"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__helpdesk_ticket_done
+msgid "Green Kanban Label"
+msgstr "Etiqueta Kanban verde"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields.selection,name:website_axis_helpdesk_advance.selection__axis_helpdesk_ticket__helpdesk_ticket_state__normal
+msgid "Grey"
+msgstr "Gris"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__helpdesk_ticket_normal
+msgid "Grey Kanban Label"
+msgstr "Etiqueta Kanban gris"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.helpdesk_tickets_view_search
+msgid "Group By"
+msgstr "Agrupar por"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.team_rating_progress_data
+msgid "Happy"
+msgstr "Feliz"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__has_message
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_team__has_message
+msgid "Has Message"
+msgstr "Tiene mensaje"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__helpdesk__sla_late
+msgid "Has SLA reached late"
+msgstr "¿El SLA ha llegado tarde?"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_whatsapp_message_wizard__helpdesk_id
+#: model:ir.module.category,name:website_axis_helpdesk_advance.module_helpdesk_category
+#: model:ir.ui.menu,name:website_axis_helpdesk_advance.main_menu_helpdesk_ticket
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.view_res_config_form_inherit_helpdesk
+msgid "Helpdesk"
+msgstr "Servicio de asistencia"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.actions.act_window,name:website_axis_helpdesk_advance.axis_helpdesk_ticket_category_action
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_ticket_category_form
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_ticket_category_tree
+msgid "Helpdesk Categories"
+msgstr "Categorías de la mesa de ayuda"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_ticket_category_search
+msgid "Helpdesk Category Search"
+msgstr "Búsqueda de categorías del servicio de asistencia técnica"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model,name:website_axis_helpdesk_advance.model_axis_helpdesk_channel
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_channel_form
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_channel_search
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_channel_tree
+msgid "Helpdesk Channel"
+msgstr "Canal de asistencia técnica"
+
+#. module: website_axis_helpdesk_advance
+#. odoo-javascript
+#: code:addons/website_axis_helpdesk_advance/static/src/xml/helpdesk_ticket_dashboard.xml:0
+#: model:ir.actions.client,name:website_axis_helpdesk_advance.dashboard_helpdesk_ticket_action
+#: model:ir.ui.menu,name:website_axis_helpdesk_advance.helpdesk_ticket_dashboard_main_menu
+#, python-format
+msgid "Helpdesk Dashboard"
+msgstr "Panel de soporte técnico"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.actions.act_window,name:website_axis_helpdesk_advance.action_axis_helpdesk_ticket_sla_policy
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_ticket_sla_policy_form
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_ticket_sla_policy_tree
+msgid "Helpdesk SLA"
+msgstr "Servicio de asistencia técnica SLA"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model,name:website_axis_helpdesk_advance.model_axis_helpdesk_ticket_team
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__helpdesk_team_id
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__team_id
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_res_users__helpdesk_team_ids
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_wizard_helpdesk_ticket_mass_close__team_id
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_wizard_helpdesk_ticket_merge__team_id
+#: model:ir.model.fields.selection,name:website_axis_helpdesk_advance.selection__axis_helpdesk_ticket_type__type_based_on__helpdesk_team
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_ticket_form_view
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_ticket_team_form
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_ticket_team_tree
+msgid "Helpdesk Team"
+msgstr "Equipo de asistencia técnica"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.report_ticket
+msgid "Helpdesk Team :"
+msgstr "Equipo de asistencia técnica:"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.index
+msgid "Helpdesk Team Satisfaction"
+msgstr "Satisfacción del equipo de soporte técnico"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_ticket_team_search
+msgid "Helpdesk Team Search"
+msgstr "Búsqueda del equipo de soporte técnico"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_ticket_team_form
+msgid "Helpdesk Team name..."
+msgstr "Nombre del equipo de soporte técnico..."
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.actions.act_window,name:website_axis_helpdesk_advance.action_axis_helpdesk_ticket_team
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_type__team_ids
+msgid "Helpdesk Teams"
+msgstr "Equipos de soporte técnico"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model,name:website_axis_helpdesk_advance.model_axis_helpdesk_ticket
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_ticket_form
+msgid "Helpdesk Ticket"
+msgstr "Ticket de asistencia técnica"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_ticket_view_graph
+msgid "Helpdesk Ticket Analysis"
+msgstr "Análisis de tickets de la mesa de ayuda"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model,name:website_axis_helpdesk_advance.model_helpdesk_ticket_invoice
+msgid "Helpdesk Ticket Invoice"
+msgstr "Factura de ticket de asistencia técnica"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model,name:website_axis_helpdesk_advance.model_axis_helpdesk_ticket_sla_policy
+msgid "Helpdesk Ticket SLA Policy"
+msgstr "Política de SLA de tickets de la mesa de ayuda"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model,name:website_axis_helpdesk_advance.model_axis_helpdesk_ticket_tag
+msgid "Helpdesk Ticket Tag"
+msgstr "Etiqueta de ticket del servicio de asistencia"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_ticket_tag_search
+msgid "Helpdesk Ticket Tag Search"
+msgstr "Búsqueda de etiquetas de tickets del servicio de asistencia técnica"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_ticket_tag_form
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_ticket_tag_tree
+msgid "Helpdesk Ticket Tags"
+msgstr "Etiquetas de tickets del servicio de asistencia"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model,name:website_axis_helpdesk_advance.model_axis_helpdesk_ticket_type
+msgid "Helpdesk Ticket Type"
+msgstr "Tipo de ticket del servicio de asistencia"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_ticket_pivot_graph
+msgid "Helpdesk Tickets"
+msgstr "Tickets de asistencia técnica"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_res_company__manage_whatsapp_features
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_res_config_settings__manage_whatsapp_features
+msgid "Helpdesk Whatsapp features "
+msgstr "Funciones de la mesa de ayuda de Whatsapp"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.helpdesk_ticket_view_calendar_analysis
+msgid "Helpdesk_calendar"
+msgstr "Calendario_servicio de ayuda"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.module.category,description:website_axis_helpdesk_advance.module_helpdesk_category
+msgid "Helps you handle your helpdesk security."
+msgstr "Le ayuda a gestionar la seguridad de su servicio de asistencia técnica."
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields.selection,name:website_axis_helpdesk_advance.selection__axis_helpdesk_ticket__priority__2
+#: model:ir.model.fields.selection,name:website_axis_helpdesk_advance.selection__axis_helpdesk_ticket__priority_new__4
+#: model:ir.model.fields.selection,name:website_axis_helpdesk_advance.selection__axis_helpdesk_ticket_sla_policy__priority__4
+msgid "High"
+msgstr "Alto"
+
+#. module: website_axis_helpdesk_advance
+#. odoo-javascript
+#: code:addons/website_axis_helpdesk_advance/static/src/xml/helpdesk_ticket_dashboard.xml:0
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.helpdesk_tickets_view_search
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.view_helpdesk_ticket_portal
+#, python-format
+msgid "High Priority"
+msgstr "alta prioridad"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields.selection,name:website_axis_helpdesk_advance.selection__axis_helpdesk_ticket__priority_new__2
+#: model:ir.model.fields.selection,name:website_axis_helpdesk_advance.selection__axis_helpdesk_ticket_sla_policy__priority__2
+msgid "High priority"
+msgstr "alta prioridad"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.tickets_followup
+msgid "History"
+msgstr "Historia"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_sla_policy__hours
+msgid "Hours"
+msgstr "Horas"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_channel__id
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_stage__id
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__id
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_category__id
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_sla_policy__id
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_tag__id
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_team__id
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_type__id
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_helpdesk_invoice_confirm__id
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_helpdesk_sla_status__id
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_helpdesk_ticket_invoice__id
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_helpdesk_ticket_merge__id
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_message_wizard__id
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_timesheet_invoice_confirm__id
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_whatsapp_message_wizard__id
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_wizard_helpdesk_ticket_mass_close__id
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_wizard_helpdesk_ticket_merge__id
+msgid "ID"
+msgstr "IDENTIFICACIÓN"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,help:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_team__alias_parent_thread_id
+msgid ""
+"ID of the parent record holding the alias (example: project holding the task"
+" creation alias)"
+msgstr "ID del registro principal que contiene el alias (ejemplo: proyecto que contiene la tarea) alias de creación)"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__activity_exception_icon
+msgid "Icon"
+msgstr "Icono"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,help:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr "Icono para indicar una actividad de excepción."
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,help:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__message_needaction
+#: model:ir.model.fields,help:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_team__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr "Si está marcado, los mensajes nuevos requieren su atención."
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,help:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__message_has_error
+#: model:ir.model.fields,help:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__message_has_sms_error
+#: model:ir.model.fields,help:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_team__message_has_error
+#: model:ir.model.fields,help:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_team__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr "Si está marcado, algunos mensajes tienen un error de entrega."
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,help:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_team__alias_bounced_content
+msgid ""
+"If set, this content will automatically be sent out to unauthorized users "
+"instead of the default message."
+msgstr "Si se configura, este contenido se enviará automáticamente a usuarios no autorizados en lugar del mensaje predeterminado."
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.helpdesk_ticket_view_kanban
+msgid "In #{kanban_getcolorname(record.color.raw_value)}"
+msgstr "En #{kanban_getcolorname(record.color.raw_value)}"
+
+#. module: website_axis_helpdesk_advance
+#. odoo-javascript
+#. odoo-python
+#: code:addons/website_axis_helpdesk_advance/models/axis_helpdesk_ticket.py:0
+#: code:addons/website_axis_helpdesk_advance/static/src/xml/helpdesk_ticket_filter_stage.xml:0
+#: model:axis.helpdesk.ticket,helpdesk_ticket_normal:website_axis_helpdesk_advance.helpdesk_ticket_1
+#: model:axis.helpdesk.ticket,helpdesk_ticket_normal:website_axis_helpdesk_advance.helpdesk_ticket_2
+#: model:axis.helpdesk.ticket,helpdesk_ticket_normal:website_axis_helpdesk_advance.helpdesk_ticket_3
+#: model:axis.helpdesk.ticket,helpdesk_ticket_normal:website_axis_helpdesk_advance.helpdesk_ticket_4
+#: model:axis.helpdesk.ticket,helpdesk_ticket_normal:website_axis_helpdesk_advance.helpdesk_ticket_5
+#: model:axis.helpdesk.ticket,helpdesk_ticket_normal:website_axis_helpdesk_advance.helpdesk_ticket_6
+#: model:axis.helpdesk.ticket,helpdesk_ticket_normal:website_axis_helpdesk_advance.helpdesk_ticket_7
+#: model:axis.helpdesk.ticket,helpdesk_ticket_normal:website_axis_helpdesk_advance.helpdesk_ticket_8
+#: model:axis.helpdesk.ticket,helpdesk_ticket_normal:website_axis_helpdesk_advance.helpdesk_ticket_9
+#, python-format
+msgid "In Progress"
+msgstr "En curso"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_ticket_tag_form
+msgid "Input From 1 to 10 digit"
+msgstr "Entrada De 1 a 10 dígitos"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_account_bank_statement_line__inv_timesheet_ids
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_account_move__inv_timesheet_ids
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_account_payment__inv_timesheet_ids
+msgid "Inv Timesheet"
+msgstr "Hoja de horas inv."
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__invoice_id
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_ticket_form
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.view_account_analytic_line_form_inherit
+msgid "Invoice"
+msgstr "Factura"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__account_total_data
+msgid "Invoice Amount"
+msgstr "Importe de la factura"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__invoice_count
+msgid "Invoice Count"
+msgstr "Recuento de facturas"
+
+#. module: website_axis_helpdesk_advance
+#: model:res.groups,name:website_axis_helpdesk_advance.group_invoice_helpdesk_ticket
+msgid "Invoice Helpdesk Ticket."
+msgstr "Ticket de asistencia técnica de facturas."
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__invoice_number
+msgid "Invoice Number"
+msgstr "Número de factura"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_account_bank_statement_line__invoice_ticket_id
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_account_move__invoice_ticket_id
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_account_payment__invoice_ticket_id
+msgid "Invoice Ticket"
+msgstr "Boleto de factura"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_account_analytic_line__invoice_timesheet_id
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_account_analytic_line__invoice_timesheet_ids
+msgid "Invoice Timesheet"
+msgstr "Hoja de horas de factura"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__account_invoice_ids
+msgid "Invoice associated to this Ticket"
+msgstr "Factura asociada a este Ticket"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__is_customer_replied
+msgid "Is Customer Replied"
+msgstr "¿Se responde al cliente?"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__message_is_follower
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_team__message_is_follower
+msgid "Is Follower"
+msgstr ""Es seguidor
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__is_invoice
+msgid "Is Invoice"
+msgstr "es factura"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__is_invoice_button
+msgid "Is Invoice Button"
+msgstr "Es el botón de factura"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__is_merge
+msgid "Is Merge"
+msgstr "es fusionar"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__is_task
+msgid "Is Task"
+msgstr "es tarea"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__is_task_button
+msgid "Is Task Button"
+msgstr "Es el botón de tarea"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__is_ticket_closed
+msgid "Is Ticket Closed"
+msgstr "¿Está cerrado el boleto?"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,help:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__duration_tracking
+msgid "JSON that maps ids from a many2one field to seconds spent"
+msgstr "JSON que asigna identificadores de un campo many2one a los segundos invertidos"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model,name:website_axis_helpdesk_advance.model_account_move
+msgid "Journal Entry"
+msgstr "Asiento contable"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__helpdesk_ticket_state
+msgid "Kanban State"
+msgstr "Estado Kanban"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_helpdesk_ticket_invoice__name
+msgid "Lable"
+msgstr "etiqueta"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.team_rating_data
+msgid "Last 3 months"
+msgstr "últimos 3 meses"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.team_rating_data
+msgid "Last 30 days"
+msgstr "últimos 30 días"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.team_rating_data
+msgid "Last 7 days"
+msgstr "últimos 7 días"
+
+#. module: website_axis_helpdesk_advance
+#. odoo-javascript
+#: code:addons/website_axis_helpdesk_advance/static/src/xml/helpdesk_ticket_dashboard.xml:0
+#, python-format
+msgid "Last Month"
+msgstr "Mes pasado"
+
+#. module: website_axis_helpdesk_advance
+#. odoo-python
+#: code:addons/website_axis_helpdesk_advance/controller/portal_ticket.py:0
+#: code:addons/website_axis_helpdesk_advance/controller/portal_ticket.py:0
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__date_last_stage_update
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__last_stage_update
+#, python-format
+msgid "Last Stage Update"
+msgstr "Actualización de la última etapa"
+
+#. module: website_axis_helpdesk_advance
+#. odoo-javascript
+#: code:addons/website_axis_helpdesk_advance/static/src/xml/helpdesk_ticket_filter_stage.xml:0
+#, python-format
+msgid "Last Update Date"
+msgstr "Fecha de última actualización"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_channel__write_uid
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_stage__write_uid
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__write_uid
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_category__write_uid
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_sla_policy__write_uid
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_tag__write_uid
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_team__write_uid
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_type__write_uid
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_helpdesk_invoice_confirm__write_uid
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_helpdesk_sla_status__write_uid
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_helpdesk_ticket_invoice__write_uid
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_helpdesk_ticket_merge__write_uid
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_message_wizard__write_uid
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_timesheet_invoice_confirm__write_uid
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_whatsapp_message_wizard__write_uid
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_wizard_helpdesk_ticket_mass_close__write_uid
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_wizard_helpdesk_ticket_merge__write_uid
+msgid "Last Updated by"
+msgstr "Actualizado por última vez por"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_channel__write_date
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_stage__write_date
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__write_date
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_category__write_date
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_sla_policy__write_date
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_tag__write_date
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_team__write_date
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_type__write_date
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_helpdesk_invoice_confirm__write_date
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_helpdesk_sla_status__write_date
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_helpdesk_ticket_invoice__write_date
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_helpdesk_ticket_merge__write_date
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_message_wizard__write_date
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_timesheet_invoice_confirm__write_date
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_whatsapp_message_wizard__write_date
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_wizard_helpdesk_ticket_mass_close__write_date
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_wizard_helpdesk_ticket_merge__write_date
+msgid "Last Updated on"
+msgstr "Última actualización el"
+
+#. module: website_axis_helpdesk_advance
+#. odoo-javascript
+#: code:addons/website_axis_helpdesk_advance/static/src/xml/helpdesk_ticket_dashboard.xml:0
+#, python-format
+msgid "Last Week"
+msgstr "La semana pasada"
+
+#. module: website_axis_helpdesk_advance
+#. odoo-python
+#: code:addons/website_axis_helpdesk_advance/controller/portal_ticket.py:0
+#: code:addons/website_axis_helpdesk_advance/controller/portal_ticket.py:0
+#, python-format
+msgid "Last message is from customer"
+msgstr "El último mensaje es del cliente."
+
+#. module: website_axis_helpdesk_advance
+#. odoo-python
+#: code:addons/website_axis_helpdesk_advance/controller/portal_ticket.py:0
+#: code:addons/website_axis_helpdesk_advance/controller/portal_ticket.py:0
+#, python-format
+msgid "Last message is from support"
+msgstr "El último mensaje es de soporte."
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.helpdesk_tickets_view_search
+msgid "Late Activities"
+msgstr ""
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.team_rating_data
+msgid "Latest Feedbacks"
+msgstr "Últimos comentarios"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model,name:website_axis_helpdesk_advance.model_crm_lead
+msgid "Lead/Opportunity"
+msgstr "Lead/Oportunidad"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_team__alias_incoming_local
+msgid "Local-part based incoming detection"
+msgstr "Detección entrante basada en piezas locales"
+
+#. module: website_axis_helpdesk_advance
+#. odoo-javascript
+#: code:addons/website_axis_helpdesk_advance/static/src/xml/helpdesk_ticket_dashboard.xml:0
+#: model:ir.model.fields.selection,name:website_axis_helpdesk_advance.selection__axis_helpdesk_ticket__priority__0
+#, python-format
+msgid "Low"
+msgstr "Bajo"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.helpdesk_tickets_view_search
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.view_helpdesk_ticket_portal
+msgid "Low Priority"
+msgstr "Prioridad baja"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields.selection,name:website_axis_helpdesk_advance.selection__axis_helpdesk_ticket__priority_new__1
+#: model:ir.model.fields.selection,name:website_axis_helpdesk_advance.selection__axis_helpdesk_ticket_sla_policy__priority__1
+msgid "Low priority"
+msgstr "Baja prioridad"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_res_company__manage_product
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_res_config_settings__manage_product
+msgid "Manage Products"
+msgstr "Administrar productos"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.view_res_config_form_inherit_helpdesk
+msgid "Manage Product"
+msgstr "Administrar producto"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_res_company__manual_boolean
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_res_config_settings__manual_boolean
+msgid "Manual Boolean"
+msgstr "booleano manual"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields.selection,name:website_axis_helpdesk_advance.selection__res_company__manage_product_selection__manual_select_product
+#: model:ir.model.fields.selection,name:website_axis_helpdesk_advance.selection__res_config_settings__manage_product_selection__manual_select_product
+msgid "Manual Select Product"
+msgstr "Seleccionar producto manualmente"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields.selection,name:website_axis_helpdesk_advance.selection__axis_helpdesk_ticket_team__assigning_method__manual
+msgid "Manually"
+msgstr "A mano"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.actions.act_window,name:website_axis_helpdesk_advance.helpdesk_ticket_mass_close_action
+msgid "Mass Update Tickets"
+msgstr "Entradas de actualización masiva"
+
+#. module: website_axis_helpdesk_advance
+#. odoo-javascript
+#: code:addons/website_axis_helpdesk_advance/static/src/xml/helpdesk_ticket_dashboard.xml:0
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__medium_id
+#: model:ir.model.fields.selection,name:website_axis_helpdesk_advance.selection__axis_helpdesk_ticket__priority__1
+#, python-format
+msgid "Medium"
+msgstr "Medio"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.helpdesk_tickets_view_search
+msgid "Medium Priority"
+msgstr "Prioridad media"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__merge_id
+msgid "Merge"
+msgstr "Unir"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.actions.act_window,name:website_axis_helpdesk_advance.merge_ticket_action
+msgid "Merge Tickets"
+msgstr "Fusionar entradas"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.view_wizard_helpdesk_ticket_merge
+msgid "Merged Ticket"
+msgstr "Boleto fusionado"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_ticket_form
+msgid "Merged Tickets"
+msgstr "Entradas fusionadas"
+
+#. module: website_axis_helpdesk_advance
+#. odoo-python
+#: code:addons/website_axis_helpdesk_advance/models/axis_helpdesk_ticket.py:0
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_message_wizard__name
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.message_wizard
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.timesheet_invoice_confirm_form
+#, python-format
+msgid "Message"
+msgstr "Mensaje"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__message_has_error
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_team__message_has_error
+msgid "Message Delivery error"
+msgstr "Error de entrega de mensaje"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_ticket_portal_view
+msgid "Message and communication history"
+msgstr "Historial de mensajes y comunicaciones."
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model,name:website_axis_helpdesk_advance.model_message_wizard
+msgid "Message wizard to display warnings, alert ,success messages"
+msgstr "Asistente de mensajes para mostrar advertencias, alertas y mensajes de éxito."
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__message_ids
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_team__message_ids
+msgid "Messages"
+msgstr "Mensajes"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_sla_policy__priority
+msgid "Minimum Priority"
+msgstr "Prioridad mínima"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_sla_policy__time_minutes
+msgid "Minutes"
+msgstr "Minutos"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_whatsapp_message_wizard__mobile
+msgid "Mobile"
+msgstr "Móvil"
+
+#. module: website_axis_helpdesk_advance
+#. odoo-javascript
+#: code:addons/website_axis_helpdesk_advance/static/src/xml/helpdesk_ticket_dashboard.xml:0
+#, python-format
+msgid "Monthly Tickets"
+msgstr "Entradas Mensuales"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr "Fecha límite de mi actividad"
+
+#. module: website_axis_helpdesk_advance
+#. odoo-javascript
+#: code:addons/website_axis_helpdesk_advance/static/src/xml/helpdesk_ticket_dashboard.xml:0
+#: code:addons/website_axis_helpdesk_advance/static/src/xml/helpdesk_ticket_filter_stage.xml:0
+#, python-format
+msgid "My All tickets"
+msgstr "Mis entradas todas"
+
+#. module: website_axis_helpdesk_advance
+#. odoo-javascript
+#: code:addons/website_axis_helpdesk_advance/static/src/xml/helpdesk_ticket_dashboard.xml:0
+#: code:addons/website_axis_helpdesk_advance/static/src/xml/helpdesk_ticket_filter_stage.xml:0
+#: code:addons/website_axis_helpdesk_advance/static/src/xml/helpdesk_ticket_filter_stage.xml:0
+#, python-format
+msgid "My Closed tickets"
+msgstr "Mis entradas cerradas"
+
+#. module: website_axis_helpdesk_advance
+#. odoo-javascript
+#: code:addons/website_axis_helpdesk_advance/static/src/xml/helpdesk_ticket_dashboard.xml:0
+#: code:addons/website_axis_helpdesk_advance/static/src/xml/helpdesk_ticket_filter_stage.xml:0
+#, python-format
+msgid "My Pending tickets"
+msgstr "Mis entradas pendientes"
+
+#. module: website_axis_helpdesk_advance
+#. odoo-javascript
+#: code:addons/website_axis_helpdesk_advance/static/src/xml/helpdesk_ticket_dashboard.xml:0
+#: model:ir.actions.act_window,name:website_axis_helpdesk_advance.action_helpdesk_ticket_my
+#: model:ir.ui.menu,name:website_axis_helpdesk_advance.axis_helpdesk_my_ticket_menu
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.helpdesk_tickets_view_search
+#, python-format
+msgid "My Tickets"
+msgstr "Mis entradas"
+
+#. module: website_axis_helpdesk_advance
+#. odoo-javascript
+#: code:addons/website_axis_helpdesk_advance/static/src/xml/helpdesk_ticket_dashboard.xml:0
+#: code:addons/website_axis_helpdesk_advance/static/src/xml/helpdesk_ticket_dashboard.xml:0
+#: code:addons/website_axis_helpdesk_advance/static/src/xml/helpdesk_ticket_dashboard.xml:0
+#: code:addons/website_axis_helpdesk_advance/static/src/xml/helpdesk_ticket_dashboard.xml:0
+#, python-format
+msgid "My urgent tickets"
+msgstr "mis tickets urgentes"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_channel__name
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_stage__name
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__name
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_category__name
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_sla_policy__name
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_tag__name
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_team__name
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_type__name
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_helpdesk_invoice_confirm__name
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_helpdesk_ticket_merge__name
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_timesheet_invoice_confirm__name
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_wizard_helpdesk_ticket_merge__name
+msgid "Name"
+msgstr "Nombre"
+
+#. module: website_axis_helpdesk_advance
+#: model:mail.template,name:website_axis_helpdesk_advance.axis_helpdesk_ticket_new_create
+msgid "New Ticket Created"
+msgstr "Nuevo ticket creado"
+
+#. module: website_axis_helpdesk_advance
+#. odoo-python
+#: code:addons/website_axis_helpdesk_advance/controller/portal_ticket.py:0
+#: code:addons/website_axis_helpdesk_advance/controller/portal_ticket.py:0
+#, python-format
+msgid "Newest"
+msgstr "El más nuevo"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__activity_calendar_event_id
+msgid "Next Activity Calendar Event"
+msgstr "Próximo evento del calendario de actividades"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr "Fecha límite para la próxima actividad"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__activity_summary
+msgid "Next Activity Summary"
+msgstr "Resumen de la próxima actividad"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__activity_type_id
+msgid "Next Activity Type"
+msgstr "Siguiente tipo de actividad"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.actions.act_window,help:website_axis_helpdesk_advance.action_helpdesk_ticket_my
+msgid "No tickets found. Let's create one!"
+msgstr "No se encontraron entradas. ¡Creemos uno!"
+
+#. module: website_axis_helpdesk_advance
+#. odoo-python
+#: code:addons/website_axis_helpdesk_advance/controller/portal_ticket.py:0
+#: code:addons/website_axis_helpdesk_advance/controller/portal_ticket.py:0
+#: model:ir.model.fields.selection,name:website_axis_helpdesk_advance.selection__wizard_helpdesk_ticket_mass_close__update_for__none
+#, python-format
+msgid "None"
+msgstr "Ninguno"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_stage__not_start
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__not_start
+msgid "Not Started"
+msgstr "No iniciado"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_sla_policy__note
+msgid "Note"
+msgstr "Nota"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__message_needaction_counter
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_team__message_needaction_counter
+msgid "Number of Actions"
+msgstr "Número de acciones"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__attachment_number
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__ticket_attach__no
+msgid "Number of Attachments"
+msgstr "Número de archivos adjuntos"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__message_has_error_counter
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_team__message_has_error_counter
+msgid "Number of errors"
+msgstr "Número de errores"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,help:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__message_needaction_counter
+#: model:ir.model.fields,help:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_team__message_needaction_counter
+msgid "Number of messages requiring action"
+msgstr "Número de mensajes que requieren acción"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,help:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__message_has_error_counter
+#: model:ir.model.fields,help:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_team__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr "Número de mensajes con error de entrega"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.message_wizard
+msgid "OK"
+msgstr "DE ACUERDO"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields.selection,name:website_axis_helpdesk_advance.selection__helpdesk_sla_status__status__ongoing
+msgid "Ongoing"
+msgstr "En curso"
+
+#. module: website_axis_helpdesk_advance
+#. odoo-python
+#: code:addons/website_axis_helpdesk_advance/controller/portal_ticket.py:0
+#: code:addons/website_axis_helpdesk_advance/controller/portal_ticket.py:0
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.helpdesk_tickets_view_search
+#, python-format
+msgid "Open"
+msgstr "Abierto"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,help:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_team__alias_force_thread_id
+msgid ""
+"Optional ID of a thread (record) to which all incoming messages will be "
+"attached, even if they did not reply to it. If set, this will disable the "
+"creation of new records completely."
+msgstr "ID opcional de un hilo (registro) al que se enviarán todos los mensajes entrantes 
+	adjunto, incluso si no respondieron. Si está configurado, esto desactivará el 
+	creación de nuevos registros completamente."
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.module.category,name:website_axis_helpdesk_advance.module_category_others
+msgid "Other Helpdesk Rights "
+msgstr "Otros derechos del servicio de asistencia técnica"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_ticket_form
+msgid "Other Information"
+msgstr "Otra información"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_ticket_form_view
+msgid "Overall Tickets Status"
+msgstr "Estado general de las entradas"
+
+#. module: website_axis_helpdesk_advance
+#. odoo-javascript
+#: code:addons/website_axis_helpdesk_advance/static/src/xml/helpdesk_ticket_dashboard.xml:0
+#, python-format
+msgid "Overdue"
+msgstr "Atrasado"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_team__alias_parent_model_id
+msgid "Parent Model"
+msgstr "Modelo padre"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_team__alias_parent_thread_id
+msgid "Parent Record Thread ID"
+msgstr "ID del hilo del registro principal"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,help:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_team__alias_parent_model_id
+msgid ""
+"Parent model holding the alias. The model holding the alias reference is not"
+" necessarily the model given by alias_model_id (example: project "
+"(parent_model) and task (model))"
+msgstr "Modelo principal que contiene el alias. El modelo que tiene la referencia de alias no es 
+	necesariamente el modelo dado por alias_model_id (ejemplo: proyecto (parent_model) y tarea (modelo))"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__partner_name
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_team__partner_name
+msgid "Partner"
+msgstr "Pareja"
+
+#. module: website_axis_helpdesk_advance
+#. odoo-javascript
+#: code:addons/website_axis_helpdesk_advance/static/src/xml/helpdesk_ticket_dashboard.xml:0
+#, python-format
+msgid "Pending Tickets"
+msgstr "Entradas pendientes"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,help:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_team__rating_percentage_satisfaction
+msgid "Percentage of happy ratings"
+msgstr "Porcentaje de calificaciones felices"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_ticket_graph_analysis
+msgid "Performance Analysis"
+msgstr "Análisis de rendimiento"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.actions.act_window,name:website_axis_helpdesk_advance.axis_helpdesk_ticket_line_graph
+msgid "Pie Graph"
+msgstr "Gráfico circular"
+
+#. module: website_axis_helpdesk_advance
+#. odoo-javascript
+#: code:addons/website_axis_helpdesk_advance/static/src/js/portal.js:0
+#, python-format
+msgid "Please fill in both the start date and end date."
+msgstr "Por favor complete tanto la fecha de inicio como la fecha de finalización."
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,help:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_team__alias_contact
+msgid ""
+"Policy to post a message on the document using the mailgateway.\n"
+"- everyone: everyone can post\n"
+"- partners: only authenticated partners\n"
+"- followers: only followers of the related document or members of following channels\n"
+msgstr "Política para publicar un mensaje en el documento usando mailgateway.\n - todos: todos pueden publicar\n
+	- socios: solo socios autenticados\n - seguidores: solo seguidores del documento relacionado o miembros de los 	
+		siguientes canales\n"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_ticket_portal_view
+msgid "Poor"
+msgstr "Pobre"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__access_url
+msgid "Portal Access URL"
+msgstr "URL de acceso al portal"
+
+#. module: website_axis_helpdesk_advance
+#. odoo-javascript
+#: code:addons/website_axis_helpdesk_advance/static/src/xml/helpdesk_ticket_filter_stage.xml:0
+#, python-format
+msgid "Previous Month"
+msgstr "Mes anterior"
+
+#. module: website_axis_helpdesk_advance
+#. odoo-javascript
+#: code:addons/website_axis_helpdesk_advance/static/src/xml/helpdesk_ticket_filter_stage.xml:0
+#, python-format
+msgid "Previous Week"
+msgstr "Semana anterior"
+
+#. module: website_axis_helpdesk_advance
+#. odoo-javascript
+#: code:addons/website_axis_helpdesk_advance/static/src/xml/helpdesk_ticket_filter_stage.xml:0
+#, python-format
+msgid "Previous Year"
+msgstr "Año anterior"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_helpdesk_ticket_invoice__price_unit
+msgid "Price"
+msgstr "Precio"
+
+#. module: website_axis_helpdesk_advance
+#. odoo-javascript
+#: code:addons/website_axis_helpdesk_advance/static/src/xml/helpdesk_ticket_dashboard.xml:0
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.helpdesk_create_ticket_from_front_end
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.view_helpdesk_ticket_portal
+#, python-format
+msgid "Priority"
+msgstr "Prioridad"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_helpdesk_ticket_invoice__product_id
+msgid "Product"
+msgstr "Producto"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__product_boolean
+msgid "Product Boolean"
+msgstr "Producto booleano"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__product_ids
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_res_company__product_ids
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_res_config_settings__product_ids
+msgid "Products"
+msgstr "Productos"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model,name:website_axis_helpdesk_advance.model_project_project
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__project_project_id
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.report_ticket
+msgid "Project"
+msgstr "Proyecto"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__purchase_id
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_ticket_form
+msgid "Purchase"
+msgstr "Compra"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__purchase_count
+msgid "Purchase Count"
+msgstr "Recuento de compras"
+
+#. module: website_axis_helpdesk_advance
+#: model:res.groups,name:website_axis_helpdesk_advance.group_purchase_helpdesk_ticket
+msgid "Purchase Helpdesk Ticket."
+msgstr "Compra de ticket de asistencia técnica."
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model,name:website_axis_helpdesk_advance.model_purchase_order
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__purchase_order_id
+msgid "Purchase Order"
+msgstr "Orden de compra"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_purchase_order__purchase_ticket_id
+msgid "Purchase Ticket"
+msgstr "Boleto de compra"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__purchase_order_ids
+msgid "Purchase associated to this Ticket"
+msgstr "Compra asociada a este billete"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_helpdesk_ticket_invoice__quantity
+msgid "Quantity"
+msgstr "Cantidad"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields.selection,name:website_axis_helpdesk_advance.selection__axis_helpdesk_ticket_team__assigning_method__randomly
+msgid "Randomly"
+msgstr "Al azar"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_project_project__rate_per_hour
+msgid "Rate Per Hour"
+msgstr "Tarifa por hora"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__rating_avg_text
+msgid "Rating Avg Text"
+msgstr "Texto promedio de calificación"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__rating_last_feedback
+msgid "Rating Last Feedback"
+msgstr "Calificación Último comentario"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__rating_last_image
+msgid "Rating Last Image"
+msgstr "Calificación Última imagen"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__rating_last_value
+msgid "Rating Last Value"
+msgstr "Calificación último valor"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__rating_percentage_satisfaction
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_team__rating_percentage_satisfaction
+msgid "Rating Satisfaction"
+msgstr "Calificación de satisfacción"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__rating_last_text
+msgid "Rating Text"
+msgstr "Texto de calificación"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__rating_count
+msgid "Rating count"
+msgstr "Recuento de calificaciones"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__rating_ids
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_team__rating_ids
+msgid "Ratings"
+msgstr "Calificaciones"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_team__use_rating
+msgid "Ratings on tickets"
+msgstr "Calificaciones en boletos"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__re_open_bool
+msgid "Re Open Bool"
+msgstr "Volver a abrir bool"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_ticket_sla_policy_form
+msgid "Reach In"
+msgstr "Llegar hacia adentro"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields.selection,name:website_axis_helpdesk_advance.selection__helpdesk_sla_status__status__reached
+msgid "Reached"
+msgstr "Alcanzó"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_helpdesk_sla_status__reached_datetime
+msgid "Reached Date"
+msgstr "Fecha alcanzada"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields.selection,name:website_axis_helpdesk_advance.selection__axis_helpdesk_ticket_sla_policy__target_type__stage
+msgid "Reaching Stage"
+msgstr "Llegando al escenario"
+
+#. module: website_axis_helpdesk_advance
+#. odoo-python
+#: code:addons/website_axis_helpdesk_advance/models/axis_helpdesk_ticket.py:0
+#: model:axis.helpdesk.ticket,helpdesk_ticket_done:website_axis_helpdesk_advance.helpdesk_ticket_1
+#: model:axis.helpdesk.ticket,helpdesk_ticket_done:website_axis_helpdesk_advance.helpdesk_ticket_2
+#: model:axis.helpdesk.ticket,helpdesk_ticket_done:website_axis_helpdesk_advance.helpdesk_ticket_3
+#: model:axis.helpdesk.ticket,helpdesk_ticket_done:website_axis_helpdesk_advance.helpdesk_ticket_4
+#: model:axis.helpdesk.ticket,helpdesk_ticket_done:website_axis_helpdesk_advance.helpdesk_ticket_5
+#: model:axis.helpdesk.ticket,helpdesk_ticket_done:website_axis_helpdesk_advance.helpdesk_ticket_6
+#: model:axis.helpdesk.ticket,helpdesk_ticket_done:website_axis_helpdesk_advance.helpdesk_ticket_7
+#: model:axis.helpdesk.ticket,helpdesk_ticket_done:website_axis_helpdesk_advance.helpdesk_ticket_8
+#: model:axis.helpdesk.ticket,helpdesk_ticket_done:website_axis_helpdesk_advance.helpdesk_ticket_9
+#, python-format
+msgid "Ready"
+msgstr "Listo"
+
+#. module: website_axis_helpdesk_advance
+#. odoo-javascript
+#: code:addons/website_axis_helpdesk_advance/static/src/xml/helpdesk_ticket_filter_stage.xml:0
+#, python-format
+msgid "Ready to boost your customer service?"
+msgstr "¿Listo para mejorar su servicio al cliente?"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.helpdesk_ticket_search
+msgid "Rechercher"
+msgstr "Investigador"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_whatsapp_message_wizard__user_id
+msgid "Recipient"
+msgstr "Beneficiario"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_team__alias_force_thread_id
+msgid "Record Thread ID"
+msgstr "Registrar ID de hilo"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields.selection,name:website_axis_helpdesk_advance.selection__axis_helpdesk_ticket__helpdesk_ticket_state__blocked
+msgid "Red"
+msgstr "Rojo"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__helpdesk_ticket_blocked
+msgid "Red Kanban Label"
+msgstr "Etiqueta Kanban roja"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.view_helpdesk_ticket_portal
+msgid "Ref"
+msgstr "Árbitro"
+
+#. module: website_axis_helpdesk_advance
+#. odoo-python
+#: code:addons/website_axis_helpdesk_advance/controller/portal_ticket.py:0
+#: code:addons/website_axis_helpdesk_advance/controller/portal_ticket.py:0
+#, python-format
+msgid "Reference"
+msgstr "Referencia"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__res_config_id
+msgid "Res Config"
+msgstr "Configuración de resolución"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__activity_user_id
+msgid "Responsible User"
+msgstr "Usuario responsable"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.report_ticket
+msgid "Responsible:"
+msgstr "Responsable:"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.helpdesk_ticket_view_kanban
+msgid "Restore"
+msgstr "Restaurar"
+
+#. module: website_axis_helpdesk_advance
+#. odoo-javascript
+#: code:addons/website_axis_helpdesk_advance/static/src/xml/helpdesk_ticket_dashboard.xml:0
+#, python-format
+msgid "SLA Closed"
+msgstr "SLA cerrado"
+
+#. module: website_axis_helpdesk_advance
+#. odoo-javascript
+#: code:addons/website_axis_helpdesk_advance/static/src/xml/helpdesk_ticket_dashboard.xml:0
+#, python-format
+msgid "SLA Complete"
+msgstr "SLA completo"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.report_ticket
+msgid "SLA Deadline:"
+msgstr "Plazo del SLA:"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.helpdesk_tickets_view_search
+msgid "SLA Failed"
+msgstr "Error del SLA"
+
+#. module: website_axis_helpdesk_advance
+#. odoo-javascript
+#: code:addons/website_axis_helpdesk_advance/static/src/xml/helpdesk_ticket_dashboard.xml:0
+#, python-format
+msgid "SLA Missed"
+msgstr "SLA perdido"
+
+#. module: website_axis_helpdesk_advance
+#. odoo-javascript
+#: code:addons/website_axis_helpdesk_advance/static/src/xml/helpdesk_ticket_dashboard.xml:0
+#, python-format
+msgid "SLA Pending"
+msgstr "SLA pendiente"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.ui.menu,name:website_axis_helpdesk_advance.axis_helpdesk_ticket_sla_policy_menu
+msgid "SLA Policy"
+msgstr "Política de SLA"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__helpdesk_sla_state
+msgid "SLA Status"
+msgstr "Estado del SLA"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__helpdesk_sla_deadline
+msgid "SLA deadline"
+msgstr "Fecha límite del SLA"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__sla_expired
+msgid "SLA expired"
+msgstr "SLA expiró"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__sla_ids
+msgid "SLAs"
+msgstr "SLA"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__message_has_sms_error
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_team__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr "Error de entrega de SMS"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__sale_id
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_ticket_form
+msgid "Sale"
+msgstr "Venta"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__sale_count
+msgid "Sale Count"
+msgstr "Recuento de ventas"
+
+#. module: website_axis_helpdesk_advance
+#: model:res.groups,name:website_axis_helpdesk_advance.group_sale_helpdesk_ticket
+msgid "Sale Helpdesk Ticket."
+msgstr "Venta de ticket de mesa de ayuda."
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__sale_order_id
+msgid "Sale Order"
+msgstr "Orden de venta"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_sale_order__sale_ticket_id
+msgid "Sale Ticket"
+msgstr "Boleto de venta"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__sale_order_ids
+msgid "Sale associated to this Ticket"
+msgstr "Venta asociada a este billete"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model,name:website_axis_helpdesk_advance.model_sale_order
+msgid "Sales Order"
+msgstr "Orden de venta"
+
+#. module: website_axis_helpdesk_advance
+#. odoo-python
+#: code:addons/website_axis_helpdesk_advance/controller/portal_ticket.py:0
+#, python-format
+msgid "Salesperson"
+msgstr "Vendedor"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.view_helpdesk_ticket_portal
+msgid "Search"
+msgstr "Buscar"
+
+#. module: website_axis_helpdesk_advance
+#. odoo-python
+#: code:addons/website_axis_helpdesk_advance/controller/portal_ticket.py:0
+#: code:addons/website_axis_helpdesk_advance/controller/portal_ticket.py:0
+#, python-format
+msgid "Search <span class=\"nolabel\"> (in Content)</span>"
+msgstr "Buscar <span class=\"nolabel\"> (en Contenido)</span>"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.helpdesk_ticket_search
+msgid "Search Status"
+msgstr "Estado de búsqueda"
+
+#. module: website_axis_helpdesk_advance
+#: model:website.menu,name:website_axis_helpdesk_advance.menu_search_ticket
+msgid "Search Tickets"
+msgstr "Buscar entradas"
+
+#. module: website_axis_helpdesk_advance
+#. odoo-python
+#: code:addons/website_axis_helpdesk_advance/controller/portal_ticket.py:0
+#: code:addons/website_axis_helpdesk_advance/controller/portal_ticket.py:0
+#, python-format
+msgid "Search in All"
+msgstr "Buscar en todos"
+
+#. module: website_axis_helpdesk_advance
+#. odoo-python
+#: code:addons/website_axis_helpdesk_advance/controller/portal_ticket.py:0
+#: code:addons/website_axis_helpdesk_advance/controller/portal_ticket.py:0
+#, python-format
+msgid "Search in Customer"
+msgstr "Buscar en Cliente"
+
+#. module: website_axis_helpdesk_advance
+#. odoo-python
+#: code:addons/website_axis_helpdesk_advance/controller/portal_ticket.py:0
+#: code:addons/website_axis_helpdesk_advance/controller/portal_ticket.py:0
+#, python-format
+msgid "Search in Messages"
+msgstr "Buscar en Mensajes"
+
+#. module: website_axis_helpdesk_advance
+#. odoo-python
+#: code:addons/website_axis_helpdesk_advance/controller/portal_ticket.py:0
+#: code:addons/website_axis_helpdesk_advance/controller/portal_ticket.py:0
+#, python-format
+msgid "Search in Reference"
+msgstr "Buscar en Referencia"
+
+#. module: website_axis_helpdesk_advance
+#. odoo-python
+#: code:addons/website_axis_helpdesk_advance/controller/portal_ticket.py:0
+#: code:addons/website_axis_helpdesk_advance/controller/portal_ticket.py:0
+#, python-format
+msgid "Search in Stage"
+msgstr "Buscar en el escenario"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__access_token
+msgid "Security Token"
+msgstr "Ficha de seguridad"
+
+#. module: website_axis_helpdesk_advance
+#. odoo-javascript
+#: code:addons/website_axis_helpdesk_advance/static/src/xml/helpdesk_ticket_filter_stage.xml:0
+#, python-format
+msgid "Select Date"
+msgstr "Seleccionar fecha"
+
+#. module: website_axis_helpdesk_advance
+#. odoo-javascript
+#: code:addons/website_axis_helpdesk_advance/static/src/xml/helpdesk_ticket_filter_stage.xml:0
+#, python-format
+msgid "Select Date:"
+msgstr "Seleccionar fecha:"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.view_res_config_form_inherit_helpdesk
+msgid "Select Products"
+msgstr "Seleccionar productos"
+
+#. module: website_axis_helpdesk_advance
+#. odoo-python
+#: code:addons/website_axis_helpdesk_advance/wizard/helpdesk_merge_wizard.py:0
+#, python-format
+msgid "Selected Ticket Is Already Merge"
+msgstr "El ticket seleccionado ya está fusionado"
+
+#. module: website_axis_helpdesk_advance
+#. odoo-python
+#: code:addons/website_axis_helpdesk_advance/wizard/helpdesk_merge_wizard.py:0
+#, python-format
+msgid ""
+"Selected Ticket Is Already in Cancelled State Please Select Ticket Not In "
+"Cancelled State"
+msgstr "El boleto elegido ya está en estado cancelado. Seleccione el boleto que no está en Estado cancelado"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.whatsapp_send_msg_wizard
+msgid "Send"
+msgstr "Enviar"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_ticket_form
+msgid "Send By Whatsapp Direct"
+msgstr "Enviar Por Whatsapp Directo"
+
+#. module: website_axis_helpdesk_advance
+#. odoo-javascript
+#: code:addons/website_axis_helpdesk_advance/static/src/xml/helpdesk_ticket_filter_stage.xml:0
+#, python-format
+msgid "Send an email to"
+msgstr "Enviar un correo electrónico a"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_stage__sequence
+msgid "Sequence"
+msgstr "Secuencia"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_ticket_form
+msgid "Set to Close"
+msgstr "Establecer para cerrar"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.actions.act_window,name:website_axis_helpdesk_advance.website_helpdesk_settings_action
+#: model:ir.ui.menu,name:website_axis_helpdesk_advance.menu_website_helpdesk_general_settings
+msgid "Settings"
+msgstr "Ajustes"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.actions.server,name:website_axis_helpdesk_advance.model_helpdesk_ticket_action_share
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.helpdesk_ticket_view_kanban
+msgid "Share"
+msgstr "Compartir"
+
+#. module: website_axis_helpdesk_advance
+#: model:res.groups,name:website_axis_helpdesk_advance.group_use_sla
+msgid "Show SLA Policies"
+msgstr "Mostrar políticas de SLA"
+
+#. module: website_axis_helpdesk_advance
+#: model:website.menu,name:website_axis_helpdesk_advance.menu_show_ticket
+msgid "Show Tickets"
+msgstr "Entradas para espectáculos"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.helpdesk_tickets_view_search
+msgid "Show all records which has next action date is before today"
+msgstr "Mostrar todos los registros cuya fecha de próxima acción sea anterior a hoy"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_helpdesk_sla_status__sla_id
+msgid "Sla"
+msgstr "sla"
+
+#. module: website_axis_helpdesk_advance
+#. odoo-javascript
+#: code:addons/website_axis_helpdesk_advance/static/src/xml/helpdesk_ticket_filter_stage.xml:0
+#, python-format
+msgid "Solved"
+msgstr "Resuelto"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__source_id
+msgid "Source"
+msgstr "Fuente"
+
+#. module: website_axis_helpdesk_advance
+#. odoo-javascript
+#. odoo-python
+#: code:addons/website_axis_helpdesk_advance/controller/portal_ticket.py:0
+#: code:addons/website_axis_helpdesk_advance/controller/portal_ticket.py:0
+#: code:addons/website_axis_helpdesk_advance/controller/portal_ticket.py:0
+#: code:addons/website_axis_helpdesk_advance/controller/portal_ticket.py:0
+#: code:addons/website_axis_helpdesk_advance/static/src/xml/helpdesk_ticket_filter_stage.xml:0
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__helpdesk_stage_id
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_sla_policy__helpdesk_stage_id
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_helpdesk_sla_status__sla_stage_id
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_wizard_helpdesk_ticket_mass_close__stage_id
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_wizard_helpdesk_ticket_merge__stage_id
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.helpdesk_tickets_view_search
+#, python-format
+msgid "Stage"
+msgstr "Escenario"
+
+#. module: website_axis_helpdesk_advance
+#. odoo-javascript
+#: code:addons/website_axis_helpdesk_advance/static/src/xml/helpdesk_ticket_filter_stage.xml:0
+#, python-format
+msgid "Stage:"
+msgstr "Escenario:"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.actions.act_window,name:website_axis_helpdesk_advance.axis_helpdesk_stage_action
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_team__stage_ids
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_res_company__helpdesk_stage_ids
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_res_config_settings__helpdesk_stage_ids
+#: model:ir.ui.menu,name:website_axis_helpdesk_advance.helpdesk_ticket_stage_menu
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk__stage_form
+msgid "Stages"
+msgstr "Etapas"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,help:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_team__stage_ids
+msgid ""
+"Stages the team will use. This team's tickets will only be able to be in "
+"these stages."
+msgstr "Etapas que utilizará el equipo. Las entradas de este equipo sólo podrán estar en estas etapas."
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.view_helpdesk_ticket_portal
+msgid "Start Date:"
+msgstr "Fecha de inicio:"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_helpdesk_sla_status__status
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_res_company__manage_product_selection
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_res_config_settings__manage_product_selection
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.view_helpdesk_ticket_portal
+msgid "Status"
+msgstr "Estado"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,help:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr "Estado basado en actividades\n Atrasado: la fecha de vencimiento ya pasó\n Hoy: la fecha de la actividad es hoy\n Planificado: actividades futuras."
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__duration_tracking
+msgid "Status time"
+msgstr "Hora de estado"
+
+#. module: website_axis_helpdesk_advance
+#. odoo-python
+#: code:addons/website_axis_helpdesk_advance/controller/portal_ticket.py:0
+#: code:addons/website_axis_helpdesk_advance/controller/portal_ticket.py:0
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.helpdesk_create_ticket_from_front_end
+#, python-format
+msgid "Subject"
+msgstr "Sujeto"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_ticket_portal_view
+msgid "Submit Your Rating"
+msgstr "Envíe su calificación"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_ticket_portal_view
+msgid "Submit Your Review"
+msgstr "Envíe su reseña"
+
+#. module: website_axis_helpdesk_advance
+#. odoo-javascript
+#: code:addons/website_axis_helpdesk_advance/static/src/xml/helpdesk_ticket_dashboard.xml:0
+#, python-format
+msgid "Success Rate"
+msgstr "Tasa de éxito"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__ticket_sla_policy_success
+msgid "Success SLA Policy"
+msgstr "Política de SLA de éxito"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.actions.act_window,name:website_axis_helpdesk_advance.axis_helpdesk_ticket_summary
+#: model:ir.ui.menu,name:website_axis_helpdesk_advance.axis_helpdesk_sumary_view
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_ticket_form_view
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.helpdesk_create_ticket_from_front_end
+msgid "Summary"
+msgstr "Resumen"
+
+#. module: website_axis_helpdesk_advance
+#: model:res.groups,name:website_axis_helpdesk_advance.group_helpdesk_ticket_admin
+msgid "Support Admin"
+msgstr "Administrador de soporte"
+
+#. module: website_axis_helpdesk_advance
+#: model:res.groups,name:website_axis_helpdesk_advance.group_helpdesk_ticket_manager
+msgid "Support Manager"
+msgstr "Gerente de soporte"
+
+#. module: website_axis_helpdesk_advance
+#: model:mail.template,name:website_axis_helpdesk_advance.ticket_template
+msgid "Support Ticket Email"
+msgstr "Correo electrónico del ticket de soporte"
+
+#. module: website_axis_helpdesk_advance
+#: model:res.groups,name:website_axis_helpdesk_advance.group_helpdesk_ticket_users
+msgid "Support User"
+msgstr "Usuario de soporte"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__tag_ids
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_sla_policy__tag_ids
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_wizard_helpdesk_ticket_merge__tag_ids
+msgid "Tags"
+msgstr "Etiquetas"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_ticket_sla_policy_form
+msgid "Target"
+msgstr "Objetivo"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_res_users__helpdesk_ticket_target_rating
+msgid "Target Customer Rating"
+msgstr "Calificación del cliente objetivo"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_res_users__helpdesk_ticket_target_success
+msgid "Target Success Rate"
+msgstr "Tasa de éxito objetivo"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_res_users__helpdesk_ticket_target_closed
+msgid "Target Tickets to Close"
+msgstr "Boletos de destino para cerrar"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_sla_policy__target_type
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_helpdesk_sla_status__target_type
+msgid "Target Type"
+msgstr "Tipo de objetivo"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_ticket_form
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.report_ticket
+msgid "Task"
+msgstr "Tarea"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_helpdesk_ticket_invoice__tax
+msgid "Tax"
+msgstr "Impuesto"
+
+#. module: website_axis_helpdesk_advance
+#. odoo-javascript
+#: code:addons/website_axis_helpdesk_advance/static/src/xml/helpdesk_ticket_filter_stage.xml:0
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_stage__team_ids
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_sla_policy__team_id
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.helpdesk_tickets_view_search
+#, python-format
+msgid "Team"
+msgstr "Equipo"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.actions.act_window,name:website_axis_helpdesk_advance.axis_helpdesk_ticket_team_graph
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_ticket_form_view
+msgid "Team Graph"
+msgstr "Gráfico del equipo"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_team__team_leader_id
+msgid "Team Leader"
+msgstr "Jefe de equipo"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_team__res_user_ids
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_ticket_team_form
+msgid "Team Members"
+msgstr "Miembros del equipo"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__team_sla
+msgid "Team SLA"
+msgstr "Equipo SLA"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_team__visibility_res_user_ids
+msgid "Team Visibility"
+msgstr "Visibilidad del equipo"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.actions.act_window,name:website_axis_helpdesk_advance.helpdesk_ticket_helpdesk_team
+#: model:ir.ui.menu,name:website_axis_helpdesk_advance.helpdesk_ticket_team_menu
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.index
+msgid "Teams"
+msgstr "equipos"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.rating_submit
+msgid "Thank You For Submit Your Review"
+msgstr "Gracias por enviar su reseña"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.view_helpdesk_ticket_sla_policy_success
+msgid ""
+"Thank you for submitting your issue, our team will get right on\n"
+"                                it!"
+msgstr "Gracias por enviar su problema, nuestro equipo se pondrá manos a la obra\n ¡él!"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,help:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_team__alias_model_id
+msgid ""
+"The model (Odoo Document Kind) to which this alias corresponds. Any incoming"
+" email that does not reply to an existing record will cause the creation of "
+"a new record of this model (e.g. a Project Task)"
+msgstr "El modelo (Odoo Document Kind) al que corresponde este alias. Cualquier entrante 
+ 		 El correo electrónico que no responde a un registro existente provocará la creación de 
+		un nuevo registro de este modelo (por ejemplo, una tarea de proyecto)"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,help:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_team__alias_name
+msgid ""
+"The name of the email alias, e.g. 'jobs' if you want to catch emails for "
+"<jobs@example.odoo.com>"
+msgstr "El nombre del alias de correo electrónico, p. 'trabajos' si desea recibir correos electrónicos para 
+		<trabajos@ejemplo.odoo.com>"
+
+#. module: website_axis_helpdesk_advance
+#. odoo-python
+#: code:addons/website_axis_helpdesk_advance/controller/portal_ticket.py:0
+#, python-format
+msgid "The team does not allow ticket closing through portal"
+msgstr "El equipo no permite cierre de tickets a través del portal"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.view_helpdesk_ticket_portal
+msgid "There are currently no Ticket for your account."
+msgstr "Actualmente no hay ningún Ticket para su cuenta."
+
+#. module: website_axis_helpdesk_advance
+#. odoo-javascript
+#: code:addons/website_axis_helpdesk_advance/static/src/xml/helpdesk_ticket_dashboard.xml:0
+#, python-format
+msgid "This Month"
+msgstr "este mes"
+
+#. module: website_axis_helpdesk_advance
+#. odoo-javascript
+#: code:addons/website_axis_helpdesk_advance/static/src/xml/helpdesk_ticket_dashboard.xml:0
+#, python-format
+msgid "This Week"
+msgstr "Esta semana"
+
+#. module: website_axis_helpdesk_advance
+#. odoo-javascript
+#: code:addons/website_axis_helpdesk_advance/static/src/xml/helpdesk_ticket_dashboard.xml:0
+#, python-format
+msgid "This Year"
+msgstr "este año"
+
+#. module: website_axis_helpdesk_advance
+#. odoo-javascript
+#: code:addons/website_axis_helpdesk_advance/static/src/xml/helpdesk_ticket_filter_stage.xml:0
+#, python-format
+msgid "This dashboard will activate once you have created your first ticket."
+msgstr "Este panel se activará una vez que haya creado su primer ticket."
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,help:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__campaign_id
+msgid ""
+"This is a name that helps you keep track of your different campaign efforts,"
+" e.g. Fall_Drive, Christmas_Special"
+msgstr "Este es un nombre que le ayuda a realizar un seguimiento de los diferentes esfuerzos de su campaña,
+		por ejemplo, Fall_Drive, Christmas_Special"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,help:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__medium_id
+msgid "This is the method of delivery, e.g. Postcard, Email, or Banner Ad"
+msgstr "Este es el método de entrega, p.e. Postal, correo electrónico o anuncio publicitario"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,help:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__source_id
+msgid ""
+"This is the source of the link, e.g. Search Engine, another domain, or name "
+"of email list"
+msgstr "Esta es la fuente del enlace, p.e. Motor de búsqueda, otro dominio o nombre 
+		de la lista de correo electrónico"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_account_analytic_line__ticket_id
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_helpdesk_invoice_confirm__ticket_id
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_helpdesk_sla_status__ticket_id
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_helpdesk_ticket_merge__ticket_id
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_helpdesk_ticket_merge__ticket_ids
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.tickets_followup
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.view_account_move_ticket_inherit
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.view_crm_lead_ticket_inherit
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.view_order_ticket_inherit
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.view_purchase_order_ticket_inherit
+msgid "Ticket"
+msgstr "Boleto"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_team__assigning_method
+msgid "Ticket Assigment Method"
+msgstr "Método de asignación de boletos"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_account_bank_statement_line__ticket_count
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_account_move__ticket_count
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_account_payment__ticket_count
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__ticket_count
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_crm_lead__ticket_count
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_purchase_order__ticket_count
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_sale_order__ticket_count
+msgid "Ticket Count"
+msgstr "Conteo de boletos"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.view_res_config_form_inherit_helpdesk
+msgid "Ticket Dashboard Settings"
+msgstr "Configuración del panel de tickets"
+
+#. module: website_axis_helpdesk_advance
+#. odoo-javascript
+#: code:addons/website_axis_helpdesk_advance/static/src/xml/helpdesk_ticket_dashboard.xml:0
+#, python-format
+msgid "Ticket Due Time"
+msgstr "Hora de vencimiento del boleto"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.helpdesk_tickets_view_search
+msgid "Ticket ID"
+msgstr "ID del billete"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__ticket_invoice_ids
+msgid "Ticket Invoice"
+msgstr "Factura de boleto"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_helpdesk_ticket_merge__ticket_merge_id
+msgid "Ticket Merge"
+msgstr "Fusión de tickets"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.view_helpdesk_ticket_portal
+msgid "Ticket No."
+msgstr "Boleto No."
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.helpdesk_ticket_search
+msgid "Ticket Number"
+msgstr "Número de billete"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__priority
+msgid "Ticket Priority"
+msgstr "Prioridad de entrada"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__reopened_desc
+msgid "Ticket Reopened Reason"
+msgstr "Motivo de la reapertura del billete"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model,name:website_axis_helpdesk_advance.model_helpdesk_sla_status
+msgid "Ticket SLA Status"
+msgstr "Estado del SLA del ticket"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_stage_search
+msgid "Ticket Stage Search"
+msgstr "Búsqueda de entradas de escenario"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.view_helpdesk_ticket_stage_tree
+msgid "Ticket Stages"
+msgstr "Etapas de entradas"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.helpdesk_ticket_search
+msgid "Ticket Status"
+msgstr "Estado del billete"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.actions.act_window,name:website_axis_helpdesk_advance.axis_helpdesk_ticket_tag_action
+#: model:ir.ui.menu,name:website_axis_helpdesk_advance.axis_helpdesk_ticket_tag_menu
+msgid "Ticket Tags"
+msgstr "Etiquetas de boletos"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__helpdesk_ticket_type_id
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_sla_policy__ticket_type_id
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_team__helpdesk_type_ids
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_wizard_helpdesk_ticket_merge__ticket_type_id
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_ticket_type_form
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.helpdesk_create_ticket_from_front_end
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.helpdesk_tickets_view_search
+msgid "Ticket Type"
+msgstr "Tipo de billete"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.actions.act_window,name:website_axis_helpdesk_advance.action_axis_helpdesk_ticket_type
+#: model:ir.ui.menu,name:website_axis_helpdesk_advance.axis_helpdesk_ticket_type
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_ticket_type_tree
+msgid "Ticket Types"
+msgstr "Tipos de entradas"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_crm_lead__crm_ticket_ids
+msgid "Ticket associated to this CRM Lead"
+msgstr "Ticket asociado a este cliente potencial de CRM"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_purchase_order__purchase_ticket_ids
+msgid "Ticket associated to this purchase"
+msgstr "Boleto asociado a esta compra"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_account_bank_statement_line__account_move_ticket_ids
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_account_move__account_move_ticket_ids
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_account_payment__account_move_ticket_ids
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_sale_order__ticket_ids
+msgid "Ticket associated to this sale"
+msgstr "Entrada asociada a esta venta"
+
+#. module: website_axis_helpdesk_advance
+#. odoo-python
+#: code:addons/website_axis_helpdesk_advance/controller/portal_ticket.py:0
+#, python-format
+msgid "Ticket closed by the customer"
+msgstr "Boleto cerrado por el cliente"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_team__allow_portal_ticket_closing
+msgid "Ticket closing"
+msgstr "Cierre de entradas"
+
+#. module: website_axis_helpdesk_advance
+#. odoo-javascript
+#: code:addons/website_axis_helpdesk_advance/static/src/xml/helpdesk_ticket_filter_stage.xml:0
+#, python-format
+msgid "Ticket no"
+msgstr "Número de billete"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__number
+msgid "Ticket number"
+msgstr "Número de billete"
+
+#. module: website_axis_helpdesk_advance
+#: model:mail.template,name:website_axis_helpdesk_advance.assigned_request_email_template
+msgid "Ticket: Assigned Template"
+msgstr "Ticket: Plantilla Asignada"
+
+#. module: website_axis_helpdesk_advance
+#: model:mail.template,name:website_axis_helpdesk_advance.rating_ticket_request_email_template
+msgid "Ticket: Rating Request (requires rating enabled on team)"
+msgstr "Ticket: Solicitud de calificación (requiere calificación habilitada en el equipo)"
+
+#. module: website_axis_helpdesk_advance
+#. odoo-javascript
+#: code:addons/website_axis_helpdesk_advance/static/src/xml/helpdesk_ticket_dashboard.xml:0
+#: code:addons/website_axis_helpdesk_advance/static/src/xml/helpdesk_ticket_dashboard.xml:0
+#: code:addons/website_axis_helpdesk_advance/static/src/xml/helpdesk_ticket_dashboard.xml:0
+#: code:addons/website_axis_helpdesk_advance/static/src/xml/helpdesk_ticket_dashboard.xml:0
+#: model:ir.actions.act_window,name:website_axis_helpdesk_advance.axis_helpdesk_ticket_action
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__ticket_ids
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_team__helpdesk_ticket_ids
+#: model:ir.ui.menu,name:website_axis_helpdesk_advance.axis_helpdesk_ticket_menu
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.portal_my_home_helpdesk_ticket
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.portal_my_home_menu_helpdesk
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.view_helpdesk_ticket_portal
+#, python-format
+msgid "Tickets"
+msgstr "Entradas"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_ticket_form_view
+msgid "Tickets List"
+msgstr "Lista de entradas"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.helpdesk_tickets_view_search
+msgid "Tickets Search"
+msgstr "Búsqueda de entradas"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__closed_hours
+msgid "Time to close (hours)"
+msgstr "Hora de cierre (horas)"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__assign_hours
+msgid "Time to first assignation (hours)"
+msgstr "Tiempo hasta la primera asignación (horas"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_account_bank_statement_line__timesheet_id
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_account_move__timesheet_id
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_account_payment__timesheet_id
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__ticket_timesheet_ids
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_ticket_form
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.report_ticket
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.view_account_move_ticket_inherit
+msgid "Timesheet"
+msgstr "Hoja de horas"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_account_bank_statement_line__inv_timesheet_count
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_account_move__inv_timesheet_count
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_account_payment__inv_timesheet_count
+msgid "Timesheet Count"
+msgstr "Recuento de hojas de horas"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_account_bank_statement_line__inv_timesheet_id
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_account_move__inv_timesheet_id
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_account_payment__inv_timesheet_id
+msgid "Timsheet"
+msgstr "Hoja de horas"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.view_helpdesk_ticket_portal
+msgid "Title"
+msgstr "Título"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.actions.act_window,help:website_axis_helpdesk_advance.helpdesk_ticket_action_main
+msgid ""
+"To get things done, use activities and status on tickets.\n"
+"                <br>\n"
+"                Chat in real time or by email to collaborate efficiently."
+msgstr "Para hacer las cosas, utilice las actividades y el estado de los tickets.\n  <br>\n
+	Chatea en tiempo real o por correo electrónico para colaborar de manera eficiente."
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.actions.act_window,help:website_axis_helpdesk_advance.action_helpdesk_ticket_my
+msgid ""
+"To get things done, use activities and status on tickets. <br>\n"
+"                Chat in real time or by email to collaborate efficiently."
+msgstr "Para hacer las cosas, utilice las actividades y el estado de los tickets. <br>\n Chatea en tiempo real o por 		correo electrónico para colaborar de manera eficiente."
+
+#. module: website_axis_helpdesk_advance
+#. odoo-javascript
+#: code:addons/website_axis_helpdesk_advance/static/src/xml/helpdesk_ticket_dashboard.xml:0
+#: code:addons/website_axis_helpdesk_advance/static/src/xml/helpdesk_ticket_dashboard.xml:0
+#: code:addons/website_axis_helpdesk_advance/static/src/xml/helpdesk_ticket_filter_stage.xml:0
+#, python-format
+msgid "Today"
+msgstr "Hoy"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.helpdesk_tickets_view_search
+msgid "Today Activities"
+msgstr "Actividades de hoy"
+
+#. module: website_axis_helpdesk_advance
+#. odoo-javascript
+#: code:addons/website_axis_helpdesk_advance/static/src/xml/helpdesk_ticket_dashboard.xml:0
+#, python-format
+msgid "Total"
+msgstr "Total"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.actions.act_window,name:website_axis_helpdesk_advance.axis_helpdesk_ticket_summary_tree
+msgid "Tree"
+msgstr "Árbol"
+
+#. module: website_axis_helpdesk_advance
+#. odoo-javascript
+#: code:addons/website_axis_helpdesk_advance/static/src/xml/helpdesk_ticket_filter_stage.xml:0
+#, python-format
+msgid "Type"
+msgstr "Tipo"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_type__type_based_on
+msgid "Type Based On"
+msgstr "Tipo basado en"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,help:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr "Tipo de actividad de excepción registrada."
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_team__portal_rating_url
+msgid "URL to Submit an Issue"
+msgstr "URL para enviar un problema"
+
+#. module: website_axis_helpdesk_advance
+#. odoo-python
+#: code:addons/website_axis_helpdesk_advance/controller/portal_ticket.py:0
+#: code:addons/website_axis_helpdesk_advance/controller/portal_ticket.py:0
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.helpdesk_tickets_view_search
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.view_helpdesk_ticket_portal
+#, python-format
+msgid "Unassigned"
+msgstr "No asignado"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.helpdesk_tickets_view_search
+msgid "Unread Messages"
+msgstr ""
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.helpdesk_tickets_view_search
+msgid "Upcoming SLA Fail"
+msgstr "Próximo fallo del SLA"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_team__upcoming_ticket_sla_policy_fail_tickets
+msgid "Upcoming SLA Fail Tickets"
+msgstr "Próximos tickets de fallo de SLA"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.view_wizard_helpdesk_ticket_mass_close
+msgid "Update"
+msgstr "Actualizar"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_wizard_helpdesk_ticket_mass_close__update_for
+msgid "Update For"
+msgstr "Actualizar para"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields.selection,name:website_axis_helpdesk_advance.selection__wizard_helpdesk_ticket_mass_close__update_for__update_team_user
+msgid "Update Team And User"
+msgstr "Actualizar equipo y usuario"
+
+#. module: website_axis_helpdesk_advance
+#. odoo-javascript
+#: code:addons/website_axis_helpdesk_advance/static/src/xml/helpdesk_ticket_dashboard.xml:0
+#: model:ir.model.fields.selection,name:website_axis_helpdesk_advance.selection__axis_helpdesk_ticket__priority_new__3
+#: model:ir.model.fields.selection,name:website_axis_helpdesk_advance.selection__axis_helpdesk_ticket_sla_policy__priority__3
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.view_helpdesk_ticket_portal
+#, python-format
+msgid "Urgent"
+msgstr "Urgente"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.helpdesk_tickets_view_search
+msgid "Urgent Priority"
+msgstr "Prioridad urgente"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_team__use_sla
+msgid "Use SLA"
+msgstr "Usar SLA"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model,name:website_axis_helpdesk_advance.model_res_users
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_ticket_team_search
+msgid "User"
+msgstr "Usuario"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_ticket_portal_view
+msgid "Username"
+msgstr "Nombre de usuario"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__user_ids
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_type__user_ids
+#: model:ir.model.fields.selection,name:website_axis_helpdesk_advance.selection__axis_helpdesk_ticket_type__type_based_on__users
+msgid "Users"
+msgstr "Usuarios"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields.selection,name:website_axis_helpdesk_advance.selection__axis_helpdesk_ticket__priority__3
+msgid "Very High"
+msgstr "muy alto"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.portal_my_home_helpdesk_ticket
+msgid "View Tickets"
+msgstr "Ver entradas"
+
+#. module: website_axis_helpdesk_advance
+#: model:mail.template,subject:website_axis_helpdesk_advance.ticket_template
+msgid "We have received your support ticket and will get back to you shortly"
+msgstr "Hemos recibido su ticket de soporte y nos comunicaremos con usted en breve"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.tickets_followup
+msgid ""
+"We hope to have addressed your request satisfactorily. If you no longer need"
+" our assistance, please close this ticket. Thank you for your collaboration."
+msgstr "Esperamos haber atendido satisfactoriamente su solicitud. Si ya no necesitas 
+		nuestra asistencia, por favor cierre este ticket. Gracias por su colaboración."
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__website_message_ids
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_team__website_message_ids
+msgid "Website Messages"
+msgstr "Mensajes del sitio web"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,help:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__website_message_ids
+#: model:ir.model.fields,help:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_team__website_message_ids
+msgid "Website communication history"
+msgstr "Historial de comunicación del sitio web"
+
+#. module: website_axis_helpdesk_advance
+#. odoo-javascript
+#: code:addons/website_axis_helpdesk_advance/static/src/xml/helpdesk_ticket_dashboard.xml:0
+#, python-format
+msgid "Weekly Tickets"
+msgstr "Entradas Semanales"
+
+#. module: website_axis_helpdesk_advance
+#. odoo-javascript
+#: code:addons/website_axis_helpdesk_advance/static/src/xml/helpdesk_ticket_filter_stage.xml:0
+#: code:addons/website_axis_helpdesk_advance/static/src/xml/helpdesk_ticket_filter_stage.xml:0
+#, python-format
+msgid "Welcome"
+msgstr "Bienvenido"
+
+#. module: website_axis_helpdesk_advance
+#: model:res.groups,name:website_axis_helpdesk_advance.group_whatsapp
+msgid "Whatsapp Features."
+msgstr "Funciones de WhatsApp."
+
+#. module: website_axis_helpdesk_advance
+#. odoo-python
+#: code:addons/website_axis_helpdesk_advance/models/axis_helpdesk_ticket.py:0
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.whatsapp_send_msg_wizard
+#, python-format
+msgid "Whatsapp Message"
+msgstr "mensaje whatsap"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model,name:website_axis_helpdesk_advance.model_whatsapp_message_wizard
+msgid "Whatsapp Wizard"
+msgstr "Asistente de whatsapp"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_team__calendar_id
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_axis_helpdesk_ticket_team__resource_calendar_id
+msgid "Working Hours"
+msgstr "Horas de trabajo"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,help:website_axis_helpdesk_advance.field_helpdesk_sla_status__exceeded_days
+msgid ""
+"Working days exceeded for reached SLAs compared with deadline. Positive "
+"number means the SLA was eached after the deadline."
+msgstr "Se excedieron los días hábiles para los SLA alcanzados en comparación con la fecha límite. Positivo 
+		El número significa que el SLA se firmó después de la fecha límite."
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_ticket_portal_view
+msgid "Write Your Review"
+msgstr "Escribe tu reseña"
+
+#. module: website_axis_helpdesk_advance
+#. odoo-javascript
+#: code:addons/website_axis_helpdesk_advance/static/src/xml/helpdesk_ticket_dashboard.xml:0
+#: code:addons/website_axis_helpdesk_advance/static/src/xml/helpdesk_ticket_filter_stage.xml:0
+#, python-format
+msgid "Yesterday"
+msgstr "Ayer"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,help:website_axis_helpdesk_advance.field_axis_helpdesk_ticket__attachment_ids
+msgid "You can attach the copy of your document"
+msgstr "Puedes adjuntar la copia de tu documento"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.helpdesk_error_message
+msgid "You have entered wrong ticket number"
+msgstr "Has introducido un número de billete incorrecto"
+
+#. module: website_axis_helpdesk_advance
+#. odoo-python
+#: code:addons/website_axis_helpdesk_advance/models/axis_helpdesk_ticket_team.py:0
+#, python-format
+msgid "You must have team members assigned to change the assignment method."
+msgstr "Debe tener miembros del equipo asignados para cambiar el método de asignación."
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.view_helpdesk_ticket_sla_policy_success
+msgid "Your Ticket Number is"
+msgstr "Su número de billete es"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.actions.act_window,help:website_axis_helpdesk_advance.helpdesk_ticket_filter_stage_dashboard
+#: model_terms:ir.actions.act_window,help:website_axis_helpdesk_advance.helpdesk_ticket_helpdesk_team
+msgid "Your teams will appear here"
+msgstr "Tus equipos aparecerán aquí"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model,name:website_axis_helpdesk_advance.model_axis_helpdesk_stage
+msgid "axis.helpdesk.stage"
+msgstr ""
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model,name:website_axis_helpdesk_advance.model_axis_helpdesk_ticket_category
+msgid "axis.helpdesk.ticket.category"
+msgstr ""
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_ticket_sla_policy_form
+msgid "days<br/>"
+msgstr "días<br/>"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.helpdesk_ticket_search
+msgid "eg TICK-00001"
+msgstr "por ejemplo, TICK-00001"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model,name:website_axis_helpdesk_advance.model_helpdesk_invoice_confirm
+msgid "helpdesk.invoice.confirm"
+msgstr ""
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model,name:website_axis_helpdesk_advance.model_helpdesk_ticket_merge
+msgid "helpdesk.ticket.merge"
+msgstr ""
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_ticket_sla_policy_form
+msgid "hours<br/>"
+msgstr "horas<br/>"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model.fields,field_description:website_axis_helpdesk_advance.field_whatsapp_message_wizard__message
+msgid "message"
+msgstr "mensaje"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.axis_helpdesk_ticket_sla_policy_form
+msgid "minutes<br/>"
+msgstr "minutos<br/>"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.helpdesk_create_ticket_from_front_end
+msgid "text"
+msgstr "texto"
+
+#. module: website_axis_helpdesk_advance
+#: model_terms:ir.ui.view,arch_db:website_axis_helpdesk_advance.index
+msgid "tickets"
+msgstr "entradas"
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model,name:website_axis_helpdesk_advance.model_timesheet_invoice_confirm
+msgid "timesheet.invoice.confirm"
+msgstr ""
+
+#. module: website_axis_helpdesk_advance
+#. odoo-javascript
+#: code:addons/website_axis_helpdesk_advance/static/src/xml/helpdesk_ticket_filter_stage.xml:0
+#, python-format
+msgid "to create a ticket."
+msgstr "para crear un billete."
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model,name:website_axis_helpdesk_advance.model_wizard_helpdesk_ticket_mass_close
+msgid "wizard.helpdesk.ticket.mass.close"
+msgstr ""
+
+#. module: website_axis_helpdesk_advance
+#: model:ir.model,name:website_axis_helpdesk_advance.model_wizard_helpdesk_ticket_merge
+msgid "wizard.helpdesk.ticket.merge"
+msgstr ""
+
+#. module: website_axis_helpdesk_advance
+#: model:mail.template,subject:website_axis_helpdesk_advance.rating_ticket_request_email_template
+msgid ""
+"{{object.company_id.name or object.user_id.company_id.name or 'Helpdesk'}}: "
+"Service Rating Request"
+msgstr "{{object.company_id.name o object.user_id.company_id.name o 'Helpdesk'}}: Solicitud de calificación de 
+	servicio"
+
+#. module: website_axis_helpdesk_advance
+#: model:mail.template,subject:website_axis_helpdesk_advance.assigned_request_email_template
+#: model:mail.template,subject:website_axis_helpdesk_advance.axis_helpdesk_ticket_new_create
+msgid "{{object.display_name}}"
+msgstr ""

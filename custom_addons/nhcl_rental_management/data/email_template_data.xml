@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="renewal_notification_email_template" model="mail.template">
+        <field name="name">Renewal Notification</field>
+        <field name="model_id" ref="nhcl_rental_management.model_tenancy_details"/>
+        <field name="subject">Renewal Reminder</field>
+        <field name="email_from">{{(user.email or 'noreply@example.com')}}</field>
+        <field name="email_to">{{object.tenancy_id.email}}</field>
+        <field name="email_cc">
+            vinodkumar@nhclindia.com, satyajit@nhclindia.com
+        </field>
+        <field name="body_html" type="html">
+            <p>Dear <t t-out="object.tenancy_id.name"/>,
+            </p>
+            <p>This is a reminder that your renewal is approaching on
+                <strong>
+                    <t t-out="object.renewal_date"/>
+                </strong>
+                .
+            </p>
+            <p>Please take the necessary actions to renew on time.</p>
+            <p>Thank you!</p>
+        </field>
+    </record>
+
+    <record id="ir_renewal_date" model="ir.cron">
+        <field name="name">Renewal Date mail</field>
+        <field name="model_id" ref="nhcl_rental_management.model_tenancy_details"/>
+        <field name="state">code</field>
+        <field name="code">model.send_email_to_tenancy()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="active" eval="True"/>
+    </record>
+
+    <record id="maintenance_notification_nail" model="mail.template">
+        <field name="name">Maintenance mail Notification</field>
+        <field name="model_id" ref="nhcl_rental_management.model_maintenance_request"/>
+        <field name="subject">maintenance request general Reminder</field>
+        <field name="email_from">{{(user.email or 'noreply@example.com')}}</field>
+        <field name="email_to">{{object.user_id.email}}</field>
+        <field name="body_html" type="html">
+            <p>Dear <t t-out="object.landlord_id.name"/>,
+            </p>
+            <p>This is a reminder that your maintenance request is created.</p>
+            <t t-out="object.maintenance_type"/>
+            <p>Thank you!</p>
+        </field>
+    </record>
+
+    <record id="ir_maintenance_date" model="ir.cron">
+        <field name="name">maintenance Date mail</field>
+        <field name="model_id" ref="nhcl_rental_management.model_maintenance_request"/>
+        <field name="state">code</field>
+        <field name="code">model.maintenance_send_mail()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="active" eval="True"/>
+    </record>
+
+    <!--this is for the escalation mail based on the posting date of invoice-->
+    <record id="escalation_notification_email_template" model="mail.template">
+        <field name="name">Escalation Notification</field>
+        <field name="model_id" ref="nhcl_rental_management.model_tenancy_details"/>
+        <field name="subject">Escalation tenancy reminder</field>
+        <field name="email_from">{{(user.email or 'noreply@example.com')}}</field>
+        <field name="email_to">{{object.tenancy_id.email}}</field>
+        <field name="email_cc">
+            vinodkumar@nhclindia.com
+        </field>
+        <field name="body_html" type="html">
+            <p>Dear user
+            </p>
+            <p>This is a escalation reminder date is approaching.
+            </p>
+            <p>Please take the necessary actions on time.</p>
+            <p>Thank you!</p>
+        </field>
+    </record>
+
+    <record id="Escalation_date" model="ir.cron">
+        <field name="name">Escalation Date mail</field>
+        <field name="model_id" ref="nhcl_rental_management.model_tenancy_details"/>
+        <field name="state">code</field>
+        <field name="code">model.send_email_based_on_year()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="active" eval="True"/>
+    </record>
+
+    <!--    this is for the invoice post rent and all send message with attachments-->
+    <record id="invoice_message_post" model="mail.template">
+        <field name="name">Invoice Post Message</field>
+        <field name="model_id" ref="nhcl_rental_management.model_account_move"/>
+        <field name="subject">Invoice Details {{object.nhcl_invoice_type_label}}</field>
+        <!--        <field name="email_from">{{ object.invoice_user_id.login or 'noreply@example.com' }}</field>-->
+        <field name="email_from">"{{ object.company_id.name }}" &lt;{{ (object.company_id.email or user.email) }}&gt;
+        </field>
+        <field name="email_to">{{object.partner_id.email}}</field>
+        <field name="body_html" type="html">
+            <p>Dear <t t-out="object.partner_id.name"/>,
+            </p>
+            <p>Please find attached the
+                <t t-out="object.nhcl_invoice_type_label"/>
+                invoice for the month of
+                <t t-out="format_date(object.billing_from, date_format='MMMM yyyy')"/>
+            </p>
+            <p>Thank you!</p>
+        </field>
+        <field name="report_template_ids" eval="[(4,ref('nhcl_rental_management.tenancy_account_invoice_customise'))]"/>
+    </record>
+
+    <!--    cam type invoice email send-->
+    <record id="invoice_cam_post" model="mail.template">
+        <field name="name">Invoice Post Message Cam</field>
+        <field name="model_id" ref="nhcl_rental_management.model_account_move"/>
+        <field name="subject">Invoice Details {{object.nhcl_invoice_type_label}}</field>
+        <!--        <field name="email_from">{{ object.invoice_user_id.login or 'noreply@example.com' }}</field>-->
+        <field name="email_from">"{{ object.company_id.name }}" &lt;{{ (object.company_id.email or user.email) }}&gt;
+        </field>
+        <field name="email_to">{{object.partner_id.cam}}</field>
+        <field name="body_html" type="html">
+            <p>Dear <t t-out="object.partner_id.name"/>,
+            </p>
+            <p>Please find attached the
+                <t t-out="object.nhcl_invoice_type_label"/>
+                invoice for the month of
+                <t t-out="format_date(object.invoice_date, date_format='MMMM yyyy')"/>
+                CMR MDP
+            </p>
+            <p>Thank you!</p>
+        </field>
+        <field name="report_template_ids" eval="[(4,ref('nhcl_rental_management.tenancy_account_invoice_customise'))]"/>
+    </record>
+    <!--    utility type invoice email send-->
+    <record id="invoice_utility_post" model="mail.template">
+        <field name="name">Invoice Post Message Utility</field>
+        <field name="model_id" ref="nhcl_rental_management.model_account_move"/>
+        <field name="subject">Invoice Details {{object.nhcl_invoice_type_label}}</field>
+        <!--        <field name="email_from">{{ object.invoice_user_id.login or 'noreply@example.com' }}</field>-->
+        <field name="email_from">"{{ object.company_id.name }}" &lt;{{ (object.company_id.email or user.email) }}&gt;
+        </field>
+        <field name="email_to">{{object.partner_id.utility}}</field>
+        <field name="body_html" type="html">
+            <p>Dear <t t-out="object.partner_id.name"/>,
+            </p>
+            <p>Please find attached the
+                <!--                <t t-out="object.nhcl_invoice_type"/>-->
+                 <t t-out="object.nhcl_invoice_type_label"/>
+                Utility Charge invoice for the month of
+                <t t-out="format_date(object.invoice_date, date_format='MMMM yyyy')"/>
+            </p>
+            <p>Thank you!</p>
+        </field>
+        <field name="report_template_ids" eval="[(4,ref('nhcl_rental_management.tenancy_account_invoice_customise'))]"/>
+    </record>
+    <!--    gas invoice email send-->
+    <record id="invoice_gas_post" model="mail.template">
+        <field name="name">Invoice Post Message Gas</field>
+        <field name="model_id" ref="nhcl_rental_management.model_account_move"/>
+        <field name="subject">Invoice Details  {{object.nhcl_invoice_type_label}}</field>
+        <!--        <field name="email_from">{{ object.invoice_user_id.login or 'noreply@example.com' }}</field>-->
+        <field name="email_from">"{{ object.company_id.name }}" &lt;{{ (object.company_id.email or user.email) }}&gt;
+        </field>
+        <field name="email_to">{{object.partner_id.gas}}</field>
+        <field name="body_html" type="html">
+            <p>Dear <t t-out="object.partner_id.name"/>,
+            </p>
+            <p>Please find attached the
+                <!--                <t t-out="object.nhcl_invoice_type"/>-->
+                Gas invoice for the month of
+                <t t-out="format_date(object.billing_from, date_format='MMMM yyyy')"/>
+            </p>
+            <p>Thank you!</p>
+        </field>
+        <field name="report_template_ids" eval="[(4,ref('nhcl_rental_management.tenancy_account_invoice_customise'))]"/>
+    </record>
+<!--    for the rs invoice template-->
+    <record id="invoice_rs_post" model="mail.template">
+        <field name="name">Invoice Post Message Signage</field>
+        <field name="model_id" ref="nhcl_rental_management.model_account_move"/>
+        <field name="subject">Invoice Details  {{object.nhcl_invoice_type_label}}</field>
+        <!--        <field name="email_from">{{ object.invoice_user_id.login or 'noreply@example.com' }}</field>-->
+        <field name="email_from">"{{ object.company_id.name }}" &lt;{{ (object.company_id.email or user.email) }}&gt;
+        </field>
+        <field name="email_to">{{object.partner_id.email}}</field>
+        <field name="body_html" type="html">
+            <p>Dear <t t-out="object.partner_id.name"/>,
+            </p>
+            <p>Please find attached the
+                <!--                <t t-out="object.nhcl_invoice_type"/>-->
+                Rs invoice for the month of
+<!--                <t t-out="format_date(object.billing_from, date_format='MMMM yyyy')"/>-->
+           <t t-out="object.comparision_yr_mnth.name"/>,
+            </p>
+            <p>Thank you!</p>
+        </field>
+        <field name="report_template_ids" eval="[(4,ref('nhcl_rental_management.tenancy_account_invoice_customise'))]"/>
+    </record>
+    <!--    this is for the signage email template -->
+     <record id="invoice_signage_post" model="mail.template">
+        <field name="name">Invoice Post Message Signage</field>
+        <field name="model_id" ref="nhcl_rental_management.model_account_move"/>
+        <field name="subject">Invoice Details  {{object.nhcl_invoice_type_label}}</field>
+        <!--        <field name="email_from">{{ object.invoice_user_id.login or 'noreply@example.com' }}</field>-->
+        <field name="email_from">"{{ object.company_id.name }}" &lt;{{ (object.company_id.email or user.email) }}&gt;
+        </field>
+        <field name="email_to">{{object.partner_id.signage}}</field>
+        <field name="body_html" type="html">
+            <p>Dear <t t-out="object.partner_id.name"/>,
+            </p>
+            <p>Please find attached the
+                <!--                <t t-out="object.nhcl_invoice_type"/>-->
+                Signage invoice for the month of
+                <t t-out="format_date(object.billing_from, date_format='MMMM yyyy')"/>
+            </p>
+            <p>Thank you!</p>
+        </field>
+        <field name="report_template_ids" eval="[(4,ref('nhcl_rental_management.tenancy_account_invoice_customise'))]"/>
+    </record>
+    <record id="ir_invoice_post_date" model="ir.cron">
+        <field name="name">Invoice Post Date mail</field>
+        <field name="model_id" ref="nhcl_rental_management.model_account_move"/>
+        <field name="state">code</field>
+        <field name="code">model.send_invoice_email_post()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="active" eval="True"/>
+    </record>
+</odoo>
+

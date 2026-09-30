@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <!-- Tree View -->
+    <record id="view_slab_master_tree" model="ir.ui.view">
+        <field name="name">slab.master.tree</field>
+        <field name="model">slab.master</field>
+        <field name="arch" type="xml">
+            <list string="Slab Master">
+                <field name="customer_id"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="view_slab_master_form" model="ir.ui.view">
+        <field name="name">slab.master.form</field>
+        <field name="model">slab.master</field>
+        <field name="arch" type="xml">
+            <form string="Slab Master">
+                <sheet>
+                    <group>
+                        <field name="customer_id"/>
+                    </group>
+                    <notebook>
+                        <page string="Slab Lines">
+                            <field name="slab_line_ids">
+                                <list editable="bottom">
+                                    <field name="from_slab"/>
+                                    <field name="to_slab"/>
+                                    <field name="percentage"/>
+<!--                                    <field name="amount"/>-->
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_slab_master" model="ir.actions.act_window">
+        <field name="name">Slab Master</field>
+        <field name="res_model">slab.master</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Create the first slab master record</p>
+        </field>
+    </record>
+
+    <!-- Menu Item -->
+    <menuitem
+            id="menu_slab_master"
+            name="Slab Master"
+            parent="nhcl_rental_management.new_electric_screen"
+            action="action_slab_master"
+    />
+</odoo>

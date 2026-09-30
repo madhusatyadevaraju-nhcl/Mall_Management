@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_purchase_requisition_form_inherit" model="ir.ui.view">
+        <field name="name">purchase.requisition.form.inherit</field>
+        <field name="model">purchase.requisition</field>
+        <field name="inherit_id" ref="purchase_requisition.view_purchase_requisition_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button name="nhcl_action_first_approve"
+                        string="Approve"
+                        type="object"
+                        class="btn-primary"
+                        confirm="Do you want to proceed?"
+                        context="{'default_state': 'approval_one'}"
+                        invisible="state != 'approval_one'"
+                        groups="nhcl_rental_management.group_blanket_order_approve"/>
+                <button name="nhcl_action_second_approval"
+                        string="Approve"
+                        type="object"
+                        confirm="Do you want to proceed?"
+                        class="btn-primary"
+                        context="{'default_state': 'approval_two'}"
+                        invisible="state != 'approval_two'"
+                        groups="nhcl_rental_management.group_blanket_order_second_approval"/>
+            </xpath>
+            <xpath expr="//field[@name='user_id']" position="after">
+                <field name="is_price_changed" invisible="1"/>
+            </xpath>
+            <xpath expr="//field[@name='line_ids']/list/field[@name='price_unit']" position="before">
+                <field name="is_price_changed_in_line" invisible="1"/>
+            </xpath>
+            <xpath expr="//field[@name='vendor_id']" position="attributes">
+                <attribute name="domain">[('user_type','=','vendor')]</attribute>
+            </xpath>
+        </field>
+    </record>
+</odoo>

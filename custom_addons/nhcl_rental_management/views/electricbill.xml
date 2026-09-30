@@ -1,0 +1,649 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!-- Electric Bill Form View -->
+    <record id="view_electric_bill_form" model="ir.ui.view">
+        <field name="name">electric.bill.form</field>
+        <field name="model">electric.bill</field>
+        <field name="arch" type="xml">
+            <form string="Electric Bill">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="category" readonly="1"/>
+                        </group>
+                        <group>
+                            <field name="date"/>
+                        </group>
+                        <button name="action_push_lines_to_category"
+                                type="object"
+                                string="Push to Category Bill"
+                                class="btn-primary"/>
+                    </group>
+                    <notebook>
+                        <page string="ALL Tenant">
+                            <field name="line_ids" >
+                                <list editable="bottom" create="True" delete="false" limit="79">
+                                    <field name="editable_line" readonly="1"/>
+                                    <field name="tenant_id" readonly="editable_line == False or is_locked == True"/>
+                                    <field name="open_unit" readonly="editable_line == False or is_locked == True"/>
+                                    <field name="close_unit" readonly="editable_line == False or is_locked == True"/>
+                                    <field name="reset_date" readonly="editable_line == False or is_locked == True"/>
+                                    <field name="consumption" readonly="1"/>
+                                    <button name="action_save_and_next" string="Save" type="object"
+                                            class="btn btn-primary" icon="fa-arrow-right"/>
+                                </list>
+                            </field>
+                            <div class="oe_subtotal_footer oe_right" style="margin-top: 10px; text-align:right;">
+                                <label for="total_consumption" string="Total Consumption"/>
+                                <field name="total_consumption" readonly="1" class="oe_subtotal"/>
+                            </div>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Electric Bill list View -->
+    <record id="view_electric_bill_list" model="ir.ui.view">
+        <field name="name">electric.bill.list</field>
+        <field name="model">electric.bill</field>
+        <field name="arch" type="xml">
+            <list string="Electric Bills">
+                <field name="category"/>
+                <field name="date"/>
+                <field name="total_consumption"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Electric Bill Line list View (Standalone) -->
+    <record id="view_electric_bill_line_list" model="ir.ui.view">
+        <field name="name">electric.bill.line.list</field>
+        <field name="model">electric.bill.line</field>
+        <field name="arch" type="xml">
+            <list string=" Electric Bill ">
+                <field name="bill_id"/>
+                <field name="tenant_id"/>
+                <field name="open_unit"/>
+                <field name="close_unit"/>
+                <field name="reset_date"/>
+                <field name="consumption"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Action for Electric Bills -->
+    <record id="action_electric_bill" model="ir.actions.act_window">
+        <field name="name">Electric Bills</field>
+        <field name="res_model">electric.bill</field>
+        <field name="view_mode">list,form</field>
+<!--        <field name="context">{'limit':100}</field>-->
+        <field name="help" type="html">
+            <p>Create and manage electric bills for tenants.</p>
+        </field>
+    </record>
+
+    <!-- Menu for Electric Bills -->
+    <menuitem name="NewElectricScreen"
+              parent="rental_management.main_menu_rental_management"
+              id="new_electric_screen"
+              sequence="15"/>
+    <!--    it's for the Electric Screen Menu-->
+    <menuitem id="menu_electric_bill" name="Electricity" parent="new_electric_screen" action="action_electric_bill"
+              sequence="1"/>
+
+    <!-- GAS Bill Form View -->
+    <record id="view_gas_bill_form" model="ir.ui.view">
+        <field name="name">gas.bill.form</field>
+        <field name="model">gas.bill</field>
+        <field name="arch" type="xml">
+            <form string="GAS Bill">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="category" readonly="1"/>
+                        </group>
+                        <group>
+                            <field name="date"/>
+                        </group>
+                        <button name="action_push_lines_to_gas_bill"
+                                type="object"
+                                string="Push to GAS Bill"
+                                class="btn-primary"/>
+                    </group>
+                    <notebook>
+                        <page string="ALL Tenant">
+                            <field name="line_ids">
+                                <list editable="bottom" create="True" delete="false" limit="79">
+                                    <field name="editable_line" readonly="1"/>
+                                    <field name="tenant_id" readonly="editable_line == False"/>
+                                    <field name="open_unit" force_save="1" readonly="editable_line == False"/>
+                                    <field name="close_unit" force_save="1" readonly="editable_line == False"/>
+                                    <field name="reset_date" force_save="1" readonly="editable_line == False"/>
+                                    <field name="consumption" readonly="1"/>
+                                    <button name="action_save_and_next" string="Save" type="object"
+                                            class="btn btn-primary" icon="fa-arrow-right"/>
+                                </list>
+                            </field>
+                            <div class="oe_subtotal_footer oe_right" style="margin-top: 10px; text-align:right;">
+                                <label for="total_consumption" string="Total Consumption"/>
+                                <field name="total_consumption" readonly="1" class="oe_subtotal"/>
+                            </div>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- GAS Bill list View -->
+    <record id="view_gas_bill_list" model="ir.ui.view">
+        <field name="name">gas.bill.list</field>
+        <field name="model">gas.bill</field>
+        <field name="arch" type="xml">
+            <list string="Gas Bills">
+                <field name="category"/>
+                <field name="date"/>
+                <field name="total_consumption"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- GAS Bill Line list View (Standalone) -->
+    <record id="view_gas_bill_line_list" model="ir.ui.view">
+        <field name="name">gas.bill.line.list</field>
+        <field name="model">gas.bill.line</field>
+        <field name="arch" type="xml">
+            <list string="Gas Bill">
+                <field name="bill_id"/>
+                <field name="tenant_id"/>
+                <field name="open_unit"/>
+                <field name="close_unit"/>
+                <field name="reset_date"/>
+                <field name="consumption"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Action for GAS Bills -->
+    <record id="action_gas_bill_main" model="ir.actions.act_window">
+        <field name="name">GAS Bills</field>
+        <field name="res_model">gas.bill</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p>Create and manage GAS bills for tenants.</p>
+        </field>
+    </record>
+    <!--    it's for the Gas Screen menu-->
+    <menuitem id="menu_gas_bill" name="Gas Bill" parent="new_electric_screen" action="action_gas_bill_main"
+              sequence="2"/>
+
+
+    <!-- DG Bill Form View -->
+    <record id="view_dg_bill_form" model="ir.ui.view">
+        <field name="name">dg.bill.form</field>
+        <field name="model">dg.bill</field>
+        <field name="arch" type="xml">
+            <form string="DG Bill">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="category" readonly="1"/>
+                        </group>
+                        <group>
+                            <field name="date"/>
+                        </group>
+                        <button name="action_push_lines_to_dg_bill" type="object"
+                                string="Push to DG Bill"
+                                class="btn-primary"/>
+                    </group>
+                    <notebook>
+                        <page string="ALL Tenant">
+                            <field name="line_ids">
+                                <list editable="bottom" create="True" delete="false" limit="79">
+                                    <field name="editable_line"/>
+                                    <field name="tenant_id" readonly="editable_line == False"/>
+                                    <field name="open_unit" readonly="editable_line == False"/>
+                                    <field name="close_unit" readonly="editable_line == False"/>
+                                    <field name="reset_date" readonly="editable_line == False"/>
+                                    <field name="consumption" readonly="1"/>
+                                    <button name="action_save_and_next" string="Save" type="object"
+                                            class="btn btn-primary" icon="fa-arrow-right"/>
+                                </list>
+                            </field>
+                            <div class="oe_subtotal_footer oe_right" style="margin-top: 10px; text-align:right;">
+                                <label for="total_consumption" string="Total Consumption"/>
+                                <field name="total_consumption" readonly="1" class="oe_subtotal"/>
+                            </div>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- DG Bill list View -->
+    <record id="view_dg_bill_list" model="ir.ui.view">
+        <field name="name">dg.bill.list</field>
+        <field name="model">dg.bill</field>
+        <field name="arch" type="xml">
+            <list string="DG Bills">
+                <field name="category"/>
+                <field name="date"/>
+                <field name="total_consumption"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- DG Bill Line list View (Standalone) -->
+    <record id="view_dg_bill_line_list" model="ir.ui.view">
+        <field name="name">dg.bill.line.list</field>
+        <field name="model">dg.bill.line</field>
+        <field name="arch" type="xml">
+            <list string="DG Bill">
+                <field name="bill_id"/>
+                <field name="tenant_id"/>
+                <field name="open_unit"/>
+                <field name="close_unit"/>
+                <field name="reset_date"/>
+                <field name="consumption"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Action for DG Bills -->
+    <record id="action_dg_bill" model="ir.actions.act_window">
+        <field name="name">DG Bills</field>
+        <field name="res_model">dg.bill</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p>Create and manage DG bills for tenants.</p>
+        </field>
+    </record>
+    <!--    it's for the DG Screen Menu-->
+    <menuitem id="menu_dg_bill" name="DG Bills" parent="new_electric_screen" action="action_dg_bill"
+              sequence="3"/>
+
+    <!--    it's for the HVAC screen main -->
+
+    <!-- HVAC Bill Form View -->
+    <record id="hvac_main_view" model="ir.ui.view">
+        <field name="name">main.hvac</field>
+        <field name="model">hvac.bill</field>
+        <field name="arch" type="xml">
+            <form string="DG Bill">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="category" readonly="1"/>
+                        </group>
+                        <group>
+                            <field name="date"/>
+                        </group>
+                        <button name="action_push_lines_to_hvac_reading" type="object"
+                                string="Push to HVAC"
+                                class="btn-primary"/>
+                    </group>
+                    <notebook>
+                        <page string="ALL Tenant">
+                            <field name="hvac_ids">
+                                <list editable="bottom" create="True" delete="false" limit="79">
+                                    <field name="editable_line" readonly="editable_line == False"/>
+                                    <field name="tenant_id" readonly="editable_line == False"/>
+                                    <field name="open_unit" readonly="editable_line == False"/>
+                                    <field name="close_unit" readonly="editable_line == False"/>
+                                    <field name="reset_date" readonly="editable_line == False"/>
+                                    <field name="consumption" readonly="1"/>
+                                    <button name="action_save_and_next" string="Save" type="object"
+                                            class="btn btn-primary" icon="fa-arrow-right"/>
+                                </list>
+                            </field>
+                            <div class="oe_subtotal_footer oe_right" style="margin-top: 10px; text-align:right;">
+                                <label for="total_consumption" string="Total Consumption"/>
+                                <field name="total_consumption" readonly="1" class="oe_subtotal"/>
+                            </div>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- hvac Bill list View -->
+    <record id="hvac_list_view" model="ir.ui.view">
+        <field name="name">hvac.list</field>
+        <field name="model">hvac.bill</field>
+        <field name="arch" type="xml">
+            <list string="DG Bills">
+                <field name="category"/>
+                <field name="date"/>
+                <field name="total_consumption"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- hvac Bill Line list View (Standalone) -->
+    <record id="hvac_view_line" model="ir.ui.view">
+        <field name="name">hvac.bill.line.list</field>
+        <field name="model">hvac.bill.line</field>
+        <field name="arch" type="xml">
+            <list string="DG Bill">
+                <field name="editable_line"/>
+                <field name="bill_id"/>
+                <field name="tenant_id"/>
+                <field name="open_unit"/>
+                <field name="close_unit"/>
+                <field name="reset_date"/>
+                <field name="consumption"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Action for HVAC Bills -->
+    <record id="action_hvac_main" model="ir.actions.act_window">
+        <field name="name">Hvac Bills</field>
+        <field name="res_model">hvac.bill</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p>Create and manage DG bills for tenants.</p>
+        </field>
+    </record>
+    <!--    it's for the HVAC Screen Menu-->
+    <menuitem id="hvac_menu" name="HVAC Bills" parent="new_electric_screen" action="action_hvac_main"
+              sequence="4"/>
+
+    <!--    it's for the new GhMC Scree -->
+    <record id="view_water_bill_form" model="ir.ui.view">
+        <field name="name">water.bill.form</field>
+        <field name="model">water.bill</field>
+        <field name="arch" type="xml">
+            <form string="Water Bill">
+                <header>
+                    <button name="action_push_lines_to_water_reading"
+                            type="object"
+                            string="Push to GHMC Water"
+                            class="btn-primary"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="category" readonly="1"/>
+                        </group>
+                        <group>
+                            <field name="date"/>
+                        </group>
+                        <!-- Optional: Button for future actions like pushing to category bill -->
+
+                    </group>
+                    <notebook>
+                        <page string="All Tenants">
+                            <field name="line_ids">
+                                <list editable="bottom" create="True" delete="false" limit="79">
+                                    <field name="editable_line" readonly="1"/>
+                                    <field name="tenant_id" readonly="editable_line == False"/>
+                                    <field name="open_unit" readonly="editable_line == False"/>
+                                    <field name="close_unit" readonly="editable_line == False"/>
+                                    <field name="reset_date" readonly="editable_line == False"/>
+                                    <field name="consumption" readonly="1"/>
+                                    <button name="action_save_and_next"
+                                            string="Save"
+                                            type="object"
+                                            class="btn btn-primary"
+                                            icon="fa-arrow-right"/>
+                                </list>
+                            </field>
+                            <div class="oe_subtotal_footer oe_right" style="margin-top: 10px; text-align:right;">
+                                <label for="total_consumption" string="Total Consumption"/>
+                                <field name="total_consumption" readonly="1" class="oe_subtotal"/>
+                            </div>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_water_bill_list" model="ir.ui.view">
+        <field name="name">GHMC water</field>
+        <field name="model">water.bill</field>
+        <field name="arch" type="xml">
+            <list string="Water Bill">
+                <field name="date"/>
+                <field name="category"/>
+                <field name="total_consumption"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="action_water_bill" model="ir.actions.act_window">
+        <field name="name">GHMC Water Bill</field>
+        <field name="res_model">water.bill</field>
+        <field name="view_mode">list,form</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create water bills for all tenants based on selected date.
+            </p>
+        </field>
+    </record>
+
+
+    <menuitem id="water_bill" name="GHMC Water" parent="new_electric_screen"
+              action="action_water_bill"
+              sequence="6"/>
+
+
+    <record id="view_hot_water_bill_form" model="ir.ui.view">
+        <field name="name">hot.water.bill.form</field>
+        <field name="model">hot.water.bill</field>
+        <field name="arch" type="xml">
+            <form string="Hot Water Bill">
+                <header>
+                    <button name="action_push_lines_to_hot_water_reading"
+                            type="object"
+                            string="Push to Cool Water"
+                            class="btn-primary"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="category" readonly="1"/>
+                        </group>
+                        <group>
+                            <field name="date"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="All Tenants">
+                            <field name="line_ids">
+                                <list editable="bottom" create="True" delete="false" limit="79">
+                                    <field name="editable_line" readonly="1"/>
+                                    <field name="tenant_id" readonly="editable_line == False"/>
+                                    <field name="open_unit" readonly="editable_line == False"/>
+                                    <field name="close_unit" readonly="editable_line == False"/>
+                                    <field name="reset_date" readonly="editable_line == False"/>
+                                    <field name="consumption" readonly="1"/>
+                                    <button name="action_save_and_next"
+                                            string="Save"
+                                            type="object"
+                                            class="btn btn-primary"
+                                            icon="fa-arrow-right"/>
+                                </list>
+                            </field>
+                            <div class="oe_subtotal_footer oe_right" style="margin-top: 10px; text-align:right;">
+                                <label for="total_consumption" string="Total Consumption"/>
+                                <field name="total_consumption" readonly="1" class="oe_subtotal"/>
+                            </div>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="view_hot_water_bill_list" model="ir.ui.view">
+        <field name="name">Hot Water Bill</field>
+        <field name="model">hot.water.bill</field>
+        <field name="arch" type="xml">
+            <list string="Hot Water Bill">
+                <field name="date"/>
+                <field name="category"/>
+                <field name="total_consumption"/>
+            </list>
+        </field>
+    </record>
+    <record id="action_hot_water_bill" model="ir.actions.act_window">
+        <field name="name">Cool Water Bill</field>
+        <field name="res_model">hot.water.bill</field>
+        <field name="view_mode">list,form</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create hot water bills for all tenants based on selected date.
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="water_new_hot_bill" name="Cool Water" parent="new_electric_screen"
+              action="action_hot_water_bill"
+              sequence="7"/>
+
+    <!-- HVAC DC Bill Form View -->
+    <record id="hvac_dc_main_view" model="ir.ui.view">
+        <field name="name">main.hvac.dc</field>
+        <field name="model">hvac.dc.bill</field>
+        <field name="arch" type="xml">
+            <form string="HVAC DG Bill">
+                <sheet>
+
+                    <group>
+                        <group>
+                            <field name="category" readonly="1"/>
+                        </group>
+
+                        <group>
+                            <field name="date"/>
+                        </group>
+
+                        <button name="action_push_lines_to_hvac_dc_reading"
+                                type="object"
+                                string="Push to HVAC DC"
+                                class="btn-primary"/>
+                    </group>
+
+                    <notebook>
+                        <page string="ALL Tenant">
+
+                            <field name="hvac_dc_ids">
+
+                                <list editable="bottom"
+                                      create="True"
+                                      delete="false"
+                                      limit="79">
+
+                                    <field name="editable_line"
+                                           readonly="editable_line == False"/>
+
+                                    <field name="tenant_id"
+                                           readonly="editable_line == False"/>
+
+                                    <field name="open_unit"
+                                           readonly="editable_line == False"/>
+
+                                    <field name="close_unit"
+                                           readonly="editable_line == False"/>
+
+                                    <field name="reset_date"
+                                           readonly="editable_line == False"/>
+
+                                    <field name="consumption"
+                                           readonly="1"/>
+
+                                    <button name="action_save_and_next"
+                                            string="Save"
+                                            type="object"
+                                            class="btn btn-primary"
+                                            icon="fa-arrow-right"/>
+
+                                </list>
+
+                            </field>
+
+                            <div class="oe_subtotal_footer oe_right"
+                                 style="margin-top: 10px; text-align:right;">
+
+                                <label for="total_consumption"
+                                       string="Total Consumption"/>
+
+                                <field name="total_consumption"
+                                       readonly="1"
+                                       class="oe_subtotal"/>
+
+                            </div>
+
+                        </page>
+                    </notebook>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <!-- HVAC DC Bill List View -->
+    <record id="hvac_dc_list_view" model="ir.ui.view">
+        <field name="name">hvac.dc.list</field>
+        <field name="model">hvac.dc.bill</field>
+        <field name="arch" type="xml">
+
+            <list string="HVAC DG Bills">
+                <field name="category"/>
+                <field name="date"/>
+                <field name="total_consumption"/>
+            </list>
+
+        </field>
+    </record>
+
+
+    <!-- HVAC DC Bill Line List View -->
+    <record id="hvac_dc_view_line" model="ir.ui.view">
+        <field name="name">hvac.dc.bill.line.list</field>
+        <field name="model">hvac.dc.bill.line</field>
+        <field name="arch" type="xml">
+
+            <list string="HVAC DG Bill">
+
+                <field name="editable_line"/>
+                <field name="bill_id"/>
+                <field name="tenant_id"/>
+                <field name="open_unit"/>
+                <field name="close_unit"/>
+                <field name="reset_date"/>
+                <field name="consumption"/>
+
+            </list>
+
+        </field>
+    </record>
+
+
+    <!-- Action for HVAC DC Bills -->
+    <record id="action_hvac_dc_main" model="ir.actions.act_window">
+        <field name="name">HVAC DG Bills</field>
+        <field name="res_model">hvac.dc.bill</field>
+        <field name="view_mode">list,form</field>
+
+        <field name="help" type="html">
+            <p>Create and manage HVAC DG bills for tenants.</p>
+        </field>
+    </record>
+
+
+    <!-- HVAC DC Bills Menu -->
+    <menuitem id="hvac_dc_menu"
+              name="HVAC DG Bills"
+              parent="new_electric_screen"
+              action="action_hvac_dc_main"
+              sequence="5"/>
+</odoo>

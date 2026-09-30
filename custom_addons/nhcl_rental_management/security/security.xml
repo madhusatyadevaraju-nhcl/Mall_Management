@@ -1,0 +1,9 @@
+<odoo>
+    <data>
+        <!-- Define a new group for account approval -->
+        <record id="group_account_approval" model="res.groups">
+            <field name="name">Account Approval Group</field>
+            <field name="category_id" ref="base.module_category_accounting" />
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="maintenance_invoice_message" model="mail.template">
+        <field name="name">Maintenance Message</field>
+        <field name="model_id" ref="nhcl_rental_management.model_account_move"/>
+        <field name="subject">Invoice Bill Reminder</field>
+        <field name="email_from">{{ object.invoice_user_id.login or 'noreply@example.com' }}</field>
+        <field name="email_to">{{object.partner_id.email}}</field>
+        <field name="body_html" type="html">
+            <p>Dear <t t-out="object.partner_id.name"/>,
+            </p>
+            <p>This is a reminder that your bill date is approaching on
+                <strong>
+                    <t t-out="object.invoice_date"/>
+                </strong>
+                .
+            </p>
+            <p>Thank you!</p>
+        </field>
+    </record>
+    <record id="ir_maintenance_invoice_date" model="ir.cron">
+        <field name="name">Invoice maintenance Date mail</field>
+        <field name="model_id" ref="nhcl_rental_management.model_account_move"/>
+        <field name="state">code</field>
+        <field name="code">model.send_message_invoice()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="active" eval="True"/>
+    </record>
+    <record id="tenancy_auto_create_inv" model="ir.cron">
+        <field name="name">Tenancy Create INVoice</field>
+        <field name="model_id" ref="nhcl_rental_management.model_account_move"/>
+        <field name="state">code</field>
+        <field name="code">model.get_and_update_invoice_data()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="active" eval="True"/>
+    </record>
+    <record id="eb_record_create" model="ir.cron">
+        <field name="name">Supporting Record</field>
+        <field name="model_id" ref="nhcl_rental_management.model_tenancy_details"/>
+        <field name="state">code</field>
+        <field name="code">model.supporting_documents()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="active" eval="True"/>
+    </record>
+    <record id="certificate_record_create" model="ir.cron">
+        <field name="name">Safety Certificate Record</field>
+        <field name="model_id" ref="nhcl_rental_management.model_property_details"/>
+        <field name="state">code</field>
+        <field name="code">model.safety_certificate()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="active" eval="True"/>
+    </record>
+    <record id="ir_cron_notify_tenancy_expiry" model="ir.cron">
+        <field name="name">Notify Tenancy Expiry (60/45/30/15 days)</field>
+        <field name="model_id" ref="nhcl_rental_management.model_tenancy_details"/>
+        <field name="state">code</field>
+        <field name="code">model.cron_notify_tenancy_end_dates()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="active">True</field>
+    </record>
+    <record id="expairy_date_before_2month" model="mail.template">
+        <field name="name">Expiry Notification</field>
+        <field name="model_id" ref="nhcl_rental_management.model_tenancy_details"/>
+        <field name="subject">Expiry Reminder</field>
+        <field name="email_from">{{(user.email or 'noreply@example.com')}}</field>
+        <field name="email_to">{{object.tenancy_id.email}}</field>
+        <field name="email_cc">
+            vinodkumar@nhclindia.com, satyajit16599@gmail.com
+        </field>
+        <field name="body_html" type="html">
+            <p>Dear <t t-out="object.tenancy_id.name"/>,
+            </p>
+            <p>This is a reminder that your Expiry is approaching on
+                <strong>
+                    <t t-out="object.end_date"/>
+                </strong>
+                .
+            </p>
+            <p>Thank you!</p>
+        </field>
+    </record>
+    <record id="ir_cron_generate_gas_invoices" model="ir.cron">
+        <field name="name">Generate Gas Invoices (1st and 15th)</field>
+        <field name="model_id" ref="nhcl_rental_management.model_gas_reading"/>
+        <field name="state">code</field>
+        <field name="code">model.cron_generate_gas_invoices()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="active">True</field>
+    </record>
+</odoo>

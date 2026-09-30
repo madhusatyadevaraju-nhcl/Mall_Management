@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_purchase_indent,purchase.indent,model_purchase_indent,,1,1,1,0
+access_purchase_indent_line_user,purchase.indent.line user,model_purchase_indent_line,base.group_user,1,1,1,0
+access_purchase_indent_approval_line,purchase.indent.approval.line user,model_purchase_indent_approval_line,base.group_user,1,1,1,1

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_users_res_form" model="ir.ui.view">
+        <field name="name">res.partner.form.test</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='category_id']" position="after">
+                <field name="tenant_type"/>
+                <field name="adhar_no" />
+                <field name="director_name"/>
+                <field name="din_no"/>
+                 <field name="cam" widget="email"/>
+                <field name="rent_email" widget="email"/>
+
+                 <field name="brand_master"/>
+<!--                <field name="sub_category"/>-->
+            </xpath>
+            <xpath expr="//field[@name='vat']" position="after">
+                <field name="nhcl_res_cin_no"/>
+                <field name="nhcl_pan_no"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!--    adding some field sin res_company-->
+    <record id="view_company_fields_add" model="ir.ui.view">
+        <field name="name">company.add.fields</field>
+        <field name="model">res.company</field>
+        <field name="inherit_id" ref="base.view_company_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='company_registry']" position="after">
+                <field name="nhcl_com_cin_no"/>
+                <field name="nhcl_com__director_name"/>
+                <field name="nhcl_com_din_no"/>
+                <field name="nhcl_com_adhar_no"/>
+            </xpath>
+            <xpath expr="//page[@name='general_info']//field[@name='color']" position="after">
+                <field name="msme"/>
+            </xpath>
+        </field>
+    </record>
+    <record id="purchase_order_inherit_custom" model="ir.ui.view">
+        <field name="name">purchase.order.custom</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']" position="attributes">
+                <attribute name="domain">[('user_type','=','vendor')]</attribute>
+            </xpath>
+        </field>
+    </record>
+
+
+    <!--   parent  field adding in account group-->
+    <record id="account_newfield_in_groups" model="ir.ui.view">
+        <field name="name">Account group new</field>
+        <field name="model">account.group</field>
+        <field name="inherit_id" ref="account.view_account_group_form"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="nhcl_parent_id" readonly="0"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!--    <record id="view_purchase_button_add" model="ir.ui.view">-->
+    <!--        <field name="name">purchase.add.button</field>-->
+    <!--        <field name="model">purchase.requisition</field>-->
+    <!--        <field name="inherit_id" ref="purchase_requisition.view_purchase_requisition_form"/>-->
+    <!--        <field name="arch" type="xml">-->
+    <!--            <xpath expr="//form//header//button[@name='action_in_progress']" position="after">-->
+    <!--                <button name="action_approve" type="object" string="Approve1" class="oe_highlight"/>                           groups="purchase.group_purchase_manager"-->
+    <!--            </xpath>-->
+    <!--        </field>-->
+    <!--    </record>-->
+    <!--        <menuitem id="purchase_report_print" name="Purchase History" parent="purchase.purchase_report_main" sequence="98"  action="purchase_history_rec"/>-->
+
+    <menuitem id="purchase_order_history_report_menu"
+              name="Purchase Order History"
+              parent="purchase.purchase_report_main"
+              sequence="97"
+              action="action_purchase_order_history_report"/>
+
+
+</odoo>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="property_invoice_form_inherit" model="ir.ui.view">
+            <field name="name">property.invoice.form.inherit.view</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="account.view_move_form"/>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='payment_reference']" position="before">
+<!--                    <field name="tenancy_id"/>-->
+                                        <field name="tenancy_id"  invisible="move_type not in ['out_invoice','out_refund']"  readonly="1"/>  <!--    invisible="tenancy_id == False"/> -->
+<!--                    <field name="sold_id"/>-->
+                                        <field name="sold_id"  invisible="sold_id == False"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

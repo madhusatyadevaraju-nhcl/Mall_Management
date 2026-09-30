@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="property_sold_qweb_report_template">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="web.external_layout">
+                        <div class="page">
+                            <h2 style="text-align:center;">Property Sold Information</h2>
+                            <hr/>
+                            <table class="table table-borderless" style="text-align:center;">
+                                <tr>
+                                    <td style="width:33.33%;">
+                                        Customer
+                                        <h5>
+                                            <strong>
+                                                <span t-field="o.customer_id.name"/>
+                                            </strong>
+                                        </h5>
+                                    </td>
+                                    <td style="width:33.33%;">
+                                        Property
+                                        <h5>
+                                            <strong>
+                                                <span t-field="o.property_id.name"/>
+                                            </strong>
+                                        </h5>
+                                    </td>
+                                    <td style="width:33.33%;">
+                                        Property Type
+                                        <h5>
+                                            <strong>
+                                                <span t-field="o.property_id.type"/>
+                                            </strong>
+                                        </h5>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width:33.33%;">
+                                        Ask Price
+                                        <h5>
+                                            <strong>
+                                                <span t-field="o.ask_price"/>
+                                            </strong>
+                                        </h5>
+                                    </td>
+                                    <td style="width:33.33%;">
+                                        Sale Price
+                                        <h5>
+                                            <strong>
+                                                <span t-field="o.sale_price"/>
+                                            </strong>
+                                        </h5>
+                                        <h6>
+                                            Invoice Ref.
+                                            <span t-field="o.sold_invoice_id"/>
+                                        </h6>
+                                    </td>
+                                    <td style="width:33.33%;">
+                                        Book Price
+                                        <h5>
+                                            <strong>
+                                                <span t-field="o.book_price"/>
+                                            </strong>
+                                        </h5>
+                                        <h6>
+                                            Invoice Ref.
+                                            <span t-field="o.book_invoice_id"/>
+                                        </h6>
+                                    </td>
+                                </tr>
+                            </table>
+                            <table class="table table-striped-columns">
+                                <tr>
+                                    <td colspan="2">
+                                        <h4>Property Information</h4>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span>
+                                            <span>
+                                                Property Type :
+                                                <strong>
+                                                    <span t-field="o.property_id.type"/>
+                                                </strong>
+                                            </span>
+                                            <br/>
+                                            <t t-if="o.property_id.is_parent_property">
+                                                <span>
+                                                    Parent Property :
+                                                    <strong>
+                                                        <span t-field="o.property_id.parent_property_id"/>
+                                                    </strong>
+                                                </span>
+                                                <br/>
+                                            </t>
+                                            <span>
+                                                Landlord :
+                                                <strong>
+                                                    <span t-field="o.property_id.landlord_id.name"/>
+                                                </strong>
+                                            </span>
+                                            <br/>
+                                            <span>
+                                                Licence :
+                                                <strong>
+                                                    <span t-field="o.property_id.property_licence_no"/>
+                                                </strong>
+                                            </span>
+                                        </span>
+                                    </td>
+                                    <td>
+                                        Address:
+                                        <br/>
+                                        <strong>
+                                            <t t-if="o.property_id.is_parent_property">
+                                                <span>
+                                                    <span t-field="o.property_id.parent_street"/>
+                                                    <br/>
+                                                    <span t-field="o.property_id.parent_street2"/>
+                                                    <br/>
+                                                    <span t-field="o.property_id.parent_city_id.name"/>
+                                                    <span t-field="o.property_id.parent_state_id.name"/>
+                                                    <span t-field="o.property_id.parent_zip"/>
+                                                    <br/>
+                                                    <span t-field="o.property_id.parent_country_id.name"/>
+                                                </span>
+                                            </t>
+                                            <t t-else="">
+                                                <span>
+                                                    <span t-field="o.property_id.street"/>
+                                                    <br/>
+                                                    <span t-field="o.property_id.street2"/>
+                                                    <br/>
+                                                    <span t-field="o.property_id.city_id.name"/>
+                                                    <span t-field="o.property_id.state_id.name"/>
+                                                    <span t-field="o.property_id.zip"/>
+                                                    <br/>
+                                                    <span t-field="o.property_id.country_id.name"/>
+                                                </span>
+                                            </t>
+                                        </strong>
+                                    </td>
+                                </tr>
+                            </table>
+                            <t t-if="o.is_any_broker">
+                                <table class="table table-striped-columns">
+                                    <tr>
+                                        <td colspan="4">
+                                            <h4>Brokerage</h4>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Broker</td>
+                                        <td>
+                                            <strong>
+                                                <span t-field="o.broker_id.name"/>
+                                            </strong>
+                                        </td>
+                                        <td>
+                                            Commission from
+                                        </td>
+                                        <td>
+                                            <strong>
+                                                <span t-field="o.commission_from"/>
+                                            </strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Commission Type</td>
+                                        <td>
+                                            <strong>
+                                                <span t-field="o.commission_type"/>
+                                            </strong>
+                                        </td>
+                                        <td>
+                                            Commission
+                                        </td>
+                                        <td>
+                                            <strong>
+                                                <t t-if="o.commission_type=='f'">
+                                                    <span t-field="o.broker_final_commission"/>
+                                                </t>
+                                                <t t-else="">
+                                                    <span t-field="o.broker_commission_percentage"/>
+                                                    % -
+                                                    <span t-field="o.broker_final_commission"/>
+                                                </t>
+                                            </strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Bill Ref.</td>
+                                        <td>
+                                            <strong>
+                                                <span t-field="o.broker_bill_id"/>
+                                            </strong>
+                                        </td>
+                                        <td colspan="2">
+                                            #
+                                        </td>
+                                    </tr>
+                                </table>
+                            </t>
+                            <p style="page-break-before:always;"/>
+                            <p>
+                                <h5>
+                                    Terms &amp; Conditions
+                                </h5>
+                                <span>
+                                    <span t-field="o.term_condition"/>
+                                </span>
+                            </p>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+        <record id="property_sold_report_template_id" model="ir.actions.report">
+            <field name="name">Sold Information</field>
+            <field name="model">property.vendor</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">rental_management.property_sold_qweb_report_template</field>
+            <field name="report_file">rental_management.property_sold_qweb_report_template</field>
+            <field name="binding_model_id" ref="model_property_vendor"/>
+            <field name="binding_type">report</field>
+            <field name="print_report_name">'Sold Information'</field>
+        </record>
+    </data>
+</odoo>

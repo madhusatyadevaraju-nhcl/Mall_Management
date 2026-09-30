@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!-- Paper Format for A4 Landscape -->
+    <!--    it's related to the po history custom a4 no need current requirement-->
+    <record id="paperformat_po_report" model="report.paperformat">
+        <field name="name">Custom Paperformat for the PO report</field>
+        <field name="default" eval="False"/>
+        <field name="disable_shrinking" eval="True"/>
+        <field name="format">A4</field>
+        <field name="page_height">0</field>
+        <field name="page_width">0</field>
+        <field name="orientation">Landscape</field>
+        <field name="margin_top">30</field>
+        <field name="margin_bottom">8</field>
+        <field name="margin_left">0</field>
+        <field name="margin_right">0</field>
+        <field name="dpi">96</field>
+    </record>
+    <!--    for all the history report purchase order-->
+    <record id="custom_paperformat_purchase_history" model="report.paperformat">
+        <field name="name">Custom Paper Format</field>
+        <field name="default" eval="False"/>
+        <field name="disable_shrinking" eval="True"/>
+        <field name="format">A4</field>
+        <field name="page_height">0</field>
+        <field name="page_width">0</field>
+        <field name="orientation">Landscape</field>
+        <field name="margin_top">30</field>
+        <field name="margin_bottom">8</field>
+        <field name="margin_left">0</field>
+        <field name="margin_right">0</field>
+        <!--        <field name="header_spacing">60</field>-->
+        <field name="dpi">96</field>
+    </record>
+</odoo>

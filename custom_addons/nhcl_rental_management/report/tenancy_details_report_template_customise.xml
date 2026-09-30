@@ -1,0 +1,569 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="custom_rent_header">
+        <t t-if="not o" t-set="o" t-value="doc"/>
+        <t t-if="not company">
+            <t t-if="company_id">
+                <t t-set="company" t-value="company_id"/>
+            </t>
+            <t t-elif="o and 'company_id' in o and o.company_id.sudo()">
+                <t t-set="company" t-value="o.company_id.sudo()"/>
+            </t>
+        </t>
+        <div class="header" style="text-align: center;">
+            <div class="row" style="height: 60px; align-items: center;">
+                <!-- Left: Company Logo -->
+                <div class="col-4" style="text-align: left;">
+                    <t t-if="company.logo">
+                        <img t-att-src="image_data_uri(company.logo)" alt="Logo"
+                             style="width: 120px; max-height: 120px;"/>
+                    </t>
+                </div>
+
+                <!-- Center: Company Name -->
+                <div class="col-4" style="text-align: center; font-size: 12px; font-weight: bold; margin-top: 30px;">
+                    <span t-field="company.name"/>
+                </div>
+
+                <!-- Right: Company Details -->
+                <div class="col-4"
+                     style="padding-right: 20px; font-size: 10px; font-weight: bold; text-align: right; margin-top: 20px;font-family:Arial, Verdana,sans-serif;">
+                    <div>
+                        <span t-field="company.street"/>
+                        <br/>
+                        <span t-field="company.street2"/>
+                        <br/>
+                        <span t-field="company.state_id"/>
+                        <span t-field="company.zip"/>
+                        <span t-field="company.city"/>
+                        <br/>
+                        Ph:
+                        <span t-field="company.phone"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="article" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id"
+             t-att-data-oe-lang="o and o.env.context.get('lang')">
+            <t t-out="0"/>
+        </div>
+    </template>
+    <template id="tenancy_customise_report">
+        <t t-if="not o" t-set="o" t-value="doc"/>
+        <t t-if="not company">
+            <t t-if="company_id">
+                <t t-set="company" t-value="company_id"/>
+            </t>
+            <t t-elif="o and 'company_id' in o and o.company_id.sudo()">
+                <t t-set="company" t-value="o.company_id.sudo()"/>
+            </t>
+            <t t-else="else">
+                <t t-set="company" t-value="res_company"/>
+            </t>
+        </t>
+        <t t-call="web.html_container">
+
+
+            <t t-foreach="docs" t-as="doc" style="font-family:Verdana, Arial,sans-serif;">
+
+                <!--                <t t-call="web.external_layout">-->
+                <t t-call="nhcl_rental_management.custom_rent_header">
+                    <div class="page">
+                        <h1 style="text-align:center;">RENTAL AGREEMENT</h1>
+                        <hr/>
+                        <div>
+                            <p>
+                                This Tenancy Rent Agreement is made and entered into on
+                                <span t-field="doc.start_date"/>
+                                between
+                                Landlord
+                                <strong>
+                                    <span t-field="doc.property_landlord_id.name"/>
+                                </strong>
+                                and Tenant
+                                <strong>
+                                    <span t-field="doc.tenancy_id.name"/>
+                                </strong>
+                                .
+                            </p>
+                            <br/>
+                            <ul>
+                                <li>
+                                    Property
+                                    <br/>
+                                    Landlord agrees to rent to Tenant the property<![CDATA[&nbsp;]]>
+
+                                    <b style="font-family:Verdana, Arial,sans-serif;">
+                                        <t t-esc="company.name"/>
+                                    </b>
+                                    <br/>
+                                    <!--                                    <strong>-->
+                                    GST No:
+                                    <b style="font-family:Verdana, Arial,sans-serif;">
+                                        <span t-field="company.vat"/>
+                                    </b>
+                                    PAN No:
+                                    <b style="font-family:Verdana, Arial,sans-serif;">
+                                        <span
+                                                t-field="company.l10n_in_pan"/>
+                                    </b>
+                                    ,
+                                    <![CDATA[&nbsp;]]>
+                                    Director
+                                    Name:
+                                    <b style="font-family:Verdana, Arial,sans-serif;">
+                                        <span t-field="company.nhcl_com__director_name"/>
+                                    </b>
+                                    ,
+
+                                    DIN No:
+                                    <b style="font-family:Verdana, Arial,sans-serif;">
+                                        <span
+                                                t-field="company.nhcl_com_din_no"/>
+                                    </b>
+                                    ,
+                                    Aadhaar No:
+                                    <b style="font-family:Verdana, Arial,sans-serif;">
+                                        <span
+                                                t-field="company.nhcl_com_adhar_no"/>
+                                    </b>
+                                    Office address located at
+                                    <b style="font-family:Verdana, Arial,sans-serif;">
+                                        <span t-field="company.city"/>
+                                        ,<![CDATA[&nbsp;]]>
+                                        <span t-field="company.street"/>,<![CDATA[&nbsp;]]>
+                                        <span t-field="company.street2"/>,<![CDATA[&nbsp;]]>
+                                        <span t-field="company.zip"/>,<![CDATA[&nbsp;]]>
+                                        <span t-field="company.state_id"/><![CDATA[&nbsp;]]>India
+                                    </b>
+                                    for
+                                    <b style="font-family:Verdana, Arial,sans-serif;">
+                                        <span t-field="doc.property_type"/>
+                                    </b>
+                                    purpose only
+                                    <br/>
+                                    <br/>
+
+                                    <strong>
+                                        <b style="font-family:Verdana, Arial,sans-serif;">
+                                            <t t-esc="company.name" style="font-family:Verdana, Arial,sans-serif;"/>
+                                        </b>
+                                    </strong>
+                                    <![CDATA[&nbsp;]]> a company incorporated under the Companies Act, 2013 and
+                                    having its registered
+                                    office at
+                                    <b style="font-family:Verdana, Arial,sans-serif;">
+                                        <span t-field="doc.tenancy_id.city"/>
+                                        ,<![CDATA[&nbsp;]]>
+                                        <span t-field="doc.tenancy_id.street"/>,<![CDATA[&nbsp;]]>
+                                        <span t-field="doc.tenancy_id.street2"/>,<![CDATA[&nbsp;]]>
+                                        <span t-field="doc.tenancy_id.zip"/>,<![CDATA[&nbsp;]]>
+                                        <span t-field="doc.tenancy_id.state_id"/><![CDATA[&nbsp;]]>India
+                                    </b>
+                                    GST No:
+                                    <b style="font-family:Verdana, Arial,sans-serif;">
+                                        <span t-field="doc.tenancy_id.vat"/>
+                                    </b>
+                                    ,
+                                    PAN No:
+                                    <b style="font-family:Verdana, Arial,sans-serif;">
+                                        <span t-field="doc.tenancy_id.l10n_in_pan"/>
+                                    </b>
+                                    Aadhaar No:
+                                    <b style="font-family:Verdana, Arial,sans-serif;">
+                                        <span t-field="doc.tenancy_id.adhar_no"/>
+                                    </b>
+                                    , through
+                                    its Home town Division, here in represented by
+                                    its authorized Signatory
+                                    <b style="font-family:Verdana, Arial,sans-serif;">
+                                        <span t-field="doc.property_landlord_id.name"/>
+                                    </b>
+                                    - City:
+                                    <b>
+                                        <span t-field="doc.property_landlord_id.city"/>
+                                    </b>
+                                    <![CDATA[&nbsp;]]>
+                                    Head,
+                                    Director Name:
+                                    <b style="font-family:Verdana, Arial,sans-serif;">
+                                        <span t-field="doc.tenancy_id.director_name"/>
+                                    </b>
+                                    DIN No:
+                                    <b style="font-family:Verdana, Arial,sans-serif;">
+                                        <span t-field="doc.tenancy_id.din_no"/>
+                                    </b>
+                                    ,
+                                    here in after referred as the SUB-LESSEE, (Which expression shall, unless it is
+                                    repugnant to the context or meaning there of be deemed to include its
+                                    successors-in interest, administers and assigns) of the OTHER PART.
+
+                                    <!--                                    </strong>-->
+
+                                </li>
+                                <li>
+                                    Terms
+                                    <br/>
+                                    The term of this Agreement shall commence on
+                                    <strong>
+                                        <span t-field="doc.start_date"/>
+                                    </strong>
+                                    and shall
+                                    terminate on
+                                    <strong>
+                                        <span t-field="doc.end_date"/>
+                                    </strong>
+                                    , unless otherwise extended by mutual agreement of the parties. Tenant shall
+                                    vacate the Property upon termination of the Agreement, unless otherwise
+                                    agreed by the parties in writing.
+                                </li>
+
+                                <li>
+                                    Rent
+                                    <br/>
+                                    Tenant shall pay rent of
+                                    <strong>
+                                        <span t-field="doc.total_rent"/>
+                                        / Month
+                                    </strong>
+                                    due on the due date of each month.the starting date of the agreement is
+                                    <strong>
+                                        <span t-field="doc.start_date"/>
+                                    </strong>
+                                    . The Payment Term is
+                                    <strong>
+                                        <span t-field="doc.payment_term"/>
+                                    </strong>
+                                    ,
+                                    Renewal Type is
+                                    <strong>
+                                        <span t-field="doc.renewal_type"/>
+                                    </strong>
+                                    ,
+                                    the total sft is
+                                    <strong>
+                                        <span t-field="doc.carpet_area"/>,
+                                    </strong>
+                                    Rent shall be paid to Landlord or Landlord’s designated agent at
+                                    <strong>
+                                        <span t-field="doc.company_id.street"/>
+                                        <span t-field="doc.company_id.street2"/>,
+                                        <span t-field="doc.company_id.city"/>,
+                                        <span t-field="doc.company_id.zip"/>,
+                                        <span t-field="doc.company_id.state_id"/>
+                                        <span t-field="doc.company_id.country_id"/>
+                                    </strong>
+                                    or via online payment to landlord
+
+                                </li>
+                                <li>
+                                    Maintenance
+                                    <br/>
+                                    The Operator shall pay Water, Gas, Electricity, AC Charges and CAM charges of Rs.
+                                    <t t-if="doc.use_carpet">
+                                        <span t-field="doc.cam_carpet"/>
+                                    </t>
+
+
+                                    <t t-elif="doc.use_chargeable">
+                                        <span t-field="doc.cam_chargeable"/>
+                                    </t>
+
+
+                                    <t t-else="">
+                                        <span t-field="doc.cam_fixed"/>
+                                    </t>
+                                    --<span t-field="doc.total_cam_in_words"/>+
+                                    Applicable Taxes , charges to paid within five days of submission of the bills /
+                                    demands by FIRST PART OR SUB-LESSOR to the Operator
+                                     and it shall not be open to the Operator to raise any
+                                    disputes and/or call in question the quality billed, the rate(s) and/or the method,
+                                    of pro-rating the cost of the facility.
+                                </li>
+                                <li>
+                                    Security Deposit
+                                    <br/>
+                                    Tenant shall deposit with Landlord a security deposit of
+                                    <strong>
+                                        <span t-field="doc.caution_deposite"/>
+                                    </strong>
+                                    , which
+                                    shall
+                                    be held by Landlord as security for the faithful performance by Tenant of
+                                    the terms of this
+                                    Agreement. If Tenant breaches any provision of this Agreement, Landlord may
+                                    apply the
+                                    security
+                                    deposit to any amount owed by Tenant to Landlord, including but not limited
+                                    to unpaid rent,
+                                    damage to the Property, or other expenses incurred by Landlord as a result
+                                    of Tenant’s
+                                    breach.
+                                </li>
+                                <li>
+                                    Use of Property
+                                    <br/>
+                                    Tenant shall use the Property for
+                                    <strong>
+                                        <t t-if="doc.property_type=='residential'">
+                                            Residential
+                                        </t>
+                                        <t t-if="doc.property_type=='land'">
+                                            Land
+                                        </t>
+                                        <t t-if="doc.property_type=='commercial'">
+                                            Commercial
+                                        </t>
+                                        <t t-if="doc.property_type=='industrial'">
+                                            Industrial
+                                        </t>
+                                    </strong>
+                                    purposes only and shall not
+                                    use the Property
+                                    for
+                                    any unlawful purpose. Tenant shall comply with all laws, ordinances, rules,
+                                    and regulations
+                                    of
+                                    governmental authorities applicable to the use and occupancy of the
+                                    Property. Tenant shall
+                                    not
+                                    make any alterations to the Property without the prior written consent of
+                                    Landlord.
+
+                                </li>
+                                <li>
+                                    Maintenance and Repair
+                                    <br/>
+                                    Tenant shall maintain the Property in a clean and orderly condition and
+                                    shall not damage or
+                                    allow damage to the Property. Tenant shall be responsible for repairing any
+                                    damage caused by
+                                    Tenant or Tenant’s guests. Tenant shall report any needed repairs or
+                                    maintenance to Landlord
+                                    promptly.
+
+                                </li>
+                                <li>
+                                    Utilities
+                                    <br/>
+                                    Tenant shall be responsible for payment of all utilities and services used
+                                    by Tenant on the
+                                    Property, including but not limited to electricity, gas, water, and
+                                    telephone.
+
+                                </li>
+                                <!--   <p style="page-break-before:always;"/>  -->
+                                <li>
+                                    Assignment and Subletting
+                                    <br/>
+                                    Tenant shall not assign this Agreement or sublet the Property without the
+                                    prior written
+                                    consent
+                                    of Landlord.
+
+                                </li>
+                                <li>
+                                    Governing Law
+                                    <br/>
+                                    This Agreement shall be governed by the laws of the State of
+                                    <strong>
+                                        <span t-field="doc.company_id.state_id"/>
+                                        <span t-field="doc.company_id.country_id"/>
+                                    </strong>
+                                    , without regard to its
+                                    conflict of law provisions.
+
+                                </li>
+                                <li>
+                                    Entire Agreement
+                                    <br/>
+                                    This Agreement constitutes the entire agreement between the parties and
+                                    supersedes all prior
+                                    negotiations, understandings, and agreements between the parties. This
+                                    Agreement may not be
+                                    modified except in writing signed by both parties.
+
+                                </li>
+                                <li>
+                                    Notices
+                                    <br/>
+                                    Any notice required or permitted under this Agreement shall be in writing
+                                    and shall be
+                                    deemed
+                                    given when personally delivered or sent by certified or registered mail,
+                                    postage prepaid, to
+                                    the
+                                    party at the address set forth below or such other address as either party
+                                    may specify by
+                                    notice
+                                    to the other party.
+                                </li>
+                                <li>
+                                    Renewals Table
+                                    <br/>
+                                    <table class="table table-sm table-bordered table-striped"
+                                           style="width:100%; text-align:center;">
+                                        <thead>
+                                            <tr>
+                                                <th style="text-align:center;">Start Date</th>
+                                                <th style="text-align:center;">End Date</th>
+                                                <th style="text-align:center;">Renewal Date</th>
+                                                <th style="text-align:center;">Percentage</th>
+                                                <th style="text-align:center;">Amount</th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody>
+                                            <t t-foreach="doc.year_ids" t-as="line">
+                                                <tr>
+                                                    <td>
+                                                        <t t-esc="line.start_year"/>
+                                                    </td>
+                                                    <td>
+                                                        <t t-esc="line.end_date"/>
+                                                    </td>
+                                                    <td>
+                                                        <t t-esc="line.end_year"/>
+                                                    </td>
+                                                    <td><t t-esc="line.percentage"/>%
+                                                    </td>
+                                                    <td>
+                                                        <t t-esc="line.amount"/>
+                                                    </td>
+                                                </tr>
+                                            </t>
+                                        </tbody>
+                                    </table>
+
+                                </li>
+                                <li>
+                                    Renewals Table CAM
+                                    <br/>
+                                    <table class="table table-sm table-bordered table-striped"
+                                           style="width:100%; text-align:center;">
+                                        <thead>
+                                            <tr>
+                                                <th style="text-align:center;">Start Date</th>
+                                                <!--                                                <th style="text-align:center;">End Date</th>-->
+                                                <th style="text-align:center;">Renewal Date</th>
+                                                <th style="text-align:center;">Percentage</th>
+                                                <th style="text-align:center;">Amount</th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody>
+                                            <t t-foreach="doc.cam_year_ids" t-as="line">
+                                                <tr>
+                                                    <td>
+                                                        <t t-esc="line.cam_start_year"/>
+                                                    </td>
+                                                    <!--                                                    <td>-->
+                                                    <!--                                                        <t t-esc="line.cam_end_date"/>-->
+                                                    <!--                                                    </td>-->
+                                                    <td>
+                                                        <t t-esc="line.cam_end_year"/>
+                                                    </td>
+                                                    <td><t t-esc="line.cam_percentage"/>%
+                                                    </td>
+                                                    <td>
+                                                        <t t-esc="line.cam_amount"/>
+                                                    </td>
+                                                </tr>
+                                            </t>
+                                        </tbody>
+                                    </table>
+
+                                </li>
+                                <li>
+                                    Addresses
+                                    <br/>
+                                    <table class="table table-sm">
+                                        <tr>
+                                            <td>
+                                                Landlord
+                                            </td>
+                                            <td>
+                                                Tenant
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <strong>
+                                                    <span t-field="doc.property_landlord_id.name"/>
+                                                </strong>
+                                                <br/>
+                                                <span>
+                                                    <span t-field="doc.property_landlord_id.street"/>
+                                                    <br/>
+                                                    <span t-field="doc.property_landlord_id.street2"/>
+                                                    <br/>
+                                                    <span t-field="doc.property_landlord_id.city"/>
+                                                    <span t-field="doc.property_landlord_id.state_id"/>
+                                                    <span t-field="doc.property_landlord_id.zip"/>
+                                                    <br/>
+                                                    <span t-field="doc.property_landlord_id.country_id"/>
+                                                </span>
+                                            </td>
+                                            <td>
+                                                <strong>
+                                                    <span t-field="doc.tenancy_id.name"/>
+                                                </strong>
+                                                <br/>
+                                                <span>
+                                                    <span t-field="doc.tenancy_id.street"/>
+                                                    <br/>
+                                                    <span t-field="doc.tenancy_id.street2"/>
+                                                    <br/>
+                                                    <span t-field="doc.tenancy_id.city"/>
+                                                    <span t-field="doc.tenancy_id.state_id"/>
+                                                    <span t-field="doc.tenancy_id.zip"/>
+                                                    <br/>
+                                                    <span t-field="doc.tenancy_id.country_id"/>
+                                                </span>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </li>
+                            </ul>
+                            <table class="table table-borderless">
+                                <tr>
+                                    <td>
+                                        Landlord
+                                        <hr style="border: 1px solid;width: 14%;position: absolute;"/>
+                                    </td>
+                                    <td>
+                                        Tenant
+                                        <hr style="border: 1px solid;width: 14%;position: absolute;"/>
+                                    </td>
+                                </tr>
+                            </table>
+                            <br/>
+                            <p>
+                                <h5>
+                                    Terms &amp; Conditions
+                                </h5>
+                                <span>
+                                    <span t-field="doc.term_condition"/>
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+    <record id="tenancy_details_report_id_customise_pro" model="ir.actions.report">
+        <field name="name">Custom Tenancy Details</field>
+        <field name="model">tenancy.details</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">nhcl_rental_management.tenancy_customise_report</field>
+        <field name="report_file">nhcl_rental_management.tenancy_customise_report</field>
+        <field name="binding_model_id" ref="model_tenancy_details"/>
+        <field name="binding_type">report</field>
+        <field name="print_report_name">'%s Information' %(object.tenancy_seq)</field>
+    </record>
+</odoo>
+
+

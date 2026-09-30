@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_category_bill_form" model="ir.ui.view">
+        <field name="name">catagory.bill.form</field>
+        <field name="model">catagory.bill</field>
+        <field name="arch" type="xml">
+            <form string="Category Bill">
+                <!--                <button name="action_sync_electric_data_to_lines"-->
+                <!--                        type="object"-->
+                <!--                        string="Sync Readings by Date"-->
+                <!--                        class="btn-success"/>-->
+                <sheet>
+                    <group>
+                        <group>
+                            <!--                        <field name="name"/>-->
+                            <field name="category"/>
+                            <field name="ten"/>
+                            <field name="tenancy_id" readonly="1"/>
+                            <field name="date"/>
+                        </group>
+                        <group>
+                            <field name="months" readonly="create_date"/>
+                            <field name="is_invoice_created" readonly="1" invisible="1"/>
+                            <field name="meter_no" readonly="0"/>
+                            <field name="year" readonly="1"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Consumption">
+                            <field name="ct_line_ids">
+                                <list editable="bottom" create="false" delete="false">
+                                    <field name="dt" readonly="1" force_save="1"/>
+                                    <field name="open_unit" readonly="1"/>
+                                    <field name="close_unit" readonly="1"/>
+                                    <field name="reset_unit" readonly="1"/>
+                                    <field name="consumption" readonly="1"/>
+                                </list>
+                            </field>
+                            <div class="oe_subtotal_footer oe_right" style="margin-top: 10px; text-align:right;">
+                                <label for="total" string="Total Consumption"/>
+                                <field name="total" readonly="1" class="oe_subtotal"/>
+                            </div>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="category_action_ten" model="ir.actions.act_window">
+        <field name="name">Electric Units</field>
+        <field name="res_model">catagory.bill</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <!--    dg reading view-->
+    <record id="view_dg_reading_form" model="ir.ui.view">
+        <field name="name">dg.reading.form</field>
+        <field name="model">dg.reading</field>
+        <field name="arch" type="xml">
+            <form string="DG Reading">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="category"/>
+                            <field name="tenant_id"/>
+                            <field name="date"/>
+                        </group>
+                        <group>
+                            <field name="month" readonly="create_date"/>
+                            <field name="year" readonly="create_date"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="DG Reading">
+                            <field name="dg_line_ids">
+                                <list editable="bottom" create="false" delete="false">
+                                    <field name="date" readonly="1" force_save="1"/>
+                                    <field name="opening_unit" readonly="1" force_save="1"/>
+                                    <field name="closing_unit" readonly="1" force_save="1"/>
+                                    <field name="reset_unit" force_save="1" readonly="1"/>
+                                    <field name="consumption" readonly="1"/>
+                                </list>
+                            </field>
+                            <div class="oe_subtotal_footer oe_right" style="margin-top: 10px; text-align:right;">
+                                <label for="total_consumption" string="Total Consumption"/>
+                                <field name="total_consumption" readonly="1" class="oe_subtotal"/>
+                            </div>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <!-- Action for DG Reading -->
+    <record id="action_dg_reading" model="ir.actions.act_window">
+        <field name="name">DG Reading</field>
+        <field name="res_model">dg.reading</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <record id="view_gas_reading_form" model="ir.ui.view">
+        <field name="name">gas.reading.form</field>
+        <field name="model">gas.reading</field>
+        <field name="arch" type="xml">
+            <form string="Gas Reading">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="category"/>
+                            <field name="tenant_id"/>
+                            <field name="date"/>
+                        </group>
+                        <group>
+                            <field name="month" readonly="create_date"/>
+                            <field name="year" readonly="1"/>
+
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Daily Readings">
+                            <field name="gas_line_ids">
+                                <list editable="bottom" create="false" delete="false">
+                                    <field name="date" widget="date"/>
+                                    <field name="opening_unit" readonly="1"/>
+                                    <field name="closing_unit" readonly="1"/>
+                                    <field name="reset_unit" readonly="1"/>
+                                    <field name="consumption" readonly="1"/>
+                                    <field name="is_invoiced" readonly="1"/>
+                                </list>
+                            </field>
+                            <div class="oe_subtotal_footer oe_right" style="margin-top: 10px; text-align:right;">
+                                <label for="total_consumption" string="Total Consumption"/>
+                                <field name="total_consumption" readonly="1" class="oe_subtotal"/>
+                            </div>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <!-- Action -->
+    <record id="action_gas_reading" model="ir.actions.act_window">
+        <field name="name">Gas Reading</field>
+        <field name="res_model">gas.reading</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <record id="view_water_reading_form" model="ir.ui.view">
+        <field name="name">water.reading.form</field>
+        <field name="model">water.reading</field>
+        <field name="arch" type="xml">
+            <form string="Water Reading">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="category"/>
+                            <field name="tenant_id"/>
+                        </group>
+                        <group>
+                            <field name="month" readonly="create_date"/>
+                            <field name="date"/>
+                            <field name="year"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Daily Readings">
+                            <field name="water_line_ids">
+                                <list editable="bottom" create="false" delete="false">
+                                    <field name="date" widget="date"/>
+                                    <field name="opening_unit" readonly="1"/>
+                                    <field name="closing_unit" readonly="1"/>
+                                    <field name="reset_unit" force_save="1" readonly="1"/>
+                                    <field name="consumption" readonly="1"/>
+                                </list>
+                            </field>
+                            <div class="oe_subtotal_footer oe_right" style="margin-top: 10px; text-align:right;">
+                                <label for="total_consumption" string="Total Consumption"/>
+                                <field name="total_consumption" readonly="1" class="oe_subtotal"/>
+                            </div>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <!-- Action -->
+    <record id="action_water_reading" model="ir.actions.act_window">
+        <field name="name">Water Reading</field>
+        <field name="res_model">water.reading</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <!--    it's for the new HAVC Screen -->
+    <record id="hvac_new_screen_view" model="ir.ui.view">
+        <field name="name">hvac.screen.view</field>
+        <field name="model">hvac.reading</field>
+        <field name="arch" type="xml">
+            <form string="HAVC Reading">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="category"/>
+                            <field name="tenant_id"/>
+                        </group>
+                        <group>
+                            <field name="month" readonly="create_date"/>
+                            <field name="date" readonly="create_date"/>
+                            <field name="year" readonly="create_date"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Daily Readings">
+                            <field name="hvac_line_ids">
+                                <list editable="bottom" create="false" delete="false">
+                                    <field name="date" readonly="1" force_save="1"/>
+                                    <field name="opening_unit" readonly="1" force_save="1"/>
+                                    <field name="closing_unit" readonly="1" force_save="1"/>
+                                    <field name="reset_unit" force_save="1" readonly="1"/>
+                                    <field name="consumption" readonly="1"/>
+                                </list>
+                            </field>
+                            <div class="oe_subtotal_footer oe_right" style="margin-top: 10px; text-align:right;">
+                                <label for="total_consumption" string="Total Consumption"/>
+                                <field name="total_consumption" readonly="1" class="oe_subtotal"/>
+                            </div>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <!-- Action -->
+    <record id="hvac_screen_action" model="ir.actions.act_window">
+        <field name="name">HVAC Reading</field>
+        <field name="res_model">hvac.reading</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <record id="view_hot_water_reading_form" model="ir.ui.view">
+        <field name="name">hot.water.reading.form</field>
+        <field name="model">hot.water.reading</field>
+        <field name="arch" type="xml">
+            <form string="Hot Water Reading">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="category"/>
+                            <field name="tenant_id"/>
+                        </group>
+                        <group>
+                            <field name="month" readonly="create_date"/>
+                            <field name="date" readonly="create_date"/>
+                            <field name="year" readonly="create_date"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Daily Readings">
+                            <field name="hot_water_line_ids">
+                                <list editable="bottom" create="false" delete="false">
+                                    <field name="date" widget="date"/>
+                                    <field name="opening_unit" readonly="1"/>
+                                    <field name="closing_unit" readonly="1"/>
+                                    <field name="reset_unit" force_save="1" readonly="1"/>
+                                    <field name="consumption" readonly="1"/>
+                                </list>
+                            </field>
+                            <div class="oe_subtotal_footer oe_right" style="margin-top: 10px; text-align:right;">
+                                <label for="total_consumption" string="Total Consumption"/>
+                                <field name="total_consumption" readonly="1" class="oe_subtotal"/>
+                            </div>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="view_hot_water_reading_list" model="ir.ui.view">
+        <field name="name">hot.water.reading.list</field>
+        <field name="model">hot.water.reading</field>
+        <field name="arch" type="xml">
+            <list string="Hot Water Reading">
+                <field name="tenant_id"/>
+                <field name="month"/>
+                <field name="total_consumption"/>
+            </list>
+        </field>
+    </record>
+    <record id="action_hot_water_reading" model="ir.actions.act_window">
+        <field name="name">Cool Water Reading</field>
+        <field name="res_model">hot.water.reading</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+     <!-- Action -->
+    <record id="hvac_dc_screen_action" model="ir.actions.act_window">
+        <field name="name">HVAC DG Reading</field>
+        <field name="res_model">hvac.dc.reading</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <!-- Form View -->
+    <record id="view_hvac_dc_reading_form" model="ir.ui.view">
+        <field name="name">hvac.dc.reading.form</field>
+        <field name="model">hvac.dc.reading</field>
+        <field name="arch" type="xml">
+            <form string="HVAC DG Reading">
+                <sheet>
+
+                    <group>
+                        <group>
+                            <field name="category"/>
+                            <field name="tenant_id"/>
+                        </group>
+
+                        <group>
+                            <field name="month" readonly="create_date"/>
+                            <field name="date" readonly="create_date"/>
+                            <field name="year" readonly="create_date"/>
+                        </group>
+                    </group>
+
+                    <notebook>
+                        <page string="Daily Readings">
+
+                            <field name="hvac_dc_line_ids">
+                                <list editable="bottom"
+                                      create="false"
+                                      delete="false">
+
+                                    <field name="date" widget="date"/>
+                                    <field name="opening_unit" readonly="1"/>
+                                    <field name="closing_unit" readonly="1"/>
+                                    <field name="reset_unit"
+                                           force_save="1"
+                                           readonly="1"/>
+                                    <field name="consumption" readonly="1"/>
+
+                                </list>
+                            </field>
+
+                            <div class="oe_subtotal_footer oe_right"
+                                 style="margin-top: 10px; text-align:right;">
+
+                                <label for="total_consumption"
+                                       string="Total Consumption"/>
+
+                                <field name="total_consumption"
+                                       readonly="1"
+                                       class="oe_subtotal"/>
+
+                            </div>
+
+                        </page>
+                    </notebook>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <menuitem name="Category"
+              parent="rental_management.main_menu_rental_management"
+              id="category_main"
+              sequence="14"/>
+    <menuitem name="Electricity Units"
+              parent="category_main"
+              id="electric_menu"
+              action="category_action_ten"
+              sequence="1"/>
+    <menuitem name="DG Reading"
+              parent="category_main"
+              id="dg_reading_menu"
+              action="action_dg_reading"
+              sequence="2"/>
+    <menuitem name="GAS Reading"
+              parent="category_main"
+              id="gas_reading_menu"
+              action="action_gas_reading"
+              sequence="3"/>
+    <menuitem name="GHMC Water Main"
+              parent="category_main"
+              id="tenant_water_reading_menu"
+              action="action_water_reading"
+              sequence="4"/>
+    <menuitem name="HVAC"
+              parent="category_main"
+              id="havc_new_main"
+              action="hvac_screen_action"
+              sequence="5"/>
+    <menuitem name="Cool Water Main"
+              parent="category_main"
+              id="cool_water_new_main"
+              action="action_hot_water_reading"
+              sequence="6"/>
+    <!-- Menu -->
+    <menuitem name="HVAC-DG"
+              parent="category_main"
+              id="hvac_dc_main"
+              action="hvac_dc_screen_action"
+              sequence="5"/>
+
+</odoo>
+

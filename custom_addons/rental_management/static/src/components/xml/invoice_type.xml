@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="owl.OwlInvoiceType" owl="1">
+         <section class="section invoice_type">
+           <style>
+           body {
+              background-color: #ffffff !important;
+           }
+            .month-select-container {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                background-color: #f9fafb;
+                border: 1px solid #e2e8f0;
+                border-radius: 8px;
+                max-width: fit-content;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            }
+
+            .month-label {
+                font-weight: 600;
+                color: #374151;
+            }
+
+            .month-dropdown {
+                padding: 8px 12px;
+                font-size: 14px;
+                color: #1f2937;
+                background-color: #ffffff;
+                border: 1px solid #d1d5db;
+                border-radius: 6px;
+                width: 160px;
+                outline: none;
+                transition: border 0.2s ease;
+            }
+
+            .month-dropdown:focus {
+                border-color: #3b82f6;
+                box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3);
+            }
+            .kanban-container {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 12px;
+            }
+            .kanban-card {
+                background: #fff;
+                border: 1px solid #ccc;
+                padding: 12px;
+                border-radius: 8px;
+                width: 250px;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+           .kanban-card:hover {
+                background-color: #f0f0f0;
+            }
+
+           .styled-table {
+            border-collapse: separate;
+            border-spacing: 5px;
+            margin: 10px;
+            width: fit-content;
+            }
+            .styled-table tr {
+                height: 195px;
+            }
+            .sidebar-title {
+              font-weight: bold;
+              margin-top: 1rem;
+              padding: 5px 5px 5px 15px ;
+              color: #444;
+            }
+            .sidebar-item {
+              padding: 8px 12px 0 35px; //top-right-bottom-left
+              font-size:14px;
+              font-weight: 600;
+              color: #444;
+              cursor: pointer;
+            }
+            .sidebar-item:hover {
+             background-color: #F5F5F5;
+            }
+            .sidebar-item.active {
+              background-color: #f2f7fc;
+              color: #2b6340;
+            }
+
+           .buttons{
+            padding: 10px 20px;
+            font-size: 15px;
+            font-weight: 500;
+            color: #333;
+            background-color: #f4f4f4;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.1s ease;
+           }
+
+            .title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #444;
+            margin: 8px;
+            letter-spacing: 0.8px;
+            }
+            .button-group {
+              display: flex;
+              gap: 16px; /* spacing between buttons */
+              justify-content: left;
+              flex-wrap: wrap;
+              margin: 20px 0;
+            }
+               .month-label{
+                font-weight:bold;
+               padding:0 0 0 15px;
+               }
+            .sidebar {
+            background-color: #ffff; /* Odoo light background */
+            border-right: 1px solid #e0e0e0;
+            width: 240px;
+            height: 80vh;
+            overflow-y: auto;
+            }
+            .clickable-div {
+            cursor: pointer; /* Makes the cursor appear clickable */
+            }
+           .filter-row {
+                display: flex;
+                align-items: center;
+                gap: 20px;
+                padding: 10px;
+                flex-wrap: wrap; /* Allows wrapping on smaller screens */
+            }
+
+            .filter-row label {
+               display: flex;
+                font-weight: 600;
+                margin-right: 5px;
+                font-family: Arial, sans-serif;
+            }
+
+            .filter-dropdown {
+                padding: 5px 10px;
+                border: 1px solid #ccc;
+                border-radius: 6px;
+                font-size: 14px;
+                width: 160px;
+            }
+           .record-count {
+                margin-left: auto;
+               margin-right:100px;
+                margin-top: 10px;
+                font-size: 14px;
+                color: #333;
+            }
+       </style>
+             <div class="title"><span>Invoice Type Dashboard </span></div>
+             <div class="row">
+                <div class="border m-0 p-0 bg-white"/>
+                 <div class="col-lg-3 sidebar" style="background-color: #fff; padding: 1rem;">
+                     <div class="bulk-sidebar">
+                         <t t-set="lastParent" t-value="''"/>
+                         <t t-foreach="menuItems" t-as="item" t-key="item.id">
+                             <t t-if="item.parent !== lastParent">
+                             <div class="sidebar-title">
+                                <t t-esc="item.parent"/>
+                             </div>
+                                 <t t-set="lastParent" t-value="item.parent"/>
+                             </t>
+                             <div class="sidebar-item"
+                                  t-att-class="state.selected === item.id ? 'active' : ''"
+                                  t-on-click="() => selectMenu(item.id)">
+                                <t t-esc="item.label"/>
+                             </div>
+                         </t>
+                     </div>
+                </div>
+                 <div class="col" style="padding: 1rem; bg-white">
+                    <div class="filter-row ">
+                        <div class="filter-group">
+                            <label>Select Month:</label>
+                            <select class="filter-dropdown" t-on-change="onMonthChange">
+                            <t t-foreach="state.months" t-as="month" t-key="month">
+                                <option t-att-value="month" t-att-selected="state.selectedMonth === month">
+                                    <t t-esc="month"/>
+                                </option>
+                            </t>
+                        </select>
+                        </div>
+                        <div class="filter-group">
+                            <label>Tenant:</label>
+                            <select
+                              id="tenantSelect" t-model="state.selectedTenant" t-on-change="onTenantChange" class="filter-dropdown">
+                              <t t-foreach="state.tenants" t-as="t" t-key="t.id">
+                                <option
+                                  t-att-value="t.id" t-att-selected="state.selectedTenant === t.id">
+                                  <t t-esc="t.name"/>
+                                </option>
+                              </t>
+                            </select>
+                        </div>
+                        <div class="record-count">
+                            Total Invoices: <t t-esc="state.recordCount" />
+                        </div>
+
+                    </div>
+                     <br/>
+                     <t t-if="state.selected === 1">
+                        <div class="kanban-container">
+                            <t t-foreach="state.records" t-as="rec" t-key="rec.id">
+                                <div class="kanban-card" t-on-click="() => this.openRecord(rec.id)">
+                                    <strong><t t-esc="rec.name" /></strong>
+                                    <p>Status: <t t-esc="rec.state"/></p>
+                                    <p>Date: <t t-esc="rec.invoice_date"/></p>
+                                    <p>Customer: <t t-esc="rec.partner_id"/></p>
+                                </div>
+                            </t>
+                        </div>
+                    </t>
+                     <t t-if="state.selected === 2">
+                        <div class="kanban-container">
+                            <t t-foreach="state.records" t-as="rec" t-key="rec.id">
+                                <div class="kanban-card" t-on-click="() => this.openRecord(rec.id)">
+                                    <p><strong><t t-esc="rec.name" /></strong></p>
+                                    <p>Status: <t t-esc="rec.state"/></p>
+                                    <p>Date: <t t-esc="rec.invoice_date"/></p>
+                                    <p>Customer: <t t-esc="rec.partner_id"/></p>
+                                </div>
+                            </t>
+                        </div>
+                    </t>
+                     <t t-if="state.selected === 3">
+                        <div class="kanban-container">
+                            <t t-foreach="state.records" t-as="rec" t-key="rec.id">
+                                <div class="kanban-card" t-on-click="() => this.openRecord(rec.id)">
+                                    <strong><t t-esc="rec.name" /></strong>
+                                    <p>Status: <t t-esc="rec.state"/></p>
+                                    <p>Date: <t t-esc="rec.invoice_date"/></p>
+                                    <p>Customer: <t t-esc="rec.partner_id"/></p>
+                                </div>
+                            </t>
+                        </div>
+                    </t>
+                     <t t-if="state.selected === 4">
+                        <div class="kanban-container">
+                            <t t-foreach="state.records" t-as="rec" t-key="rec.id">
+                                <div class="kanban-card" t-on-click="() => this.openRecord(rec.id)">
+                                    <strong><t t-esc="rec.name" /></strong>
+                                    <p>Status: <t t-esc="rec.state"/></p>
+                                    <p>Date: <t t-esc="rec.invoice_date"/></p>
+                                    <p>Customer: <t t-esc="rec.partner_id"/></p>
+                                </div>
+                            </t>
+                        </div>
+                    </t>
+                     <t t-if="state.selected === 5">
+                        <div class="kanban-container">
+                            <t t-foreach="state.records" t-as="rec" t-key="rec.id">
+                                <div class="kanban-card" t-on-click="() => this.openRecord(rec.id)">
+                                    <strong><t t-esc="rec.name" /></strong>
+                                    <p>Status: <t t-esc="rec.state"/></p>
+                                    <p>Date: <t t-esc="rec.invoice_date"/></p>
+                                    <p>Customer: <t t-esc="rec.partner_id"/></p>
+                                </div>
+                            </t>
+                        </div>
+                    </t>
+                     <t t-if="state.selected === 6">
+                        <div class="kanban-container">
+                            <t t-foreach="state.records" t-as="rec" t-key="rec.id">
+                                <div class="kanban-card" t-on-click="() => this.openRecord(rec.id)">
+                                    <strong><t t-esc="rec.name" /></strong>
+                                    <p>Status: <t t-esc="rec.state"/></p>
+                                    <p>Date: <t t-esc="rec.invoice_date"/></p>
+                                    <p>Customer: <t t-esc="rec.partner_id"/></p>
+                                </div>
+                            </t>
+                        </div>
+                    </t>
+                     <t t-if="state.selected === 7">
+                        <div class="kanban-container">
+                            <t t-foreach="state.records" t-as="rec" t-key="rec.id">
+                                <div class="kanban-card" t-on-click="() => this.openRecord(rec.id)">
+                                    <strong><t t-esc="rec.name" /></strong>
+                                    <p>Status: <t t-esc="rec.state"/></p>
+                                    <p>Date: <t t-esc="rec.invoice_date"/></p>
+                                    <p>Customer: <t t-esc="rec.partner_id"/></p>
+                                </div>
+                            </t>
+                        </div>
+                    </t>
+                </div>
+             </div>
+        </section>
+    </t>
+</templates>

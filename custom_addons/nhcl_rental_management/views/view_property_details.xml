@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_mall_form_inherit" model="ir.ui.view">
+        <field name="name">management.main.form.inherit</field>
+        <field name="model">property.details</field>
+        <field name="inherit_id" ref="rental_management.property_details_form_view"/>
+        <field name="arch" type="xml">
+            <!-- Add the new "Mall Details" page after the "Maintenance History" page -->
+            <xpath expr="//page[@name='maintenance_history']" position="after">
+                <page string="Mall Mix Matrix" name="mall_details">
+                    <field name="mall_matrix_ids">
+                        <list editable="bottom">
+                            <field name="mall_master_id" required="1"/>
+                            <field name="mall_no_of_unit"/>
+                            <field name="mall_length"/>
+                            <field name="mall_width"/>
+                            <field name="mall_height"/>
+                            <field name="mall_carpet_area"/>
+                        </list>
+                    </field>
+                    <group class="oe_subtotal_footer oe_right" style="text-align: right">
+                        <field name="mall_mix_total" force_save="1"/>
+                    </group>
+                </page>
+            </xpath>
+            <xpath expr="//page[@name='safety_certificate']//list//field[@name='expiry_date']" position="before">
+                <field name="start_date"/>
+            </xpath>
+            <xpath expr="//page[@name='safety_certificate']//list//field[@name='responsible']" position="after">
+                <field name="attachments" filename="attachment_name"/>
+                <field name="attachment_name"/>
+            </xpath>
+            <!--            <xpath expr="//notebook//page[@name='floor_plan']//form//div[2]" position="inside">-->
+
+            <!--                <div style="float:right;display:block;">-->
+            <!--                    <lable>Floor </lable>-->
+            <!--                    <field name="floor_no"/><br/>-->
+            <!--                    <lable>Total SFT </lable>-->
+            <!--                    <field name="total_sft"/><br/>-->
+            <!--                    <lable>Status</lable>-->
+            <!--                    <field name="status"/><br/>-->
+            <!--                    <lable>Tenancy ID</lable>-->
+            <!--                    <field name="tenancy"/>-->
+            <!--                </div> -->
+            <!--                &lt;!&ndash;                <field name="total_sft"/>&ndash;&gt;-->
+            <!--                &lt;!&ndash;                <field name="status"/>&ndash;&gt;-->
+            <!--                &lt;!&ndash;                <field name="tenancy"/>&ndash;&gt;-->
+            <!--            </xpath>  -->
+            <xpath expr="//notebook//page[@name='floor_plan']//form//div[2]" position="inside">
+                <div style="float: right; display: flex; padding-right:20px; padding: 5px; border: 1px solid #ddd; border-radius: 5px; background-color: #f9f9f9;">
+                    <div class="form-group">
+                        <label for="floor_no" class="form-label">Floor</label>
+                        <field name="floor_no" class="form-control" placeholder="Enter floor number"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="total_sft" class="form-label">Total SFT</label>
+                        <field name="total_sft" class="form-control"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="status" class="form-label">Status</label>
+                        <field name="status" class="form-control" placeholder="Status"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="tenancy" class="form-label">Tenancy ID</label>
+                        <field name="tenancy" class="form-control" placeholder="Enter tenancy ID"/>
+                    </div>
+                </div>
+            </xpath>
+             <xpath expr="//notebook//page[@name='floor_plan']//kanban//templates//div//div[1]" position="after">
+                <div style="float: center; display: flex; padding: 5px; border: 1px solid #ddd; border-radius: 5px; background-color: #f9f9f9;">
+                    <div class="form-group">
+                        <label for="floor_no" class="form-label">Floor</label>
+                        <field name="floor_no" class="form-control" placeholder="Enter floor number"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="total_sft" class="form-label">Total SFT</label>
+                        <field name="total_sft" class="form-control"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="status" class="form-label">Status</label>
+                        <field name="status" class="form-control" placeholder="Status"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="tenancy" class="form-label">Tenancy ID</label>
+                        <field name="tenancy" class="form-control" placeholder="Enter tenancy ID"/>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+    <record id="view_mall_kanban_inherit" model="ir.ui.view">
+        <field name="name">dashboard.main.kanban.inherit</field>
+        <field name="model">floor.plan</field>
+        <field name="inherit_id" ref="rental_management.view_floor_plan_kanban"/>
+        <field name="arch" type="xml">
+            <xpath expr="//kanban//templates//div//div[2]" position="after">
+                <div style="float: center;display: flex; padding: 5px; padding-top:5px; border: 1px solid #ddd; border-radius: 5px; background-color: #f9f9f9;">
+                    <div class="form-group">
+                        <label for="floor_no" class="form-label">Floor</label>
+                        <field name="floor_no" class="form-control" placeholder="Enter floor number"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="total_sft" class="form-label">Total SFT</label>
+                        <field name="total_sft" class="form-control"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="status" class="form-label">Status</label>
+                        <field name="status" class="form-control" placeholder="Status"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="tenancy" class="form-label">Tenancy ID</label>
+                        <field name="tenancy" class="form-control" placeholder="Enter tenancy ID"/>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>

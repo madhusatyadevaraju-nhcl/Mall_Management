@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!--tree view of mall matrix-->
+    <record id="view_mall_tree" model="ir.ui.view">
+        <field name="name">mall.main.tree</field>
+        <field name="model">mall.main</field>
+        <field name="arch" type="xml">
+            <list string="Malls">
+                <field name="name"/>
+            </list>
+        </field>
+    </record>
+     <record id="res_partner_inherit_view" model="ir.ui.view">
+        <field name="name">partner.inherit.view</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+<!--            <xpath expr="//field[@name='din_no']" position="after">-->
+<!--                <field name="cam" widget="email"/>-->
+<!--            </xpath>-->
+             <xpath expr="//field[@name='l10n_in_pan']" position="after">
+                 <field name="signage" widget="email"/>
+                   <field name="utility" widget="email"/>
+                <field name="gas" widget="email"/>
+             </xpath>
+<!--             <xpath expr="//group" position="after">-->
+<!--                <group string="Present Address">-->
+<!--                    <field name="same_as_current_address"/>-->
+
+<!--                    <div class="o_address_format">-->
+<!--                        <field name="present_street"/>-->
+<!--                        <field name="present_street2"/>-->
+
+<!--                        <field name="present_city" class="o_address_city"/>-->
+<!--                        <field name="present_state_id" class="o_address_state"/>-->
+<!--                        <field name="present_zip" class="o_address_zip"/>-->
+<!--                        <field name="present_country_id" class="o_address_country"/>-->
+<!--                    </div>-->
+<!--                </group>-->
+<!--            </xpath>-->
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="view_mall_form" model="ir.ui.view">
+        <field name="name">mall.main.form</field>
+        <field name="model">mall.main</field>
+        <field name="arch" type="xml">
+            <form string="Mall">
+                <group>
+                    <field name="name"/>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_mall" model="ir.actions.act_window">
+        <field name="name">Retail Mix</field>
+        <field name="res_model">mall.main</field>
+        <field name="view_mode">list,form</field>
+        <field name="view_id" ref="view_mall_tree"/>
+        <field name="context">{}</field>
+    </record>
+
+
+    <menuitem name="Retail Mix"
+              parent="rental_management.menu_property"
+              id="menu_mall"
+              action="action_mall"
+              sequence="3"/>
+
+            <!-- Tree View for Tenant Types -->
+    <record id="view_tenant_type_tree" model="ir.ui.view">
+        <field name="name">tenant.type.tree</field>
+        <field name="model">tenant.type</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_tenant_form" model="ir.ui.view">
+        <field name="name">tenant.type.form</field>
+        <field name="model">tenant.type</field>
+        <field name="arch" type="xml">
+            <form string="Tenant Type">
+                <sheet>
+                    <group>
+                        <field name="name" required="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Form View for Tenant Types -->
+    <record id="tenant_type" model="ir.actions.act_window">
+        <field name="name">Tenant Types</field>
+        <field name="res_model">tenant.type</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem name="Tenant Types"
+              parent="rental_management.menu_configuration"
+              id="tenant"
+              action="tenant_type"
+              sequence="20"/>
+</odoo>

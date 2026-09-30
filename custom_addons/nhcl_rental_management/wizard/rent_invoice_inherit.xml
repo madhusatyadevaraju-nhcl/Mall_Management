@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="rent_invoice_screen" model="ir.ui.view">
+        <field name="name">rent.invoice.inherit.form</field>
+        <field name="model">rent.invoice</field>
+        <field name="inherit_id" ref="rental_management.rent_invoice_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='invoice_date']" position="after">
+                <field name="rent_depo_date"/>
+            </xpath>
+        </field>
+    </record>
+    <record id="rent_invoice_report_view" model="ir.ui.view">
+        <field name="name">rent.invoice.monthly.report</field>
+        <field name="model">date.range.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <group>
+                        <field name="from_date" required="1"/>
+                        <field name="partner_id" options="{'no_create': True}" context="{'default_customer_rank': 1}"/>
+
+                    </group>
+                    <group>
+                        <field name="to_date" required="1"/>
+                    </group>
+                </group>
+                <footer>
+                    <button string="Print" type="object" class="btn btn-outline-success"
+                            name="action_print_report_rent"/>
+                    <button string="Cancel" special="cancel" class="btn btn-outline-danger"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="rent_report_action" model="ir.actions.act_window">
+        <field name="name">Rent Monthly Report</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">date.range.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem name="Rent Monthly Report"
+              id="rent_monthly_id"
+              parent="rental_management.menu_print_report"
+              action="rent_report_action"
+              sequence="3"/>
+</odoo>

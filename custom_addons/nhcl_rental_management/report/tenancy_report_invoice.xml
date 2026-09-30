@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="exap_cash_lists">
+        <t t-if="not o" t-set="o" t-value="doc"/>
+        <t t-if="not company">
+            <t t-if="company_id">
+                <t t-set="company" t-value="company_id"/>
+            </t>
+            <t t-elif="o and 'company_id' in o and o.company_id.sudo()">
+                <t t-set="company" t-value="o.company_id.sudo()"/>
+            </t>
+        </t>
+        <div class="header" style="text-align: right;">
+            <div class="row" style="height:30px;">
+                <div class="col-6" style="text-align: left;border-left:1px solid black;">
+                    <t t-if="company.logo">
+                        <img t-att-src="image_data_uri(company.logo)" alt="Logo"
+                             style="width: 620px; max-height: 820px; padding-top: 10px;"/>
+                    </t>
+                </div>
+                <div class="col-6" style="padding-right:60px;font-size:10px;padding-top:20px;">
+                    <span t-field="company.street2"/>
+                    <br/>
+                    <span t-field="company.state_id"/>
+                    <span t-field="company.zip"/>
+                    <span t-field="company.city"/>
+                    <br/>
+                    Ph:
+                    <span t-field="company.phone"/>
+                </div>
+            </div>
+        </div>
+        <div class="article" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id"
+             t-att-data-oe-lang="o and o.env.context.get('lang')">
+            <t t-out="0"/>
+        </div>
+    </template>
+    <template id="custom_report_header23">
+        <t t-if="not o" t-set="o" t-value="doc"/>
+        <t t-if="not company">
+            <t t-if="company_id">
+                <t t-set="company" t-value="company_id"/>
+            </t>
+            <t t-elif="o and 'company_id' in o and o.company_id.sudo()">
+                <t t-set="company" t-value="o.company_id.sudo()"/>
+            </t>
+            <t t-else="else">
+                <t t-set="company" t-value="res_company"/>
+            </t>
+        </t>
+
+        <t t-foreach="docs" t-as="doc">
+            <t t-call="nhcl_rental_management.exap_cash_lists">
+
+                <p style="font-size:10px; margin-left:650px;">CIN NO.
+                    <span t-field="doc.partner_id.nhcl_res_cin_no"/>
+                    <br/>
+                    Director:
+                    <span t-field="doc.partner_id.director_name"/>,<![CDATA[&nbsp;]]>
+                    DIN NO:
+                    <span t-field="doc.partner_id.din_no"/>
+                </p>
+
+                <main>
+                    <div class="page" style="margin: 20px;">
+                        <!-- Header Section -->
+                        <h1 style="text-align: center; margin-top: 10px; font-weight: bold;">Tax Invoice</h1>
+
+                        <!-- Invoice Details Table -->
+                        <table class="table table-bordered"
+                               style="width: 100%; margin-top: 20px; font-size: 12px;border:2px solid black;">
+                            <tr>
+                                <td>
+                                    <strong>Tenant:</strong>
+                                    <span t-field="doc.partner_id.name"/>
+                                </td>
+                                <td>
+                                    <strong>Brand Name:</strong> <!-- Placeholder for Brand Name -->
+                                    <span t-field="doc.tenancy_id.brand_name"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Address:</strong>
+                                    <span t-field="doc.partner_id.city"/>
+                                    -
+                                    <span t-field="doc.partner_id.state_id"/>
+                                    (<span t-field="doc.partner_id.zip"/>)
+                                </td>
+                                <td>
+                                    <strong>Billing Period:</strong>
+                                    <span t-field="doc.invoice_month_range"/>
+                                    <!--                                    <span t-if="doc.tenancy_id.start_date and doc.tenancy_id.end_date">-->
+                                    <!--                                        <t t-set="start_date"-->
+                                    <!--                                           t-value="doc.tenancy_id.start_date.strftime('%d %b')"/>-->
+                                    <!--                                        <t t-set="end_date" t-value="doc.tenancy_id.end_date.strftime('%d %b')"/>-->
+                                    <!--                                        <t t-esc="start_date"/>-->
+                                    <!--                                        to-->
+                                    <!--                                        <t t-esc="end_date"/>-->
+                                    <!--                                    </span>&lt;!&ndash; Placeholder for Billing Period &ndash;&gt;-->
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Tenant PAN No:</strong>
+                                    <span t-field="doc.partner_id.nhcl_pan_no"/>
+                                </td>
+                                <td>
+                                    <strong>Invoice Date:</strong>
+                                    <span t-field="doc.invoice_date"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>State:</strong>
+                                    <span t-field="doc.partner_id.state_id"/>
+                                </td>
+                                <td>
+                                    <strong>Due Date:</strong>
+                                    <span t-field="doc.invoice_date_due"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>State Code:</strong>
+                                    <t t-esc="company.state_id.code"/>
+                                    <!-- Placeholder for State Code -->
+                                </td>
+                                <td>
+                                    <strong>PAN Number:</strong>
+                                    <t t-esc="company.company_registry"/>
+                                    <!-- Placeholder for PAN Number -->
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Unit No:</strong> <!-- Placeholder for Unit No -->
+                                    <span t-field="doc.tenancy_id.unit_no"/>
+                                </td>
+                                <td>
+                                    <strong>GST IN:</strong>
+                                    <span t-field="doc.partner_id.vat"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Chargeable Area:</strong>
+                                    <span t-field="doc.tenancy_id.chargeable_area"/>
+                                </td>
+                                <td>
+                                    <strong>State:</strong>
+                                    <span t-field="doc.partner_id.state_id"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Carpet Area:</strong>
+                                    <span t-field="doc.tenancy_id.carpet_area"/>
+                                </td>
+                                <td>
+                                    <strong>State Code:</strong> <!-- Placeholder for State Code -->
+                                    <span t-field="doc.partner_id.zip"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Place of Supply:</strong>
+                                    <span t-field="doc.l10n_in_state_id.name"/>
+                                </td>
+                                <td>
+                                    <strong>SAS Code:</strong> <!-- Placeholder for SAS Code -->
+                                </td>
+                            </tr>
+                        </table>
+
+                        <!-- Tax Details Table -->
+                        <table class="table table-sm table-bordered"
+                               style="width: 100%; margin-top: 1px; font-size: 12px;border:2px solid black;">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <strong>Description</strong>
+                                    </th>
+                                    <th>
+                                        <strong>Opening Reading</strong>
+                                    </th>
+                                    <th>
+                                        <strong>Closing Reading</strong>
+                                    </th>
+                                    <th>
+                                        <strong>Consumption</strong>
+                                    </th>
+                                    <th>Consumed Units</th>
+                                    <th>Area Units</th>
+                                    <th>
+                                        <strong>Rate</strong>
+                                    </th>
+                                    <th>
+                                        <strong>Total Value</strong>
+                                    </th>
+                                    <th>
+                                        <strong>Taxable Value</strong>
+                                    </th>
+                                    <th colspan="2">
+                                        <strong>CGST</strong>
+                                    </th>
+                                    <th colspan="2">
+                                        <strong>SGST</strong>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th colspan="9"></th>
+                                    <th>Rate</th>
+                                    <th>Amount</th>
+                                    <th>Rate</th>
+                                    <th>Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Line Items -->
+                                <tr t-foreach="doc.invoice_line_ids" t-as="line">
+                                    <td>
+                                        <span t-field="line.product_id.name"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="line.opening_reading"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="line.closing_reading"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="line.consumption"/><!-- Placeholder for Consumption -->
+                                    </td>
+                                    <td>
+                                        <span t-field="line.consumed_units"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="line.nhcl_area_units"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="line.price_unit"
+                                              options="{'widget': 'monetary', 'display_currency': doc.currency_id}"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="line.price_total"
+                                              options="{'widget': 'monetary', 'display_currency': doc.currency_id}"/><!-- Placeholder for Total Value -->
+                                    </td>
+                                    <td>
+                                        <t t-esc="'%.2f' % (sum(line.mapped('price_total')) - sum(line.mapped('price_subtotal')))"
+                                           options="{'widget': 'monetary', 'display_currency': doc.currency_id}"/>
+                                    </td>
+
+                                    <td>
+                                        <t t-foreach="line.tax_ids.filtered(lambda tax: 'GST' in tax.name)"
+                                           t-as="gst_tax">
+                                            <t t-esc="gst_tax.amount / 2"/>%
+                                        </t>
+                                        <!-- Placeholder for CGST Rate -->
+                                    </td>
+                                    <td>
+                                        <t t-foreach="line.tax_ids.filtered(lambda tax: 'GST' in tax.name)"
+                                           t-as="gst_tax">
+                                            <t t-esc="round((line.price_total - line.price_subtotal) / 2, 2) if gst_tax else 0.0"
+                                               options="{'widget': 'monetary', 'display_currency': doc.currency_id}"/>
+                                        </t>
+
+                                        <!-- Placeholder for CGST Amount -->
+                                    </td>
+                                    <td>
+                                        <t t-foreach="line.tax_ids.filtered(lambda tax: 'GST' in tax.name)"
+                                           t-as="gst_tax">
+                                            <t t-esc="gst_tax.amount / 2"/>%
+                                        </t><!-- Placeholder for SGST Rate -->
+                                    </td>
+                                    <td>
+                                        <t t-foreach="line.tax_ids.filtered(lambda tax: 'GST' in tax.name)"
+                                           t-as="gst_tax">
+                                            <t t-esc="round((line.price_total - line.price_subtotal) / 2, 2) if gst_tax else 0.0"
+                                               options="{'widget': 'monetary', 'display_currency': doc.currency_id}"/>
+                                        </t>
+                                        <!-- Placeholder for SGST Amount -->
+                                    </td>
+                                </tr>
+                                <!-- Total Row -->
+                                <tr>
+                                    <td>
+                                        <strong>Total</strong>
+                                    </td>
+                                    <td colspan="6"></td>
+                                    <td>
+                                        <t t-esc="sum(doc.invoice_line_ids.mapped('price_total'))"
+                                           options="{'widget': 'monetary', 'display_currency': doc.currency_id}"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="'%.2f' %(sum(doc.invoice_line_ids.mapped('price_total')) - sum(doc.invoice_line_ids.mapped('price_subtotal')))"
+                                           options="{'widget': 'monetary', 'display_currency': doc.currency_id}"/>
+                                    </td>
+                                    <td></td>
+                                    <td>
+                                        <t t-esc="'%.2f' % ((sum(doc.invoice_line_ids.mapped('price_total')) - sum(doc.invoice_line_ids.mapped('price_subtotal')))/2)"
+                                           options="{'widget': 'monetary', 'display_currency': doc.currency_id}"/>
+                                    </td>
+
+                                    <td></td>
+                                    <td>
+                                        <t t-esc="'%.2f' % ((sum(doc.invoice_line_ids.mapped('price_total')) - sum(doc.invoice_line_ids.mapped('price_subtotal')))/2)"
+                                           options="{'widget': 'monetary', 'display_currency': doc.currency_id}"/>
+                                    </td>
+
+                                </tr>
+                                <!-- Invoice Total in Figure -->
+                                <tr>
+                                    <td>
+                                        <strong>Total Invoice Value (In Figure)</strong>
+                                    </td>
+                                    <td colspan="12">
+                                        <span t-field="doc.amount_total_signed"/>
+                                    </td>
+                                </tr>
+                                <!-- Invoice Total in Words -->
+                                <tr>
+                                    <td>
+                                        <strong>Total Invoice Value (In Words)</strong>
+                                    </td>
+                                    <td colspan="12">
+                                        <t t-set="amount_in_words"
+                                           t-value="doc.currency_id.with_context(lang=request.env.user.lang).amount_to_text(doc.amount_total_signed)"/>
+                                        <span t-esc="amount_in_words"/>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </main>
+            </t>
+        </t>
+    </template>
+    <record id="tenancy_account_invoice_customise" model="ir.actions.report">
+        <field name="name">Tax Invoice</field>
+        <field name="model">account.move</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">nhcl_rental_management.custom_report_header23</field>
+        <field name="report_file">nhcl_rental_management.custom_report_header23</field>
+        <field name="binding_model_id" ref="account.model_account_move"/>
+        <field name="binding_type">report</field>
+    </record>
+</odoo>

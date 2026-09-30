@@ -1,0 +1,60 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+<!--
+    <record model="ir.ui.view" id="purchase_indent.list">
+      <field name="name">PurchaseIndent list</field>
+      <field name="model">purchase_indent.purchase_indent</field>
+      <field name="arch" type="xml">
+        <list>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </list>
+      </field>
+    </record>
+-->
+
+    <!-- actions opening views on models -->
+<!--
+    <record model="ir.actions.act_window" id="purchase_indent.action_window">
+      <field name="name">PurchaseIndent window</field>
+      <field name="res_model">purchase_indent.purchase_indent</field>
+      <field name="view_mode">list,form</field>
+    </record>
+-->
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="purchase_indent.action_server">
+      <field name="name">PurchaseIndent server</field>
+      <field name="model_id" ref="model_purchase_indent_purchase_indent"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "list,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+<!--
+    <menuitem name="PurchaseIndent" id="purchase_indent.menu_root"/>
+-->
+    <!-- menu categories -->
+<!--
+    <menuitem name="Menu 1" id="purchase_indent.menu_1" parent="purchase_indent.menu_root"/>
+    <menuitem name="Menu 2" id="purchase_indent.menu_2" parent="purchase_indent.menu_root"/>
+-->
+    <!-- actions -->
+<!--
+    <menuitem name="List" id="purchase_indent.menu_1_list" parent="purchase_indent.menu_1"
+              action="purchase_indent.action_window"/>
+    <menuitem name="Server to list" id="purchase_indent" parent="purchase_indent.menu_2"
+              action="purchase_indent.action_server"/>
+-->
+  </data>
+</odoo>

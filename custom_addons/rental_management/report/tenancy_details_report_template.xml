@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="tenancy_details_qweb_report_template">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="nhcl_rental_management.exap_cash_lists">
+                    <div class="page">
+                        <h1 style="text-align:center;">RENTAL AGREEMENT</h1>
+                        <hr/>
+                        <div>
+                            <p>
+                                This Tenancy Rent Agreement is made and entered into on
+                                <span t-field="doc.start_date"/>
+                                between
+                                Landlord
+                                <strong>
+                                    <span t-field="doc.property_landlord_id.name"/>
+                                </strong>
+                                and Tenant
+                                <strong>
+                                    <span t-field="doc.tenancy_id.name"/>
+                                </strong>
+                                .
+                            </p>
+                            <br/>
+                            <ul>
+                                <li>
+                                    Property
+                                    <br/>
+                                    Landlord agrees to rent to Tenant the property
+                                    <strong>
+                                        <span t-field="doc.property_id.name"/>
+                                    </strong>
+                                    located at
+                                    <strong>
+                                        <t t-if="doc.property_id.is_parent_property == True">
+                                            <span t-field="doc.property_id.parent_street"/>,
+                                            <span t-field="doc.property_id.parent_street2"/>,
+                                            <span t-field="doc.property_id.parent_city_id"/>,
+                                            <span t-field="doc.property_id.parent_zip"/>
+                                            <span t-field="doc.property_id.parent_state_id"/>
+                                            <span t-field="doc.property_id.parent_country_id"/>
+                                        </t>
+                                        <t t-else="">
+                                            <span t-field="doc.property_id.street"/>
+                                            <span t-field="doc.property_id.street2"/>,
+                                            <span t-field="doc.property_id.city_id"/>,
+                                            <span t-field="doc.property_id.zip"/>,
+                                            <span t-field="doc.property_id.state_id"/>
+                                            <span t-field="doc.property_id.country_id"/>
+                                        </t>
+                                    </strong>
+                                    for
+                                    <strong>
+                                        <t t-if="doc.property_type=='residential'">
+                                            Residential
+                                        </t>
+                                        <t t-if="doc.property_type=='land'">
+                                            Land
+                                        </t>
+                                        <t t-if="doc.property_type=='commercial'">
+                                            Commercial
+                                        </t>
+                                        <t t-if="doc.property_type=='industrial'">
+                                            Industrial
+                                        </t>
+                                    </strong>
+                                    purposes only.
+                                </li>
+                                <li>
+                                    Terms
+                                    <br/>
+                                    The term of this Agreement shall commence on
+                                    <strong>
+                                        <span t-field="doc.start_date"/>
+                                    </strong>
+                                    and shall
+                                    terminate on
+                                    <strong>
+                                        <span t-field="doc.end_date"/>
+                                    </strong>
+                                    , unless otherwise extended by mutual agreement of the parties. Tenant shall
+                                    vacate the Property upon termination of the Agreement, unless otherwise
+                                    agreed by the parties in writing.
+                                </li>
+                                <li>
+                                    Rent
+                                    <br/>
+                                    Tenant shall pay rent of
+                                    <strong>
+                                        <span t-field="doc.total_rent"/>
+                                        / Month
+                                    </strong>
+                                    due on the due date of each month. The Payment Term is
+                                    <strong>
+                                        <span t-field="doc.payment_term"/>
+                                    </strong>
+                                    ,
+                                    Rent shall be paid to Landlord or Landlord’s designated agent at
+                                    <strong>
+                                        <span t-field="doc.company_id.street"/>
+                                        <span t-field="doc.company_id.street2"/>,
+                                        <span t-field="doc.company_id.city"/>,
+                                        <span t-field="doc.company_id.zip"/>,
+                                        <span t-field="doc.company_id.state_id"/>
+                                        <span t-field="doc.company_id.country_id"/>
+                                    </strong>
+                                    or via online payment to landlord
+
+                                </li>
+                                <li>
+                                    Security Deposit
+                                    <br/>
+                                    Tenant shall deposit with Landlord a security deposit of
+                                    <strong>
+                                        <span t-field="doc.deposit_amount"/>
+                                    </strong>
+                                    , which
+                                    shall
+                                    be held by Landlord as security for the faithful performance by Tenant of
+                                    the terms of this
+                                    Agreement. If Tenant breaches any provision of this Agreement, Landlord may
+                                    apply the
+                                    security
+                                    deposit to any amount owed by Tenant to Landlord, including but not limited
+                                    to unpaid rent,
+                                    damage to the Property, or other expenses incurred by Landlord as a result
+                                    of Tenant’s
+                                    breach.
+                                </li>
+                                <li>
+                                    Use of Property
+                                    <br/>
+                                    Tenant shall use the Property for
+                                    <strong>
+                                        <t t-if="doc.property_type=='residential'">
+                                            Residential
+                                        </t>
+                                        <t t-if="doc.property_type=='land'">
+                                            Land
+                                        </t>
+                                        <t t-if="doc.property_type=='commercial'">
+                                            Commercial
+                                        </t>
+                                        <t t-if="doc.property_type=='industrial'">
+                                            Industrial
+                                        </t>
+                                    </strong>
+                                    purposes only and shall not
+                                    use the Property
+                                    for
+                                    any unlawful purpose. Tenant shall comply with all laws, ordinances, rules,
+                                    and regulations
+                                    of
+                                    governmental authorities applicable to the use and occupancy of the
+                                    Property. Tenant shall
+                                    not
+                                    make any alterations to the Property without the prior written consent of
+                                    Landlord.
+
+                                </li>
+                                <li>
+                                    Maintenance and Repair
+                                    <br/>
+                                    Tenant shall maintain the Property in a clean and orderly condition and
+                                    shall not damage or
+                                    allow damage to the Property. Tenant shall be responsible for repairing any
+                                    damage caused by
+                                    Tenant or Tenant’s guests. Tenant shall report any needed repairs or
+                                    maintenance to Landlord
+                                    promptly.
+
+                                </li>
+                                <li>
+                                    Utilities
+                                    <br/>
+                                    Tenant shall be responsible for payment of all utilities and services used
+                                    by Tenant on the
+                                    Property, including but not limited to electricity, gas, water, and
+                                    telephone.
+
+                                </li>
+                                <p style="page-break-before:always;"/>
+                                <li>
+                                    Assignment and Subletting
+                                    <br/>
+                                    Tenant shall not assign this Agreement or sublet the Property without the
+                                    prior written
+                                    consent
+                                    of Landlord.
+
+                                </li>
+                                <li>
+                                    Governing Law
+                                    <br/>
+                                    This Agreement shall be governed by the laws of the State of
+                                    <strong>
+                                        <span t-field="doc.company_id.state_id"/>
+                                        <span t-field="doc.company_id.country_id"/>
+                                    </strong>
+                                    , without regard to its
+                                    conflict of law provisions.
+
+                                </li>
+                                <li>
+                                    Entire Agreement
+                                    <br/>
+                                    This Agreement constitutes the entire agreement between the parties and
+                                    supersedes all prior
+                                    negotiations, understandings, and agreements between the parties. This
+                                    Agreement may not be
+                                    modified except in writing signed by both parties.
+
+                                </li>
+                                <li>
+                                    Notices
+                                    <br/>
+                                    Any notice required or permitted under this Agreement shall be in writing
+                                    and shall be
+                                    deemed
+                                    given when personally delivered or sent by certified or registered mail,
+                                    postage prepaid, to
+                                    the
+                                    party at the address set forth below or such other address as either party
+                                    may specify by
+                                    notice
+                                    to the other party.
+                                </li>
+                                <li>
+                                    Addresses
+                                    <br/>
+                                    <table class="table table-sm">
+                                        <tr>
+                                            <td>
+                                                Landlord
+                                            </td>
+                                            <td>
+                                                Tenant
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <strong>
+                                                    <span t-field="doc.property_landlord_id.name"/>
+                                                </strong>
+                                                <br/>
+                                                <span>
+                                                    <span t-field="doc.property_landlord_id.street"/>
+                                                    <br/>
+                                                    <span t-field="doc.property_landlord_id.street2"/>
+                                                    <br/>
+                                                    <span t-field="doc.property_landlord_id.city"/>
+                                                    <span t-field="doc.property_landlord_id.state_id"/>
+                                                    <span t-field="doc.property_landlord_id.zip"/>
+                                                    <br/>
+                                                    <span t-field="doc.property_landlord_id.country_id"/>
+                                                </span>
+                                            </td>
+                                            <td>
+                                                <strong>
+                                                    <span t-field="doc.tenancy_id.name"/>
+                                                </strong>
+                                                <br/>
+                                                <span>
+                                                    <span t-field="doc.tenancy_id.street"/>
+                                                    <br/>
+                                                    <span t-field="doc.tenancy_id.street2"/>
+                                                    <br/>
+                                                    <span t-field="doc.tenancy_id.city"/>
+                                                    <span t-field="doc.tenancy_id.state_id"/>
+                                                    <span t-field="doc.tenancy_id.zip"/>
+                                                    <br/>
+                                                    <span t-field="doc.tenancy_id.country_id"/>
+                                                </span>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </li>
+                            </ul>
+                            <table class="table table-borderless">
+                                <tr>
+                                    <td>
+                                        Landlord
+                                        <hr style="border: 1px solid;width: 14%;position: absolute;"/>
+                                    </td>
+                                    <td>
+                                        Tenant
+                                        <hr style="border: 1px solid;width: 14%;position: absolute;"/>
+                                    </td>
+                                </tr>
+                            </table>
+                            <br/>
+                            <p>
+                                <h5>
+                                    Terms &amp; Conditions
+                                </h5>
+                                <span>
+                                    <span t-field="doc.term_condition"/>
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+    <record id="tenancy_details_report_id" model="ir.actions.report">
+        <field name="name">Tenancy Details</field>
+        <field name="model">tenancy.details</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">rental_management.tenancy_details_qweb_report_template</field>
+        <field name="report_file">rental_management.tenancy_details_qweb_report_template</field>
+        <field name="binding_model_id" ref="model_tenancy_details"/>
+        <field name="binding_type">report</field>
+        <field name="print_report_name">'%s Information' %(object.tenancy_seq)</field>
+    </record>
+</odoo>
+
+

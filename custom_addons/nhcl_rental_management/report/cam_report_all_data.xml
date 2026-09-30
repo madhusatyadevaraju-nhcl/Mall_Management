@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="cam_invoice_report_template">
+        <t t-if="not o" t-set="o" t-value="docs"/>
+        <t t-if="not company">
+            <!-- Multicompany -->
+            <t t-if="company_id">
+                <t t-set="company" t-value="company_id"/>
+            </t>
+            <t t-elif="o and 'company_id' in o and o.company_id.sudo()">
+                <t t-set="company" t-value="o.company_id.sudo()"/>
+            </t>
+            <t t-else="else">
+                <t t-set="company" t-value="res_company"/>
+            </t>
+        </t>
+        <div class="header" style="text-align: center;">
+            <div class="row" style="height: 10px; align-items: center;">
+                <div class="col-12" style="text-align: center; font-size: 20px; font-weight: bold; margin-top: 5px;">
+                    <h7>
+                        <strong>
+                            CAM INVOICE ANALYSIS FOR THE MONTH OF
+                            <t t-esc="month_name"/>  to <t t-esc="month_name_to"/> CMR MDP
+                        </strong>
+                    </h7>
+                </div>
+            </div>
+        </div>
+        <div class="article" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id"
+             t-att-data-oe-lang="o and o.env.context.get('lang')">
+            <t t-out="0"/>
+        </div>
+    </template>
+
+    <template id="cam_full_report_monthly">
+        <t t-if="not o" t-set="o" t-value="docs"/>
+        <t t-if="not company">
+            <t t-if="company_id">
+                <t t-set="company" t-value="company_id"/>
+            </t>
+            <t t-elif="o and 'company_id' in o and o.company_id.sudo()">
+                <t t-set="company" t-value="o.company_id.sudo()"/>
+            </t>
+            <t t-else="else">
+                <t t-set="company" t-value="res_company"/>
+            </t>
+        </t>
+        <t t-call="nhcl_rental_management.cam_invoice_report_template">
+            <main>
+                <div class="row">
+                    <div class="col-12">
+                        <table class="table table-bordered"
+                               style="width: 100%; margin:0;padding:0; font-size: 10px;border:1px solid black; font-family:Arial, Verdana,sans-serif;">
+                            <thead style="background-color: #343a40; color: white;">
+                                <tr>
+                                    <th style="color: white;">S.No.</th>
+                                    <th style="color: white;">Invoice No.</th>
+                                    <th style="color: white;">Tenant Name</th>
+                                    <th style="color: white;">Brand Name</th>
+                                    <th style="color: white;">Basic Amount</th>
+                                    <th style="color: white;">Tax %</th>
+                                    <th style="color: white;">Tax Amount</th>
+                                    <th style="color: white;">Total Billed Amount</th>
+                                    <th style="color: white;">Tenant Status</th>
+                                    <th style="color: white;">Remarks</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!--                                <t t-foreach="docs" t-as="doc">-->
+                                <!--                                <tr colspan="12"> <t t-esc="doc.name"/> </tr>-->
+                                <!--                                </t>-->
+
+                                <!--                                <t t-set="invoices" t-value="doc.env['rent.invoice'].browse(invoice_ids)"/>-->
+                                <t t-set="index" t-value="0"/>
+                                <t t-set="total_rent" t-value="0"/>
+                                <t t-set="basic_amount" t-value="0"/>
+                                <t t-set="tax_amount_total" t-value="0"/>
+                                <t t-foreach="res" t-as="r">
+
+                                    <tr>
+                                        <td>
+                                            <t t-esc="index + 1"/>
+                                        </td>
+                                        <td>
+                                            <t t-esc="r.get('invoice')"/>
+                                        </td>
+                                        <td>
+                                            <t t-esc="r.get('brand')"/>
+                                        </td>
+                                        <td>
+                                            <t t-esc="r.get('Brand')"/>
+                                        </td>
+                                        <td>
+                                            <t t-esc="r.get('amount')"/>
+                                        </td>
+                                        <td>
+                                            <t t-esc="r.get('tax')"/>
+                                        </td>
+                                        <td>
+                                            <t t-esc="r.get('tax_amount')"/>
+                                        </td>
+                                        <td>
+                                            <t t-esc="r.get('total_tax_amount')"/>
+                                        </td>
+                                        <td>
+                                            <t t-esc="r.get('status')"/>
+                                        </td>
+                                        <td></td>
+                                    </tr>
+                                    <t t-set="index" t-value="index + 1"/>
+                                    <t t-set="total_rent" t-value="total_rent + r.get('total_tax_amount')"/>
+                                    <t t-set="basic_amount" t-value="basic_amount + r.get('amount')"/>
+                                    <t t-set="tax_amount_total" t-value="tax_amount_total + r.get('tax_amount')"/>
+
+                                </t>
+                                <tr>
+                                    <td colspan="4" style="text-align:left;font-weight:bold;font-size:1">Total</td>
+                                    <td>
+                                        <t t-esc="basic_amount"/>
+                                    </td>
+                                    <td></td>
+                                    <td>
+                                        <t t-esc="tax_amount_total"/>
+                                    </td>
+                                    <td colspan="3">
+                                        <t t-esc="total_rent"/>
+                                    </td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+            </main>
+        </t>
+    </template>
+
+
+    <!--    <record id="invoice_landed_rent" model="report.paperformat">-->
+    <!--        <field name="name">Invoice rent Landed</field>-->
+    <!--        <field name="default" eval="True"/>-->
+    <!--        <field name="format">custom</field>-->
+    <!--        <field name="page_height">120</field>-->
+    <!--        <field name="page_width">70</field>-->
+    <!--        <field name="orientation">Portrait</field>-->
+    <!--        <field name="margin_top">10</field>-->
+    <!--        <field name="margin_bottom">5</field>-->
+    <!--        <field name="margin_left">5</field>-->
+    <!--        <field name="margin_right">5</field>-->
+    <!--        <field name="header_line" eval="False"/>-->
+    <!--        <field name="header_spacing">10</field>-->
+    <!--        <field name="dpi">90</field>-->
+    <!--    </record>-->
+
+    <record id="action_report_cam_invoice" model="ir.actions.report">
+        <field name="name">Cam Analysis Report</field>
+        <field name="model">cam.date.range.wizard</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">nhcl_rental_management.cam_full_report_monthly</field>
+        <field name="report_file">nhcl_rental_management.cam_full_report_monthly</field>
+        <field name="binding_model_id" ref="nhcl_rental_management.model_cam_date_range_wizard"/>
+        <!--        <field name="paperformat_id"-->
+        <!--               ref="nhcl_rental_management.invoice_landed_rent"/>-->
+        <field name="binding_type">report</field>
+    </record>
+
+</odoo>

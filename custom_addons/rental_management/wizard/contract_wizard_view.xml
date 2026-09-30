@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="contract_wizard_form_view" model="ir.ui.view">
+            <field name="name">contract.wizard.form.view</field>
+            <field name="model">contract.wizard</field>
+            <field name="arch" type="xml">
+                <form>
+                    <field name="company_id" invisible="1"/>
+                    <field name="currency_id" invisible="1"/>
+                    <field name="is_extra_service" invisible="1"/>
+                    <group string="Contract Details">
+                        <group>
+                            <field name="property_id" invisible="1" required="1"/>
+                            <field name="total_rent" invisible="1"/>
+                            <field name="customer_id" required="1"/>
+                            <label for="payment_term"/>
+                            <div>
+                                <field name="payment_term" required="1"/>
+                                <div class="font-italic text-muted" invisible="payment_term != 'quarterly'">
+                                    * 3 Month Quarter
+                                </div>
+                            </div>
+                            <field name="duration_id" required="1"
+                                   options="{'no_quick_create':True,'no_create_edit':True}"/>
+                        </group>
+                        <group>
+
+                            <field name="is_any_broker"/>
+                            <field name="start_date" required="1"/>
+                            <label for="services" invisible="is_extra_service == False"/>
+                            <strong>
+                                <field name="services" invisible="is_extra_service == False"/>
+                            </strong>
+                        </group>
+                    </group>
+                    <group string="Broker Details" invisible="is_any_broker == False">
+                        <group>
+                            <field name="broker_id" options="{'no_quick_create':True,'no_create_edit':True}"
+                                   invisible="is_any_broker == False" required="is_any_broker == True"/>
+                            <field name="rent_type" invisible="is_any_broker == False" required="is_any_broker == True"
+                                   widget="radio"
+                                   options="{'horizontal': true}"/>
+
+                        </group>
+                        <group>
+                            <field name="commission_type"
+                                   invisible="is_any_broker == False" required="is_any_broker == True"
+                                   widget="radio" options="{'horizontal': true}"/>
+                            <field name="broker_commission_percentage"
+                                   invisible="is_any_broker == False or commission_type == 'f'" required="commission_type == 'p'"/>
+                            <field name="broker_commission" widget="monetary"
+                                   invisible="is_any_broker == False or commission_type == 'p'" required="commission_type == 'f'"/>
+                        </group>
+                    </group>
+                    <group string="Security Deposit">
+                        <group>
+                            <field name="is_any_deposit"/>
+                        </group>
+                        <group>
+                            <field name="deposit_amount" invisible="is_any_deposit == False" required="is_any_deposit == True"/>
+                        </group>
+                    </group>
+                    <footer>
+                        <button string="Create Contract" type="object" class="btn btn-outline-success"
+                                name="contract_action" invisbile="payment_term == 'full_payment'"/>
+                        <button string="Create Invoice" type="object" class="btn btn-outline-success"
+                                name="contract_action" invisbile="payment_term != 'full_payment'"/>
+                        <button string="Cancel" special="cancel" class="btn btn-outline-danger"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record id="contract_wizard_action" model="ir.actions.act_window">
+            <field name="name">Contract</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">contract.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+    </data>
+</odoo>

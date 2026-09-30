@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+     <record id="purchase_indent_main" model="ir.module.category">
+        <field name="name">Purchase Indent Approvals</field>
+        <field name="description">Help To Manage  Request Data</field>
+    </record>
+
+    <record id="purchase_manager_approval" model="res.groups">
+        <field name="name">Manager Approval</field>
+        <field name="category_id" ref="purchase_indent.purchase_indent_main"/>
+    </record>
+    <record id="purchase_indent_final_approve" model="res.groups">
+        <field name="name">Final Approve Approval</field>
+        <field name="category_id" ref="purchase_indent.purchase_indent_main"/>
+    </record>
+
+</odoo>

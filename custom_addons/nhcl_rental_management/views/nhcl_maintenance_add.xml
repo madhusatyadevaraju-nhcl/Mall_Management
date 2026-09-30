@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="maintenance_add_fields" model="ir.ui.view">
+        <field name="name">maintenance.request.add.custom</field>
+        <field name="model">maintenance.request</field>
+        <field name="inherit_id" ref="maintenance.hr_equipment_request_view_form"/>
+        <field name="arch" type="xml">
+
+
+            <xpath expr="//header" position="inside">
+                <button name="change_button_back"
+                        type="object"
+                        string="Back"
+                        class="btn-primary"
+                        icon="fa-arrow-left"/>
+
+                <button name="change_button_next"
+                        type="object"
+                        string="Next"
+                        class="btn-primary"
+                        icon="fa-arrow-right"/>
+
+            </xpath>
+            <xpath expr="//header//field[@name='stage_id']" position="attributes">
+                <attribute name="readonly">True</attribute>
+            </xpath>
+            <!-- Wrapping existing fields in a notebook -->
+            <xpath expr="//notebook" position="inside">
+                <!-- Adding the new "Preventive Maintenance" page -->
+                <page string="Preventive Maintenance" invisible="maintenance_type != 'preventive'">
+                    <field name="preventing_maintenance_ids">
+                        <list editable="bottom">
+                            <field name="nhcl_start_date"/>
+                            <field name="nhcl_schedule_date"/>
+                            <field name="nhcl_end_date"/>
+                            <field name="nhcl_description"/>
+                            <field name="nhcl_status"/>
+                            <field name="nhcl_remarks"/>
+                        </list>
+                        <form>
+                            <group>
+                                <field name="nhcl_start_date"/>
+                                <field name="nhcl_schedule_date"/>
+                                <field name="nhcl_end_date"/>
+                                <field name="nhcl_description"/>
+                                <field name="nhcl_status"/>
+                                <field name="nhcl_remarks"/>
+                            </group>
+                        </form>
+                    </field>
+                </page>
+            </xpath>
+            <xpath expr="//group/field[@name='email_cc']" position="after">
+                <field name="maintenance_types" widget="radio" options="{'horizontal': True}"
+                       invisible="maintenance_type != 'preventive'" required="maintenance_type == 'preventive'"/>
+            </xpath>
+            <xpath expr="//group/field[@name='request_date']" position="after">
+                <field name="nhcl_end_date"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

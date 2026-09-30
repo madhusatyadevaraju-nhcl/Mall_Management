@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+     <record id="blanket_order_category" model="ir.module.category">
+        <field name="name">Blanket Oder Approvals</field>
+        <field name="description">Help To Manage Purchase Request Data</field>
+    </record>
+
+    <record id="group_blanket_order_approve" model="res.groups">
+        <field name="name">First Approval</field>
+        <field name="category_id" ref="nhcl_rental_management.blanket_order_category"/>
+    </record>
+    <record id="group_blanket_order_second_approval" model="res.groups">
+        <field name="name">Second Approval</field>
+        <field name="category_id" ref="nhcl_rental_management.blanket_order_category"/>
+    </record>
+
+</odoo>
