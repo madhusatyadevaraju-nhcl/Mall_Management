@@ -1,0 +1,62 @@
+.cmr_overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.15);
+}
+
+.cmr_loader_box {
+    width: 240px;
+    padding: 28px 20px 24px 20px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(18px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* Generates "LOADING" text via CSS */
+.cmr_loader_box::before {
+    content: "LOADING";
+    display: block;
+    text-align: center;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: #6c63ff;
+    animation: cmr_pulse_text 1.5s ease-in-out infinite;
+}
+
+.cmr_progress {
+    height: 4px;
+    overflow: hidden;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.2);
+    position: relative;
+}
+
+.cmr_progress::after {
+    content: "";
+    display: block;
+    width: 40%;
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, #6c63ff, #00c9a7);
+    animation: cmr_progress 1.5s ease-in-out infinite;
+}
+
+@keyframes cmr_progress {
+    0% { transform: translateX(-120%); }
+    100% { transform: translateX(350%); }
+}
+
+@keyframes cmr_pulse_text {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 1; }
+}
