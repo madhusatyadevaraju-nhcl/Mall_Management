@@ -40,7 +40,14 @@
         'views/category_view.xml',
         'views/electricbill.xml',
         'views/slab_master_views.xml',
+
     ],
+    'assets': {
+        'web.assets_backend': [
+            'nhcl_rental_management/static/src/css/loading.css',
+            'nhcl_rental_management/static/src/xml/loading.xml'
+        ]
+    },
     'license': 'OPL-1',
     'installable': True,
     'auto_install': False,
