@@ -1,0 +1,11 @@
+<templates>
+    <t t-name="nhcl_rental_management.CustomLoadingIndicator" t-inherit="web.LoadingIndicator" t-inherit-mode="extension">
+        <xpath expr="//span[contains(@class, 'o_loading_indicator')]" position="replace">
+            <div class="cmr_overlay">
+                <div class="cmr_loader_box">
+                    <div class="cmr_progress"></div>
+                </div>
+            </div>
+        </xpath>
+    </t>
+</templates>
