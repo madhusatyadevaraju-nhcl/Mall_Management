@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from odoo import api, models, fields
 from odoo.exceptions import ValidationError, UserError
 
@@ -89,13 +91,65 @@ class YearAddInTenancy(models.Model):
     end_date = fields.Date(string='End Date')
     end_year = fields.Date(string='Renewal Date')
     yid = fields.Many2one('tenancy.details')
-    rupee = fields.Float(string='Rupee')
-    fixed = fields.Float(string='Fixed')
+
+    rupees = fields.Float(string='Rupee')
+    fixed_amount = fields.Float(string='Fixed')
     percentage = fields.Integer(string='Percentage')
-    amount = fields.Float(string='Amount', compute='_amount_change', store=True)
+    amount = fields.Float(string='Amount', compute='_amount_change', store=True,readonly=False)
+    extra_rate = fields.Integer('Extra amount')
+
     is_invoice_generated = fields.Boolean(string="Invoice Created", default=False)
     is_first_line = fields.Boolean("Is First Line", compute="_compute_is_first_line", store=True)
     is_last_line=fields.Boolean('Last Line',compute='_compute_is_last_line', store=True)
+
+    # add for the percentage calculator
+    increase_type = fields.Selection([
+        ('percent', 'Percentage'),
+        ('fixed', 'Fixed Amount'),
+        ('rupees', 'Rupees'),
+    ], string="Calculation Type", default='percent')
+
+    @api.model_create_multi
+    def create(self, vals_list):
+        for vals in vals_list:
+            if vals.get('increase_type') == 'rupees':
+                vals.update({
+                    'percentage': 0.0,
+                    'fixed_amount': 0.0,
+                })
+            elif vals.get('increase_type') == 'percent':
+                vals.update({
+                    'rupees': 0.0,
+                    'fixed_amount': 0.0,
+                })
+            elif vals.get('increase_type') == 'fixed':
+                vals.update({
+                    'percentage': 0.0,
+                    'rupees': 0.0,
+                })
+
+        return super().create(vals_list)
+
+    def write(self, vals):
+        vals = vals.copy()
+
+        if vals.get('increase_type') == 'rupees':
+            vals.update({
+                'percentage': 0.0,
+                'fixed_amount': 0.0,
+            })
+        elif vals.get('increase_type') == 'percent':
+            vals.update({
+                'rupees': 0.0,
+                'fixed_amount': 0.0,
+            })
+        elif vals.get('increase_type') == 'fixed':
+            vals.update({
+                'percentage': 0.0,
+                'rupees': 0.0,
+            })
+
+        return super().write(vals)
 
     @api.depends('yid')
     def _compute_is_first_line(self):
@@ -123,25 +177,164 @@ class YearAddInTenancy(models.Model):
                 )
                 record.is_last_line = (record.id == last_line.id)
 
-    @api.depends('percentage', 'yid')
+    # @api.depends('percentage', 'yid')
+    # def _amount_change(self):
+    #     tenancies = self.mapped('yid')
+    #     for tenancy in tenancies:
+    #         related_lines = self.env['year.add'].search(
+    #             [('yid', '=', tenancy.id)],
+    #             order='id'
+    #         )
+    #
+    #         for i, line in enumerate(related_lines):
+    #             if i == 0:
+    #                 # First line: total rent only
+    #                 line.amount = tenancy.total_rent
+    #             else:
+    #                 prev_line = related_lines[i - 1]
+    #                 base = prev_line.amount
+    #                 percentage = line.percentage
+    #                 line.amount = base + (base * percentage / 100)
+
+    @api.depends(
+        'increase_type',
+        'percentage',
+        'fixed_amount',
+        'rupees',
+        'yid.total_rent','yid.carpet_area',
+        'yid.year_ids.increase_type',
+        'yid.year_ids.percentage',
+        'yid.year_ids.fixed_amount',
+        'yid.year_ids.rupees',
+    )
     def _amount_change(self):
-        tenancies = self.mapped('yid')
-        for tenancy in tenancies:
-            related_lines = self.env['year.add'].search(
-                [('yid', '=', tenancy.id)],
-                order='id'
+        for record in self:
+            if not record.yid:
+                record.amount = 0
+                continue
+
+            lines = self.env['year.add'].search(
+                [('yid', '=', record.yid.id)],
+                order='start_year, id'
             )
+            # lines = record.yid.year_ids.sorted(key=lambda l: (l.start_year or datetime.date.min, l.id))
 
-            for i, line in enumerate(related_lines):
-                if i == 0:
-                    # First line: total rent only
-                    line.amount = tenancy.total_rent
+            for index, line in enumerate(lines):
+                # ✅ First line = base rent
+                if index == 0:
+                    line.amount = line.yid.total_rent or 0
+                    continue
+
+                prev_amount = lines[index - 1].amount
+
+                if line.increase_type == 'percent':
+                    line.amount = prev_amount + (prev_amount * line.percentage / 100)
+
+
+                elif line.increase_type == 'fixed':
+                    line.amount = prev_amount + line.fixed_amount
+
+                elif line.increase_type == 'rupees':
+
+                    # Fixed rent -> manual entry, keep what the user typed
+                    if line.yid.sft_fixed == 'fixed':
+                        line.amount = prev_amount
+                        continue
+
+                    if line.yid.sft_fixed == 'sft':
+                        # get previous extra
+                        prev_extra = lines[index - 1].extra_rate or 0.0
+                        # cumulative extra
+                        current_extra = prev_extra + (line.rupees or 0.0)
+
+                        # store cumulative value
+                        line.extra_rate = current_extra
+
+                        if line.yid.carpet_value_take:
+                            line.amount = line.yid.carpet_area * (
+                                    line.yid.rate + current_extra
+                            )
+                        else:
+                            line.amount = line.yid.chargeable_area * (
+                                    line.yid.rate + current_extra
+                            )
                 else:
-                    prev_line = related_lines[i - 1]
-                    base = prev_line.amount
-                    percentage = line.percentage
-                    line.amount = base + (base * percentage / 100)
+                    line.amount = prev_amount
 
+    # @api.depends(
+    #     'increase_type', 'percentage', 'fixed_amount', 'rupees',
+    #     'yid.total_rent', 'yid.carpet_area', 'yid.chargeable_area',
+    #     'yid.rate', 'yid.sft_fixed', 'yid.carpet_value_take',
+    #     'yid.year_ids.increase_type',
+    #     'yid.year_ids.percentage',
+    #     'yid.year_ids.fixed_amount',
+    #     'yid.year_ids.rupees',
+    # )
+    # def _amount_change(self):
+    #     # lines with no parent
+    #     for record in self.filtered(lambda r: not r.yid):
+    #         record.amount = 0
+    #
+    #     for yid in self.mapped('yid'):
+    #         # "| self" guarantees the edited lines are always in the loop
+    #         lines = (yid.year_ids | self.filtered(lambda r: r.yid == yid)).sorted(
+    #             key=lambda l: (l.start_year or datetime.date.max, l._origin.id or 0)
+    #         )
+    #         prev_amount = 0.0
+    #         cumulative_extra = 0.0
+    #         area = yid.carpet_area if yid.carpet_value_take else yid.chargeable_area
+    #
+    #         for index, line in enumerate(lines):
+    #             if index == 0:
+    #                 line.amount = yid.total_rent or 0.0
+    #                 cumulative_extra = 0.0
+    #
+    #             elif line.increase_type == 'percent':
+    #                 line.amount = prev_amount + (prev_amount * (line.percentage or 0.0) / 100)
+    #                 cumulative_extra = 0.0
+    #
+    #             elif line.increase_type == 'fixed':
+    #                 line.amount = prev_amount + (line.fixed_amount or 0.0)
+    #                 cumulative_extra = 0.0
+    #
+    #             elif line.increase_type == 'rupees':
+    #                 if yid.sft_fixed == 'sft':
+    #                     cumulative_extra += (line.rupees or 0.0)
+    #                     line.amount = area * (yid.rate + cumulative_extra)
+    #                 else:
+    #                     # Fixed rent: previous amount + rupees
+    #                     line.amount = prev_amount + (line.rupees or 0.0)
+    #                     cumulative_extra = 0.0
+    #             else:
+    #                 line.amount = prev_amount
+    #                 cumulative_extra = 0.0
+    #
+    #             if 'extra_rate' in line._fields:
+    #                 line.extra_rate = cumulative_extra
+    #
+    #             prev_amount = line.amount
+
+    @api.onchange('increase_type')
+    def _onchange_increase_type(self):
+        if self.increase_type == 'percent':
+            self.fixed_amount = 0
+            self.rupees = 0
+            self.extra_rate = 0
+
+        elif self.increase_type == 'fixed':
+            self.percentage = 0
+            self.rupees = 0
+            self.extra_rate = 0
+
+        elif self.increase_type == 'rupees':
+            self.percentage = 0
+            self.fixed_amount = 0
+
+        else:
+            self.percentage = 0
+            self.fixed_amount = 0
+            self.rupees = 0
+            self.extra_rate = 0
 
 class YearAddInTenancy_cam(models.Model):
     _name = 'cam.year'

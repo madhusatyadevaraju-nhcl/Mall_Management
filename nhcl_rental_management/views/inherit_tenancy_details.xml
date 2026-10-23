@@ -91,12 +91,14 @@
                             <field name="start_year"/>
                             <field name="end_date" force_save="1" readonly="is_last_line"/>
                             <field name="end_year"/>
-                            <field name="rupee"/>
-                            <field name="fixed"/>
-                            <field name="percentage" readonly="is_first_line"/>
-                            <field name="amount"/>
+                            <field name="percentage" readonly="is_first_line or increase_type != 'percent'"/>
+                            <field name="fixed_amount" readonly="increase_type != 'fixed'"/>
+                            <field name="rupees" readonly="increase_type != 'rupees'"/>
+                            <field name="increase_type" widget="radio" options="{'horizontal':True}" readonly="is_first_line"/>
+                            <field name="amount" readonly="(parent.contract_type and parent.contract_type != 'new_contract') or parent.sft_fixed == 'sft' or increase_type != 'rupees'"/>
                             <field name="is_first_line" column_invisible="1"/>
                             <field name="is_last_line" column_invisible="1"/>
+                            <field name="extra_rate" column_invisible="1"/>
                         </list>
                     </field>
                 </page>
